@@ -1,5 +1,5 @@
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -pedantic -g
+CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11
 
 LIBSRCS = adapter.cpp
 LIBOBJS = $(LIBSRCS:.cpp=.o)
@@ -20,7 +20,7 @@ $(TARGETLIB): $(LIBOBJS)
 test: all
 	$(CXX) -isystem ${GTEST_DIR}/include -I${GTEST_DIR} -pthread -c ${GTEST_DIR}/src/gtest-all.cc
 	ar -rv libgtest.a gtest-all.o
-	$(CXX) $(LINK) -isystem ${GTEST_DIR}/include -pthread TestMain.cpp $(wildcard Test_*.cpp) libgtest.a -o runtests
+	$(CXX) $(LINK) -std=c++11 -isystem ${GTEST_DIR}/include -pthread TestMain.cpp $(wildcard Test_*.cpp) libgtest.a -o runtests
 	LD_LIBRARY_PATH=. ./runtests
 
 $(BINARIES):
