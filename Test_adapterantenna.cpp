@@ -1,69 +1,58 @@
 #include "adapter.h"
-
 #include "gtest/gtest.h"
 
-TEST(AdapterAntennaTest, AntennaTypeConstructor)
-{
-	const AntennaType at = AntennaType::DVB_S;
-	ASSERT_EQ(at, AntennaType::DVB_S);
-	const AntennaType at2 = AntennaType::DVB_S2;
-	ASSERT_EQ(at2, AntennaType::DVB_S2);
-	const AntennaType at3 = AntennaType::DVB_T;
-	ASSERT_EQ(at3, AntennaType::DVB_T);
-}
+const AntennaType at = AntennaType::DVB_S;
+const AntennaType at2 = AntennaType::DVB_S2;
+const AntennaType at3 = AntennaType::DVB_T;
 
-TEST(AdapterAntennaTest, AntennaTypeCompatConstructor)
-{
-	std::vector<AntennaType> atc;
-	atc.push_back(AntennaType::DVB_S);
-	atc.push_back(AntennaType::DVB_S2);
-	ASSERT_EQ(atc.size(), 2);
-	ASSERT_EQ(atc[0], AntennaType::DVB_S);
-	ASSERT_EQ(atc[1], AntennaType::DVB_S2);
-}
+const Antenna a("astra19.2");
 
-TEST(AdapterAntennaTest, AntennaConstructor)
+TEST(AdapterAntennaTest, Antenna_GetName)
 {
-	const Antenna a("astra19.2");
 	ASSERT_EQ(a.getName(), "astra19.2");
 }
 
-TEST(AdapterAntennaTest, AntennaEqualOperator)
+TEST(AdapterAntennaTest, Antenna_EqualOperator)
 {
-	const Antenna a("astra19.2");
 	const Antenna b("hotbird23");
 	const Antenna c("astra19.2");
 	ASSERT_NE(a, b);
 	ASSERT_EQ(a, c);
 }
 
-TEST(AdapterAntennaTest, AdapterConstructor)
+TEST(AdapterAntennaTest, Adapter_GetId)
 {
-	// Building an adapter /dev/dvb/adapter0/frontend2
-	// with astra19.2 plug and DVB-S/DVB-S2 compatibility
-
-	const Antenna a("astra19.2");
 	std::vector<AntennaType> atc;
 	atc.push_back(AntennaType::DVB_S);
 	atc.push_back(AntennaType::DVB_S2);
-
 	const Adapter adap(0, 2, a, atc);
-    ASSERT_EQ(adap.getId(), 0);
-    ASSERT_EQ(adap.getFrontendId(), 2);
-    ASSERT_EQ(adap.getAntenna(), a);
+	ASSERT_EQ(adap.getId(), 0);
 }
 
-TEST(AdapterAntennaTest, AdapterCompatibilty)
+TEST(AdapterAntennaTest, Adapter_GetFrontendId)
 {
-	// Building an adapter /dev/dvb/adapter0/frontend2
-	// with astra19.2 plug and DVB-S/DVB-S2 compatibility
-
-	const Antenna a("astra19.2");
 	std::vector<AntennaType> atc;
 	atc.push_back(AntennaType::DVB_S);
 	atc.push_back(AntennaType::DVB_S2);
 	const Adapter adap(0, 2, a, atc);
+	ASSERT_EQ(adap.getFrontendId(), 2);
+}
 
+TEST(AdapterAntennaTest, Adapter_GetAntenna)
+{
+	std::vector<AntennaType> atc;
+	atc.push_back(AntennaType::DVB_S);
+	atc.push_back(AntennaType::DVB_S2);
+	const Adapter adap(0, 2, a, atc);
+	ASSERT_EQ(adap.getAntenna(), a);
+}
+
+TEST(AdapterAntennaTest, Adapter_IsCompatible)
+{
+	std::vector<AntennaType> atc;
+	atc.push_back(AntennaType::DVB_S);
+	atc.push_back(AntennaType::DVB_S2);
+	const Adapter adap(0, 2, a, atc);
     ASSERT_TRUE(adap.isCompatible(AntennaType::DVB_S));
     ASSERT_FALSE(adap.isCompatible(AntennaType::DVB_T));
 }
