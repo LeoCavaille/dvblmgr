@@ -3,3 +3,4 @@ dvbld
 dvblmgr
 libdvblmgr.so
 *.o
+*.dSYM
