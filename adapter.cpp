@@ -30,3 +30,9 @@ std::vector<AntennaType> const& Adapter::getAntennaTypeCompat() const
 {
 	return compat_;
 }
+
+bool Adapter::isCompatible(const AntennaType& at) const
+{
+	auto it = std::find(compat_.begin(), compat_.end(), at);
+	return (it != compat_.end());
+}

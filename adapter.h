@@ -20,6 +20,8 @@ public:
 	Antenna const& getAntenna() const;
 	std::vector<AntennaType> const& getAntennaTypeCompat() const;
 
+	bool isCompatible(const AntennaType& at) const;
+
 private:
 	unsigned char id_;
 	unsigned char frontendId_;

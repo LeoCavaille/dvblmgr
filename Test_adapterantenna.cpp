@@ -51,5 +51,19 @@ TEST(AdapterAntennaTest, AdapterConstructor)
     ASSERT_EQ(adap.getId(), 0);
     ASSERT_EQ(adap.getFrontendId(), 2);
     ASSERT_EQ(adap.getAntenna(), a);
+}
 
+TEST(AdapterAntennaTest, AdapterCompatibilty)
+{
+	// Building an adapter /dev/dvb/adapter0/frontend2
+	// with astra19.2 plug and DVB-S/DVB-S2 compatibility
+
+	const Antenna a("astra19.2");
+	std::vector<AntennaType> atc;
+	atc.push_back(AntennaType::DVB_S);
+	atc.push_back(AntennaType::DVB_S2);
+	const Adapter adap(0, 2, a, atc);
+
+    ASSERT_TRUE(adap.isCompatible(AntennaType::DVB_S));
+    ASSERT_FALSE(adap.isCompatible(AntennaType::DVB_T));
 }
