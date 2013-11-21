@@ -17,6 +17,8 @@ public:
 
 	unsigned char const& getId() const;
 	unsigned char const& getFrontendId() const;
+	Antenna const& getAntenna() const;
+	std::vector<AntennaType> const& getAntennaTypeCompat() const;
 
 private:
 	unsigned char id_;

@@ -12,6 +12,16 @@ public:
 	{
 		return name_;
 	}
+
+	bool operator==(const Antenna& rhs) const
+	{
+		return name_ == rhs.name_;
+	}
+	bool operator!=(const Antenna& rhs) const
+	{
+		return !(*this == rhs);
+	}
+
 private:
 	std::string name_;
 };

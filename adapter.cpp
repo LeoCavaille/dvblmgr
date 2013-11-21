@@ -20,3 +20,13 @@ unsigned char const& Adapter::getFrontendId() const
 {
 	return frontendId_;
 }
+
+Antenna const& Adapter::getAntenna() const
+{
+	return antenna_;
+}
+
+std::vector<AntennaType> const& Adapter::getAntennaTypeCompat() const
+{
+	return compat_;
+}
