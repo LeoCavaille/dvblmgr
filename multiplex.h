@@ -7,6 +7,7 @@
 
 class Multiplex {
 public:
+	bool isCompatible(const Adapter& a) const;
 
 private:
 	// in Hz
@@ -18,6 +19,7 @@ private:
 	Modulation modulation_;
 
 	Antenna antenna_;
+	AntennaType antennaType_;
 
     std::vector<Channel> channels_;
 };

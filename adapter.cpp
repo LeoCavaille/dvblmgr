@@ -1,4 +1,5 @@
 #include "adapter.h"
+#include <algorithm>
 
 Adapter::Adapter(
 		const unsigned char& id,

@@ -1,5 +1,5 @@
 CXX = clang++
-CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11
+CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11 -fPIC
 
 LIBSRCS = adapter.cpp
 LIBOBJS = $(LIBSRCS:.cpp=.o)
