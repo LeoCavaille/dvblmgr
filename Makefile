@@ -1,7 +1,7 @@
-CXX = clang++
+CXX = /usr/local/bin/g++-4.8
 CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11 -fPIC
 
-LIBSRCS = adapter.cpp
+LIBSRCS = adapter.cpp ipsubnet.cpp
 LIBOBJS = $(LIBSRCS:.cpp=.o)
 
 TARGETLIB = libdvblmgr.so

@@ -1,9 +1,13 @@
 #ifndef ANTENNA_H_
 #define ANTENNA_H_
 
+#include "confobject.h"
+
 #include <string>
 
-class Antenna {
+class Antenna:
+    public ConfObject
+{
 public:
 	Antenna(const std::string& name): name_(name)
 	{}

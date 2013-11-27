@@ -3,10 +3,13 @@
 
 #include "antenna.h"
 #include "antennatype.h"
+#include "confobject.h"
 
 #include <vector>
 
-class Adapter {
+class Adapter:
+    public ConfObject
+{
 public:
 	Adapter(
 		const unsigned char& id,
