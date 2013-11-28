@@ -1,13 +1,13 @@
-CXX = /usr/local/bin/g++-4.8
+CXX = clang++
 CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11 -fPIC
 
-LIBSRCS = adapter.cpp ipsubnet.cpp
+LIBSRCS = adapter.cpp ipsubnet.cpp channel.cpp
 LIBOBJS = $(LIBSRCS:.cpp=.o)
 
 TARGETLIB = libdvblmgr.so
 BINARIES = dvbld dvblmgr
 
-LINK = -L . -ldvblmgr
+LINK = -L . -ldvblmgr -lyaml-cpp
 
 GTEST_DIR = ./gtest-1.7.0
 

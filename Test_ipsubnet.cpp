@@ -1,4 +1,5 @@
 #include "ipsubnet.h"
+
 #include "gtest/gtest.h"
 
 TEST(IPSubnetTest, ConstructorBase)
