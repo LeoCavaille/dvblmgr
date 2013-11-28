@@ -3,8 +3,8 @@
 
 #include "confobject.h"
 
+#include <string>
 #include <arpa/inet.h>
-#include <sstream>
 
 class IPSubnet:
     public ConfObject
@@ -16,6 +16,8 @@ public:
 	void release(const in_addr& addr);
 
 	bool contain(const u_int32_t& address) const;
+	bool contain(const std::string& address) const;
+
 	std::string string() const;
 
 private:

@@ -32,6 +32,13 @@ bool IPSubnet::contain(const u_int32_t& address) const
 	return (baseIP_.s_addr == (address & netmask_.s_addr));
 }
 
+bool IPSubnet::contain(const std::string& address) const
+{
+    in_addr a;
+    inet_pton(AF_INET, address.c_str(), &a);
+    return contain(a.s_addr);
+}
+
 std::string IPSubnet::string() const
 {
 	std::ostringstream result;
