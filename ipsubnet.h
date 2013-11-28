@@ -3,6 +3,7 @@
 
 #include "confobject.h"
 
+#include <set>
 #include <string>
 #include <arpa/inet.h>
 
@@ -24,6 +25,8 @@ private:
 	in_addr baseIP_;
 	in_addr netmask_;
 	int intmask_;
+
+	std::set<int> pool_;
 
 private:
 	static u_int32_t IPint32lshifted(const int& shift);

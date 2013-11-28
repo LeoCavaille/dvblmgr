@@ -27,6 +27,32 @@ IPSubnet::IPSubnet(const in_addr& baseIP, const int& netmask)
 	baseIP_.s_addr = baseIP.s_addr & netmask_.s_addr;
 }
 
+// FIXME : to be mutexed
+in_addr IPSubnet::get()
+{
+    in_addr returnedAddr;
+    int cursor = 0;
+
+    while(pool_.count(cursor) != 0)
+    {
+        if(!contain(baseIP_.s_addr + cursor))
+        {
+            throw "IPSubnet full";
+        }
+        cursor++;
+    }
+
+    returnedAddr.s_addr = baseIP_.s_addr + cursor;
+    pool_.insert(cursor);
+
+    return returnedAddr;
+}
+
+void IPSubnet::release(const in_addr& addr)
+{
+    pool_.erase(addr.s_addr-baseIP_.s_addr);
+}
+
 bool IPSubnet::contain(const u_int32_t& address) const
 {
 	return (baseIP_.s_addr == (address & netmask_.s_addr));
