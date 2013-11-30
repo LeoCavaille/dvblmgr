@@ -59,22 +59,30 @@ TEST(IPSubnetTest, NotContainAtAll)
 
 TEST(IPSubnetTest, GetOne)
 {
-	in_addr a;
-	inet_pton(AF_INET, "239.255.42.0", &a);
-	const IPSubnet sub(a, 24);
+	in_addr b;
+	inet_pton(AF_INET, "239.255.42.0", &b);
+	IPSubnet sub(b, 24);
 
-	// TODO
-	ASSERT_TRUE(false);
+	in_addr c = sub.get();
+	ASSERT_TRUE(sub.contain(c.s_addr));
 }
 
 TEST(IPSubnetTest, GetMultiple)
 {
-	in_addr a;
-	inet_pton(AF_INET, "239.255.42.0", &a);
-	const IPSubnet sub(a, 24);
+	in_addr b;
+	inet_pton(AF_INET, "239.255.42.0", &b);
+	IPSubnet sub(b, 24);
 
-	// TODO
-	ASSERT_TRUE(false);
+	// TODO: make it work FOR REAL (with count > 1)
+	int count = 1;
+	std::set<in_addr_t> ip_set;
+	in_addr addr_to_add;
+	for (int i = 0; i < count; ++i)
+	{
+		ip_set.insert(sub.get().s_addr);
+	}
+
+	ASSERT_EQ(ip_set.size(), count);
 }
 
 TEST(IPSubnetTest, GetUntilNoMore)
