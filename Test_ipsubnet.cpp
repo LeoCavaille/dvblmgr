@@ -73,8 +73,7 @@ TEST(IPSubnetTest, GetMultiple)
 	inet_pton(AF_INET, "239.255.42.0", &b);
 	IPSubnet sub(b, 24);
 
-	// TODO: make it work FOR REAL (with count > 1)
-	int count = 1;
+	int count = 10;
 	std::set<in_addr_t> ip_set;
 	in_addr addr_to_add;
 	for (int i = 0; i < count; ++i)
@@ -87,30 +86,57 @@ TEST(IPSubnetTest, GetMultiple)
 
 TEST(IPSubnetTest, GetUntilNoMore)
 {
-	in_addr a;
-	inet_pton(AF_INET, "239.255.42.0", &a);
-	const IPSubnet sub(a, 24);
+	in_addr b;
+	inet_pton(AF_INET, "239.255.42.0", &b);
+	IPSubnet sub(b, 24);
 
-	// TODO
-	ASSERT_TRUE(false);
+	int counter = 0;
+	bool is_empty = false;
+	while(!is_empty) {
+		try {
+			sub.get();
+			counter++;
+		}
+		catch (std::string message) {
+			is_empty = true;
+		}
+	}
+
+	ASSERT_EQ(counter, 256); // 2 ** (32-24)
 }
 
 TEST(IPSubnetTest, GetAndReleaseOne)
 {
-	in_addr a;
-	inet_pton(AF_INET, "239.255.42.0", &a);
-	const IPSubnet sub(a, 24);
+	in_addr b;
+	inet_pton(AF_INET, "239.255.42.0", &b);
+	IPSubnet sub(b, 24);
 
-	// TODO
-	ASSERT_TRUE(false);
+	in_addr c = sub.get();
+	sub.release(c);
+
+	ASSERT_TRUE(sub.is_available(c));
 }
 
 TEST(IPSubnetTest, GetAndReleaseMultiple)
 {
-	in_addr a;
-	inet_pton(AF_INET, "239.255.42.0", &a);
-	const IPSubnet sub(a, 24);
+	in_addr b;
+	inet_pton(AF_INET, "239.255.42.0", &b);
+	IPSubnet sub(b, 24);
 
-	// TODO
-	ASSERT_TRUE(false);
+	in_addr c = sub.get();
+	in_addr d = sub.get();
+	in_addr e = sub.get();
+	in_addr f = sub.get();
+	in_addr g = sub.get();
+
+	sub.release(c);
+	sub.release(d);
+	sub.release(f);
+
+	ASSERT_TRUE(sub.is_available(c));
+	ASSERT_TRUE(sub.is_available(d));
+	ASSERT_TRUE(sub.is_available(f));
+
+	ASSERT_FALSE(sub.is_available(e));
+	ASSERT_FALSE(sub.is_available(g));
 }

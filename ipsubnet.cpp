@@ -1,6 +1,6 @@
 /*
  * This is some code which was deliberately stolen from someone from another project
- * because I don't like netmasks very much, thank you Utab !
+ * because I don't like netmasks very much, thank you Utab!
  */
 
 #include "ipsubnet.h"
@@ -63,6 +63,12 @@ bool IPSubnet::contain(const std::string& address) const
     in_addr a;
     inet_pton(AF_INET, address.c_str(), &a);
     return contain(a.s_addr);
+}
+
+bool IPSubnet::is_available(const in_addr& addr) const
+{
+    int cursor = addr.s_addr - baseIP_.s_addr;
+    return pool_.count(cursor) == 0;
 }
 
 std::string IPSubnet::string() const
