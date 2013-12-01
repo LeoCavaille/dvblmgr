@@ -1,0 +1,25 @@
+name: tnt-r1
+priority: 10
+frequency: 586166000
+bandwidth: 8
+symbolrate: 
+polarization: 
+modulation: 
+antenna: rateau
+antennatype: DVB_T
+channels:
+	- name: 02 - France 2
+	  sid: 257
+	  pids: [120, 130, 140]
+	- name: 03 - France 3
+	  sid: 273
+	  pids: [220, 230, 240]
+	- name: 05 - France 5
+	  sid: 260
+	  pids: [320, 330, 340]
+	- name: 19 - France O
+	  sid: 261
+	  pids: [520, 530]
+	- name: 13 - LCP
+	  sid: 262
+	  pids: [620, 630, 640]

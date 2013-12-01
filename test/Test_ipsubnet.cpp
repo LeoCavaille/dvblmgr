@@ -73,15 +73,17 @@ TEST(IPSubnetTest, GetMultiple)
 	inet_pton(AF_INET, "239.255.42.0", &b);
 	IPSubnet sub(b, 24);
 
-	int count = 10;
-	std::set<in_addr_t> ip_set;
-	in_addr addr_to_add;
-	for (int i = 0; i < count; ++i)
-	{
-		ip_set.insert(sub.get().s_addr);
-	}
+	in_addr fromPool;
+	char buffer[INET_ADDRSTRLEN];
 
-	ASSERT_EQ(ip_set.size(), count);
+	uint32_t addr = 0xEFFF2A00;
+
+	fromPool = sub.get();
+	ASSERT_EQ(fromPool.s_addr, addr);
+	fromPool = sub.get();
+	ASSERT_EQ(fromPool.s_addr, addr+1);
+	fromPool = sub.get();
+	ASSERT_EQ(fromPool.s_addr, addr+2);
 }
 
 TEST(IPSubnetTest, GetUntilNoMore)

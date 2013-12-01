@@ -1,4 +1,4 @@
-CXX = clang++
+CXX = g++-4.8
 CXXFLAGS = -Wall -Wextra -pedantic -g -std=c++11 -fPIC
 
 LIBSRCS = adapter.cpp ipsubnet.cpp channel.cpp
@@ -17,10 +17,10 @@ all: $(TARGETLIB) $(BINARIES)
 $(TARGETLIB): $(LIBOBJS)
 	$(CXX) -fPIC -shared -o $@ $^
 
-test: all
+test:
 	$(CXX) -isystem ${GTEST_DIR}/include -I${GTEST_DIR} -pthread -c ${GTEST_DIR}/src/gtest-all.cc
 	ar -rv libgtest.a gtest-all.o
-	$(CXX) $(LINK) -std=c++11 -isystem ${GTEST_DIR}/include -pthread TestMain.cpp $(wildcard Test_*.cpp) libgtest.a -o runtests
+	$(CXX) $(LINK) -g -std=c++11 -isystem ${GTEST_DIR}/include -pthread TestMain.cpp $(wildcard Test_*.cpp) libgtest.a -o runtests
 	LD_LIBRARY_PATH=. ./runtests
 
 $(BINARIES):
