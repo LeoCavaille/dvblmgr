@@ -1,5 +1,3 @@
 #include "multiplex.h"
 
-Multiplex::Multiplex():
-	broadcast_(true)
-{}
+Multiplex::Multiplex() : broadcast_(true) {}

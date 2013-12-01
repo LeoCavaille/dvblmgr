@@ -8,15 +8,11 @@ const AntennaType at3 = AntennaType::DVB_T;
 
 const Antenna a("astra19.2");
 
-TEST(AntennaTest, Antenna_GetName)
-{
-	ASSERT_EQ(a.getName(), "astra19.2");
-}
+TEST(AntennaTest, Antenna_GetName) { ASSERT_EQ(a.getName(), "astra19.2"); }
 
-TEST(AntennaTest, Antenna_EqualOperator)
-{
-	const Antenna b("hotbird23");
-	const Antenna c("astra19.2");
-	ASSERT_NE(a, b);
-	ASSERT_EQ(a, c);
+TEST(AntennaTest, Antenna_EqualOperator) {
+  const Antenna b("hotbird23");
+  const Antenna c("astra19.2");
+  ASSERT_NE(a, b);
+  ASSERT_EQ(a, c);
 }

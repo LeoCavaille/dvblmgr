@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(dvblmgr)
 
-set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -pedantic")
+set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -pedantic -std=c++11")
 
 set(COMMON_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 add_subdirectory(src)
@@ -32,7 +32,7 @@ add_executable(runTests ${test_units} test/main.cpp)
 target_link_libraries(runTests gtest gtest_main)
 
 # Extra linking for the project.
-target_link_libraries(runTests dvblmgr_lib)
+target_link_libraries(runTests dvblmgr_shared)
 
 # This is so you can do 'make test' to see all your tests run, instead of
 # manually running the executable runUnitTests to see those specific tests.
