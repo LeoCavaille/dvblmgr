@@ -1,10 +1,4 @@
-gtest-1.7.0/*
-dvbld
-dvblmgr
-runtests
-libgtest.a
-libdvblmgr.so
-*.o
-*.dSYM
 .cproject
 .project
+build/
+lib/
