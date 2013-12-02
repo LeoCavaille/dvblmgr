@@ -57,7 +57,7 @@ inline bool YAML::convert<Multiplex>::decode(const YAML::Node &node, Multiplex &
   rhs.priority_ = node["priority"].as<unsigned int>();
 
   rhs.antennaPtr_ = std::make_shared<Antenna>(node["antenna"]["name"]);
-  rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(node["antenna"][""]);
+  rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(node["broadcastType"]);
 
   return true;
 }

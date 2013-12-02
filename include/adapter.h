@@ -2,10 +2,13 @@
 #define ADAPTER_H_
 
 #include "antennaptr.h"
-#include "broadcasttypeptr.h"
 #include "confobject.h"
+#include "broadcasttype.h"
 
+#include <memory>
 #include <vector>
+
+typedef std::shared_ptr<BroadcastType> BroadcastTypePtr;
 
 class Adapter : public ConfObject {
 public:

@@ -47,7 +47,7 @@ inline YAML::Node YAML::convert<Channel>::encode(const Channel &rhs) {
 inline bool YAML::convert<Channel>::decode(const YAML::Node &node, Channel &rhs) {
   rhs.name_ = node["name"].as<std::string>();
   rhs.sid_ = node["sid"].as<unsigned int>();
-  for (const_iterator it = node["pids"].begin(); it != node["pids"].end()
+  for (const_iterator it = node["pids"].begin(); it != node["pids"].end();
       ++it) {
     rhs.pids_.push_back(it->as<unsigned int>());
   }

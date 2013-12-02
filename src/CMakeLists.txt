@@ -7,7 +7,6 @@ SET(
 	adapter.cpp
 	antenna.cpp
 	broadcasttype.cpp
-	broadcasttypeptr.cpp
 	channel.cpp
 	configuration.cpp
 	ipsubnet.cpp

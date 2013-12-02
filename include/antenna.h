@@ -7,6 +7,7 @@
 
 class Antenna : public ConfObject {
 public:
+  Antenna();
   Antenna(const std::string &name) : name_(name) {}
 
   std::string getName() const { return name_; }
