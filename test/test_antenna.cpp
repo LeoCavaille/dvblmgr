@@ -1,7 +1,7 @@
 #include "antenna.h"
-#include "antennatype.h"
 #include "gtest/gtest.h"
 
+/*
 const AntennaType at = AntennaType::DVB_S;
 const AntennaType at2 = AntennaType::DVB_S2;
 const AntennaType at3 = AntennaType::DVB_T;
@@ -16,3 +16,5 @@ TEST(AntennaTest, Antenna_EqualOperator) {
   ASSERT_NE(a, b);
   ASSERT_EQ(a, c);
 }
+
+*/

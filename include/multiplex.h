@@ -3,7 +3,9 @@
 
 #include "adapterptr.h"
 #include "antennaptr.h"
+#include "antenna.h"
 #include "broadcasttypeptr.h"
+#include "broadcasttype.h"
 #include "channelptr.h"
 #include "modulationptr.h"
 #include "polarizationptr.h"
@@ -56,8 +58,8 @@ inline bool YAML::convert<Multiplex>::decode(const YAML::Node &node, Multiplex &
   rhs.frequency_ = node["frequency"].as<unsigned int>();
   rhs.priority_ = node["priority"].as<unsigned int>();
 
-  rhs.antennaPtr_ = std::make_shared<Antenna>(node["antenna"]["name"]);
-  rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(node["broadcastType"]);
+  rhs.antennaPtr_ = std::make_shared<Antenna>();
+  //rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(node["broadcastType"]);
 
   return true;
 }
