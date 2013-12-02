@@ -1,11 +1,9 @@
 #include "adapter.h"
 #include <algorithm>
 
-Adapter::Adapter(const unsigned char &id, const unsigned char &frontendId,
-                 const Antenna &antenna, const std::vector<AntennaType> &compat)
-    : id_(id), frontendId_(frontendId), antenna_(antenna), compat_(compat) {}
+Adapter::Adapter() {}
 
-bool Adapter::isCompatible(const AntennaType &at) const {
-  auto it = std::find(compat_.begin(), compat_.end(), at);
-  return (it != compat_.end());
+bool Adapter::isCompatible(const BroadcastTypePtr &bt) const {
+  auto it = std::find(compats_.begin(), compats_.end(), bt);
+  return (it != compats_.end());
 }

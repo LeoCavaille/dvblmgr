@@ -44,12 +44,12 @@ inline YAML::Node YAML::convert<Channel>::encode(const Channel &rhs) {
   return node;
 }
 
-inline bool YAML::convert<Channel>::decode(const YAML::Node &node, Channel &c) {
-  c.name_ = node["name"].as<std::string>();
-  c.sid_ = node["sid"].as<unsigned int>();
-  for (const_iterator it = node["pids"].begin(); it != node["pids"].end();
-       ++it) {
-    c.pids_.push_back(it->as<unsigned int>());
+inline bool YAML::convert<Channel>::decode(const YAML::Node &node, Channel &rhs) {
+  rhs.name_ = node["name"].as<std::string>();
+  rhs.sid_ = node["sid"].as<unsigned int>();
+  for (const_iterator it = node["pids"].begin(); it != node["pids"].end()
+      ++it) {
+    rhs.pids_.push_back(it->as<unsigned int>());
   }
   return true;
 }
