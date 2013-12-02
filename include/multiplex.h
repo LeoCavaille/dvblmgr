@@ -16,7 +16,6 @@
 #include <vector>
 
 class Multiplex;
-
 namespace YAML {
 template <> struct convert<Multiplex> {
   static Node encode(const Multiplex &rhs);
@@ -58,8 +57,8 @@ inline bool YAML::convert<Multiplex>::decode(const YAML::Node &node, Multiplex &
   rhs.frequency_ = node["frequency"].as<unsigned int>();
   rhs.priority_ = node["priority"].as<unsigned int>();
 
-  rhs.antennaPtr_ = std::make_shared<Antenna>();
-  //rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(node["broadcastType"]);
+  rhs.antennaPtr_ = std::make_shared<Antenna>(std::move(node["antenna"].as<Antenna>()));
+  rhs.broadcastTypePtr_ = std::make_shared<BroadcastType>(std::move(node["broadcastType"].as<BroadcastType>()));
 
   return true;
 }
