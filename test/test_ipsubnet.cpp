@@ -130,5 +130,9 @@ TEST(IPSubnetTest, GetAndReleaseMultiple) {
   sub.release(f);
   ASSERT_EQ(sub.getBusyCount(), 2);
 
-  // TODO : test the content of the pool now cf. GetMultiple
+  // 239.255.42.0 in little endian
+  uint32_t addr = 0x002AFFEF;
+
+  ASSERT_EQ(e.s_addr, ntohl(htonl(addr)+2));
+  ASSERT_EQ(g.s_addr, ntohl(htonl(addr)+4));
 }
