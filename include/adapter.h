@@ -13,6 +13,7 @@ typedef std::shared_ptr<BroadcastType> BroadcastTypePtr;
 class Adapter : public ConfObject {
 public:
   Adapter();
+  Adapter(unsigned char id, unsigned char frontendId, const AntennaPtr& antennaPtr, const std::vector<BroadcastTypePtr>& compats);
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
 
