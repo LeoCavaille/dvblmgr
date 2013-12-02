@@ -4,5 +4,5 @@
 #include "gtest/gtest.h"
 
 TEST(MultiplexTest, YAMLGoodParsing) {
-  YAML::Node doc = YAML::LoadFile("test/yaml/multiplex/good.yaml");
+  YAML::Node doc = YAML::LoadFile("yaml/multiplex/good.yaml");
 }

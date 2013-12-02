@@ -65,7 +65,6 @@ TEST(IPSubnetTest, GetMultiple) {
   IPSubnet sub(b, 24);
 
   in_addr fromPool;
-  char buffer[INET_ADDRSTRLEN];
 
   uint32_t addr = 0xEFFF2A00;
 
