@@ -13,10 +13,10 @@ public:
 
   in_addr get();
   void release(const in_addr &addr);
+  int getBusyCount() const;
 
   bool contain(const u_int32_t &address) const;
   bool contain(const std::string &address) const;
-  bool is_available(const in_addr &address) const;
 
   std::string string() const;
 

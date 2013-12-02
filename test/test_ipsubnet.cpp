@@ -57,6 +57,8 @@ TEST(IPSubnetTest, GetOne) {
 
   in_addr c = sub.get();
   ASSERT_TRUE(sub.contain(c.s_addr));
+
+  ASSERT_EQ(sub.getBusyCount(), 1);
 }
 
 TEST(IPSubnetTest, GetMultiple) {
@@ -66,14 +68,18 @@ TEST(IPSubnetTest, GetMultiple) {
 
   in_addr fromPool;
 
-  uint32_t addr = 0xEFFF2A00;
+  // 239.255.42.0 in little endian
+  // Warning little endian ANNOYING ADDITIONS !
+  uint32_t addr = 0x002AFFEF;
 
   fromPool = sub.get();
   ASSERT_EQ(fromPool.s_addr, addr);
   fromPool = sub.get();
-  ASSERT_EQ(fromPool.s_addr, addr + 1);
+  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr)+1));
   fromPool = sub.get();
-  ASSERT_EQ(fromPool.s_addr, addr + 2);
+  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr)+2));
+
+  ASSERT_EQ(sub.getBusyCount(), 3);
 }
 
 TEST(IPSubnetTest, GetUntilNoMore) {
@@ -81,19 +87,13 @@ TEST(IPSubnetTest, GetUntilNoMore) {
   inet_pton(AF_INET, "239.255.42.0", &b);
   IPSubnet sub(b, 24);
 
-  int counter = 0;
-  bool is_empty = false;
-  while (!is_empty) {
-    try {
-      sub.get();
-      counter++;
-    }
-    catch (std::string message) {
-      is_empty = true;
-    }
+  for(int i = 0; i < 256; i++)
+  {
+    sub.get();
+    ASSERT_EQ(sub.getBusyCount(), i+1);
   }
-
-  ASSERT_EQ(counter, 256); // 2 ** (32-24)
+  // FIXME when created a dedicated exception with ASSERT_THROW()
+  ASSERT_ANY_THROW(sub.get());
 }
 
 TEST(IPSubnetTest, GetAndReleaseOne) {
@@ -102,9 +102,9 @@ TEST(IPSubnetTest, GetAndReleaseOne) {
   IPSubnet sub(b, 24);
 
   in_addr c = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 1);
   sub.release(c);
-
-  ASSERT_TRUE(sub.is_available(c));
+  ASSERT_EQ(sub.getBusyCount(), 0);
 }
 
 TEST(IPSubnetTest, GetAndReleaseMultiple) {
@@ -113,19 +113,22 @@ TEST(IPSubnetTest, GetAndReleaseMultiple) {
   IPSubnet sub(b, 24);
 
   in_addr c = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 1);
   in_addr d = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 2);
   in_addr e = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 3);
   in_addr f = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 4);
   in_addr g = sub.get();
+  ASSERT_EQ(sub.getBusyCount(), 5);
 
   sub.release(c);
+  ASSERT_EQ(sub.getBusyCount(), 4);
   sub.release(d);
+  ASSERT_EQ(sub.getBusyCount(), 3);
   sub.release(f);
+  ASSERT_EQ(sub.getBusyCount(), 2);
 
-  ASSERT_TRUE(sub.is_available(c));
-  ASSERT_TRUE(sub.is_available(d));
-  ASSERT_TRUE(sub.is_available(f));
-
-  ASSERT_FALSE(sub.is_available(e));
-  ASSERT_FALSE(sub.is_available(g));
+  // TODO : test the content of the pool now cf. GetMultiple
 }

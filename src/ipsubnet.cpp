@@ -24,24 +24,24 @@ IPSubnet::IPSubnet(const in_addr &baseIP, const int &netmask) {
 
 // FIXME : to be mutexed
 in_addr IPSubnet::get() {
-  in_addr returnedAddr;
+  in_addr returnedAddr = baseIP_;
   int cursor = 0;
 
   while (pool_.count(cursor) != 0) {
-    if (!contain(baseIP_.s_addr + cursor)) {
+    returnedAddr.s_addr = ntohl(htonl(returnedAddr.s_addr) + 1);
+    if (!contain(returnedAddr.s_addr)) {
+      // TODO define a better exception here
       throw "IPSubnet full";
     }
     cursor++;
   }
-
-  returnedAddr.s_addr = baseIP_.s_addr + cursor;
   pool_.insert(cursor);
 
   return returnedAddr;
 }
 
 void IPSubnet::release(const in_addr &addr) {
-  pool_.erase(addr.s_addr - baseIP_.s_addr);
+  pool_.erase(htonl(addr.s_addr) - htonl(baseIP_.s_addr));
 }
 
 bool IPSubnet::contain(const u_int32_t &address) const {
@@ -54,9 +54,8 @@ bool IPSubnet::contain(const std::string &address) const {
   return contain(a.s_addr);
 }
 
-bool IPSubnet::is_available(const in_addr &addr) const {
-  int cursor = addr.s_addr - baseIP_.s_addr;
-  return pool_.count(cursor) == 0;
+int IPSubnet::getBusyCount() const {
+  return pool_.size();
 }
 
 std::string IPSubnet::string() const {
