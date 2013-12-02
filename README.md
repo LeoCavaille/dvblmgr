@@ -3,14 +3,33 @@ dvblmgr
 
 Manage your TV/Radio broadcast
 
-Tests
------
+Configuration
+-------------
 
-To run the tests, first unzip the googletest framework in your working directory.
+Unzip the googletest framework in your lib directory.
+
 ```
+cd lib/
 wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
 unzip gtest-1.7.0.zip
 rm -f gtest-1.7.0.zip
 ```
 
-You can now type `make test`
+
+Compiling
+---------
+
+Create a fresh build directory, usually doing ;
+
+```
+cd $MYDVBLMGRCODEROOT
+mkdir build && cd build
+cmake ..
+make -j8
+```
+
+
+Testing
+-------
+
+You can use the compiled runTests binary.
