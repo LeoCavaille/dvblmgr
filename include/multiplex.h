@@ -1,17 +1,20 @@
 #ifndef MULTIPLEX_H_
 #define MULTIPLEX_H_
 
-#include "adapter.h"
-#include "antenna.h"
-#include "antennatype.h"
-#include "modulation.h"
-#include "polarization.h"
-#include "channel.h"
+#include "adapterptr.h"
+#include "antennaptr.h"
+#include "antennatypeptr.h"
+#include "channelptr.h"
+#include "modulationptr.h"
+#include "polarizationptr.h"
+
+#include "confobject.h"
+
 #include <vector>
 
-class Multiplex {
+class Multiplex : public ConfObject {
 public:
-  bool isCompatible(const Adapter &a) const;
+  bool isCompatible(const AdapterPtr &a) const;
 
 private:
   // in Hz
@@ -19,13 +22,13 @@ private:
   unsigned int symbolRate_;
   unsigned int priority_;
 
-  Polarization polarization_;
-  Modulation modulation_;
+  PolarizationPtr p_polarization_;
+  ModulationPtr p_modulation_;
 
-  Antenna antenna_;
-  AntennaType antennaType_;
+  AntennaPtr antenna_;
+  AntennaTypePtr antennaType_;
 
-  std::vector<Channel> channels_;
+  std::vector<ChannelPtr> channels_;
 };
 
 #endif /* MULTIPLEX_H_ */

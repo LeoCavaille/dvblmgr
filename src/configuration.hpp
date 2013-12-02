@@ -1,6 +1,7 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
+#include <yaml-cpp/yaml.h>
 #include <string>
 
 class Configuration {

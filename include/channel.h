@@ -5,7 +5,6 @@
 
 #include <vector>
 #include <string>
-#include <yaml-cpp/yaml.h>
 
 class Channel;
 
@@ -22,6 +21,7 @@ public:
   Channel(const std::string name, const unsigned int &sid,
           const std::vector<unsigned int> &pids);
 
+  friend YAML::Node YAML::convert<Channel>::encode(const Channel &rhs);
   friend bool YAML::convert<Channel>::decode(const YAML::Node &node,
                                              Channel &rhs);
 
@@ -38,6 +38,8 @@ private:
 
 inline YAML::Node YAML::convert<Channel>::encode(const Channel &rhs) {
   Node node;
+  // TODO-Lothar
+  node["name"] = rhs.name_;
 
   return node;
 }

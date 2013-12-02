@@ -1,6 +1,6 @@
-#include "configuration.h"
+#include "configuration.hpp"
 
-Configuration::Configuration(const std::string filename)
+Configuration::Configuration(const std::string& filename)
     : filename_(filename) {}
 
 void Configuration::parse() { config_ = YAML::LoadFile(filename_); }
