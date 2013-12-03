@@ -1,5 +1,5 @@
 template <class T>
-static bool compareVectors(vector<T> a, vector<T> b)
+static bool compareVectors(std::vector<T> a, std::vector<T> b)
 {
     if ( a.size() != b.size() )
         return false;

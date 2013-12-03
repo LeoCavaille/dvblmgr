@@ -25,6 +25,9 @@ public:
   friend bool YAML::convert<Channel>::decode(const YAML::Node &node,
                                              Channel &rhs);
 
+  bool operator==(const Channel &rhs) const;
+  bool operator!=(const Channel &rhs) const;
+
 private:
   // Main characteristics
   std::string name_;
@@ -38,8 +41,11 @@ private:
 
 inline YAML::Node YAML::convert<Channel>::encode(const Channel &rhs) {
   Node node;
-  // TODO-Lothar
   node["name"] = rhs.name_;
+  node["sid"] = rhs.sid_;
+  for(auto& pid: rhs.pids_) {
+    node["pids"].push_back(pid);
+  }
 
   return node;
 }

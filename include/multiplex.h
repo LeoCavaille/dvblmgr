@@ -46,8 +46,9 @@ private:
 
 inline YAML::Node YAML::convert<Multiplex>::encode(const Multiplex &rhs) {
   Node node;
-  // TODO-Lothar
   node["name"] = rhs.name_;
+  node["frequency"] = rhs.frequency_;
+  node["priority"] = rhs.priority_;
 
   return node;
 }
