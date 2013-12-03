@@ -1,6 +1,8 @@
 dvblmgr
 =======
 
+![Build status](http://gb2n.org:8080/buildStatus/icon?job=dvblmgr "Jenkins build status")
+
 Manage your TV/Radio broadcast
 
 Configuration
