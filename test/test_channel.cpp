@@ -1,5 +1,4 @@
 #include "channel.h"
-#include <fstream>
 
 #include "gtest/gtest.h"
 
@@ -28,3 +27,4 @@ TEST(ChannelTest, YAMLGoodEncoding) {
 
   ASSERT_EQ(c, d);
 }
+

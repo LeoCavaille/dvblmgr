@@ -17,7 +17,7 @@ template <> struct convert<BroadcastType> {
 class BroadcastType : public ConfObject {
 public:
   enum Enum {
-  	none,
+    none,
     dvbs,
     dvbstwo,
     dvbt,
@@ -28,9 +28,10 @@ public:
   BroadcastType(Enum m);
   explicit BroadcastType(const std::string &m);
 
-  friend YAML::Node YAML::convert<BroadcastType>::encode(const BroadcastType &rhs);
+  friend YAML::Node
+      YAML::convert<BroadcastType>::encode(const BroadcastType &rhs);
   friend bool YAML::convert<BroadcastType>::decode(const YAML::Node &node,
-                                             BroadcastType &rhs);
+                                                   BroadcastType &rhs);
 
   bool operator==(const std::string &ss) const;
   bool operator==(const BroadcastType &rhs) const;
@@ -43,17 +44,18 @@ private:
   std::string typeString_;
 };
 
-
-inline YAML::Node YAML::convert<BroadcastType>::encode(const BroadcastType &rhs) {
+inline YAML::Node
+YAML::convert<BroadcastType>::encode(const BroadcastType &rhs) {
   Node node;
-
+  node = rhs.typeString_;
   return node;
 }
 
-inline bool YAML::convert<BroadcastType>::decode(const YAML::Node &node, BroadcastType &rhs) {
-
-  return true;
+inline bool YAML::convert<BroadcastType>::decode(const YAML::Node &node,
+                                                 BroadcastType &rhs) {
+  rhs.type_ = BroadcastType::FromString(node.Scalar());
+  rhs.typeString_ = BroadcastType::ToString(rhs.type_);
+  return (rhs.type_ != BroadcastType::invalid);
 }
-
 
 #endif /* BROADCASTTYPE_H_ */

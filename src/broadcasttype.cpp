@@ -1,7 +1,6 @@
 #include "broadcasttype.h"
 
 #include <algorithm>
-#include <stdexcept>
 
 BroadcastType::BroadcastType() : type_(none), typeString_("NONE") {}
 
@@ -20,6 +19,7 @@ bool BroadcastType::operator==(const BroadcastType &rhs) const
 
 BroadcastType::Enum BroadcastType::FromString(std::string mString) {
   transform(mString.begin(), mString.end(), mString.begin(), toupper);
+
   if (mString == "DVB-S") {
     return dvbs;
   } else if (mString == "DVB-S2") {
@@ -30,8 +30,6 @@ BroadcastType::Enum BroadcastType::FromString(std::string mString) {
     return none;
   }
 
-  throw std::invalid_argument("Not a valid BroadcastType value: " + mString);
-  // Remove annoying -Wreturn-type warning
   return invalid;
 }
 
