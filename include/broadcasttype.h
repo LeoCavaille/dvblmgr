@@ -2,17 +2,11 @@
 #define BROADCASTTYPE_H_
 
 #include "confobject.h"
+#include "broadcasttype_yaml.h"
 
 #include <string>
 
-class BroadcastType;
 
-namespace YAML {
-template <> struct convert<BroadcastType> {
-  static Node encode(const BroadcastType &rhs);
-  static bool decode(const Node &node, BroadcastType &c);
-};
-}
 
 class BroadcastType : public ConfObject {
 public:

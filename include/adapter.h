@@ -1,7 +1,7 @@
 #ifndef ADAPTER_H_
 #define ADAPTER_H_
 
-#include "antennaptr.h"
+#include "antenna_ptr.h"
 #include "confobject.h"
 #include "broadcasttype.h"
 

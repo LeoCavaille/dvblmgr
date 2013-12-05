@@ -5,7 +5,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 SET(
 	CORE_SOURCES
 	adapter.cpp
+	adapter_yaml.cpp
 	antenna.cpp
+	antenna_yaml.cpp
 	broadcasttype.cpp
 	channel.cpp
 	configuration.cpp
