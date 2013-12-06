@@ -18,12 +18,12 @@ SET(
 	modulation_yaml.cpp
 	multiplex.cpp
 	multiplex_yaml.cpp
+	polarization.cpp
+	polarization_yaml.cpp
 #	multiplexsat.cpp
 #	multiplexsat_yaml.cpp
 #	multiplextnt.cpp
 #	multiplextnt_yaml.cpp
-#	polarization.cpp
-#	polarzation_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})
