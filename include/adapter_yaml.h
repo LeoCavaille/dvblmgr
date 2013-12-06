@@ -4,8 +4,6 @@
 #include "adapter_ptr.h"
 #include <yaml-cpp/yaml.h>
 
-class Adapter;
-
 namespace YAML {
 template <> struct convert<AdapterPtr> {
   static Node encode(const AdapterPtr &rhs);

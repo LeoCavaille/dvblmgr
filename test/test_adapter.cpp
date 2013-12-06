@@ -1,5 +1,6 @@
 #include "adapter.h"
 #include "antenna.h"
+#include "broadcasttype.h"
 #include "gtest/gtest.h"
 
 AntennaPtr ant = std::make_shared<Antenna>("astra19.2");

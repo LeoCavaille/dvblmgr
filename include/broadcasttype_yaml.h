@@ -1,12 +1,13 @@
 #ifndef BROADCASTTYPEYAML_H_
 #define BROADCASTTYPEYAML_H_
 
-class BroadcastType;
+#include "broadcasttype_ptr.h"
+#include <yaml-cpp/yaml.h>
 
 namespace YAML {
-template <> struct convert<BroadcastType> {
-  static Node encode(const BroadcastType &rhs);
-  static bool decode(const Node &node, BroadcastType &c);
+template <> struct convert<BroadcastTypePtr> {
+  static Node encode(const BroadcastTypePtr &rhs);
+  static bool decode(const Node &node, BroadcastTypePtr &c);
 };
 }
 

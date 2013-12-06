@@ -9,11 +9,21 @@ SET(
 	antenna.cpp
 	antenna_yaml.cpp
 	broadcasttype.cpp
+	broadcasttype_yaml.cpp
 	channel.cpp
+	channel_yaml.cpp
 	configuration.cpp
 	ipsubnet.cpp
 	modulation.cpp
+	modulation_yaml.cpp
 	multiplex.cpp
+	multiplex_yaml.cpp
+#	multiplexsat.cpp
+#	multiplexsat_yaml.cpp
+#	multiplextnt.cpp
+#	multiplextnt_yaml.cpp
+#	polarization.cpp
+#	polarzation_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})

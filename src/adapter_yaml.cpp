@@ -1,6 +1,7 @@
 #include "adapter_yaml.h"
 #include "adapter.h"
 
+#include "antenna_yaml.h"
 #include "broadcasttype_yaml.h"
 
 
@@ -10,7 +11,7 @@ YAML::Node YAML::convert<AdapterPtr>::encode(const AdapterPtr &rhs) {
   node["frontendId"] = rhs->frontendId_;
   for (auto& btPtr: rhs->compats_)
   {
-  	node["broadcastType"].push_back(YAML::convert<BroadcastTypePtr>::encode(*btPtr));
+  	node["broadcastType"].push_back(YAML::convert<BroadcastTypePtr>::encode(btPtr));
   }
 
   return node;
