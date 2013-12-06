@@ -17,9 +17,7 @@ TEST(ChannelTest, YAMLBadParsing) {
 }
 
 TEST(ChannelTest, YAMLGoodEncoding) {
-  ChannelPtr d = std::make_shared<Channel>("France 2", 1234, {2342, 2343, 2344});
-  //ChannelPtr d(new Channel("France 2", 1234, {2342, 2343, 2344}));
-  //Channel d("France 2", 1234, {2342, 2343, 2344});w
+  ChannelPtr d(new Channel("France 2", 1234, {2342, 2343, 2344}));
 
   YAML::Node doc;
   // Magic operator overloading!
