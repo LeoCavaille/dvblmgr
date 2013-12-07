@@ -1,14 +1,13 @@
 #ifndef ADAPTER_H_
 #define ADAPTER_H_
 
-#include "antennaptr.h"
+#include "antenna_ptr.h"
+#include "broadcasttype_ptr.h"
 #include "confobject.h"
-#include "broadcasttype.h"
+#include "adapter_yaml.h"
 
-#include <memory>
 #include <vector>
 
-typedef std::shared_ptr<BroadcastType> BroadcastTypePtr;
 
 class Adapter : public ConfObject {
 public:
@@ -17,11 +16,17 @@ public:
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
 
+  friend YAML::Node YAML::convert<AdapterPtr>::encode(const AdapterPtr &rhs);
+  friend bool YAML::convert<AdapterPtr>::decode(const YAML::Node &node,
+                                             AdapterPtr &rhs);
+
+
 private:
   unsigned char id_;
   unsigned char frontendId_;
   AntennaPtr antennaPtr_;
   std::vector<BroadcastTypePtr> compats_;
 };
+
 
 #endif /* ADAPTER_H_ */

@@ -5,13 +5,25 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 SET(
 	CORE_SOURCES
 	adapter.cpp
+	adapter_yaml.cpp
 	antenna.cpp
+	antenna_yaml.cpp
 	broadcasttype.cpp
+	broadcasttype_yaml.cpp
 	channel.cpp
+	channel_yaml.cpp
 	configuration.cpp
 	ipsubnet.cpp
 	modulation.cpp
+	modulation_yaml.cpp
 	multiplex.cpp
+	multiplex_yaml.cpp
+	polarization.cpp
+	polarization_yaml.cpp
+#	multiplexsat.cpp
+#	multiplexsat_yaml.cpp
+#	multiplextnt.cpp
+#	multiplextnt_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})

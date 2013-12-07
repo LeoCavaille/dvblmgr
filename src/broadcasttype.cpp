@@ -12,9 +12,14 @@ BroadcastType::BroadcastType(const std::string &mString)
   typeString_ = ToString(type_);
 }
 
-bool BroadcastType::operator==(const BroadcastType &rhs) const
+bool BroadcastType::operator==(const Enum &rhs) const
 {
-  return (type_ == rhs.type_);
+  return (type_ == rhs);
+}
+
+bool BroadcastType::operator==(const BroadcastTypePtr &rhs) const
+{
+  return (type_ == rhs->type_);
 }
 
 BroadcastType::Enum BroadcastType::FromString(std::string mString) {
@@ -39,9 +44,8 @@ std::string BroadcastType::ToString(const BroadcastType::Enum &m) {
   case dvbs: { return "DVB-S"; }
   case dvbstwo: { return "DVB-S2"; }
   case dvbt: { return "DVB-T"; }
-  case invalid: { return "INVALID"; }
   }
-  // Remove annoying -Wreturn-type warning
-  return "OOPS";
+
+  return "INVALID";
 }
 
