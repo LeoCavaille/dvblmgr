@@ -24,11 +24,10 @@ public:
 private:
   std::string name_;
 
-  // in Hz
   unsigned int frequency_;
-  unsigned int priority_;
 
-  AntennaPtr antennaPtr_;
+  // DVB-S only
+  // AntennaPtr antennaPtr_;
   BroadcastTypePtr broadcastTypePtr_;
 
   std::vector<ChannelPtr> channels_;

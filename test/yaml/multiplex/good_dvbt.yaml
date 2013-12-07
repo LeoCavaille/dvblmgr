@@ -1,0 +1,25 @@
+name: tnt-1
+broadcastType: DVB_T
+frequency: 586166000 # In Hz
+bandwidth: 8
+channels:
+    - name: 02 - France 2
+      sid: 257
+      pids: [120, 130, 140]
+      priority: 100
+    - name: 03 - France 3
+      sid: 273
+      pids: [220, 230, 240]
+      priority: 100
+    - name: 05 - France 5
+      sid: 260
+      pids: [320, 330, 340]
+      priority: 80
+    - name: 19 - France O
+      sid: 261
+      pids: [520, 530]
+      priority: 30
+    - name: 13 - LCP
+      sid: 262
+      pids: [620, 630, 640]
+      priority: 20

@@ -3,8 +3,11 @@
 
 #include "multiplex.h"
 
+class MultiplexTnt;
+
 class MultiplexTnt : public Multiplex {
 public:
+
   bool isCompatible(const AdapterPtr &a) const;
 
 private:
