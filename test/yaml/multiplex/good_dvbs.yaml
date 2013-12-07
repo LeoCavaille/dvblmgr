@@ -1,4 +1,5 @@
 name: sat-1
+type: sat
 broadcastType: DVB_S # Or DVB_S2
 frequency: 586166000 # In MHz
 symbolrate: # In KHz
