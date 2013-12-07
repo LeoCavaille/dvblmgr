@@ -1,9 +1,9 @@
-#ifndef MULTIPLEXPTR_H_
-#define MULTIPLEXPTR_H_
+#ifndef MULTIPLEXSATPTR_H_
+#define MULTIPLEXSATPTR_H_
 
 #include <memory>
 
 class MultiplexSat;
 typedef std::shared_ptr<MultiplexSat> MultiplexSatPtr;
 
-#endif /* MULTIPLEXPTR_H_ */
+#endif /* MULTIPLEXSATPTR_H_ */

@@ -1,9 +1,9 @@
-#ifndef MULTIPLEXPTR_H_
-#define MULTIPLEXPTR_H_
+#ifndef MULTIPLEXTNTPTR_H_
+#define MULTIPLEXTNTPTR_H_
 
 #include <memory>
 
 class MultiplexTnt;
 typedef std::shared_ptr<MultiplexTnt> MultiplexTntPtr;
 
-#endif /* MULTIPLEXPTR_H_ */
+#endif /* MULTIPLEXTNTPTR_H_ */

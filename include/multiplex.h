@@ -19,7 +19,7 @@ public:
 
   friend YAML::Node YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs);
   friend bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node,
-                                             MultiplexPtr &rhs);
+                                             MultiplexPtr rhs);
 
 private:
   std::string name_;

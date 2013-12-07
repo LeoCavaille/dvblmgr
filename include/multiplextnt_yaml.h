@@ -10,7 +10,7 @@ class MultiplexTnt;
 namespace YAML {
 template <> struct convert<MultiplexTntPtr> {
   static Node encode(const MultiplexTntPtr &rhs);
-  static bool decode(const Node &node, MultiplexTntPtr &c);
+  static bool decode(const Node &node, MultiplexTntPtr c);
 };
 }
 

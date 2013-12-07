@@ -18,7 +18,7 @@ YAML::Node YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs) {
  * Not meant to be called directly
  * Should be called from convert<MultiplexTnt>::decode or convert<MultiplexSat>::decode
  */
-bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node, MultiplexPtr &rhs) {
+bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node, MultiplexPtr rhs) {
   rhs->name_ = node["name"].as<std::string>();
   rhs->frequency_ = node["frequency"].as<unsigned int>();
 

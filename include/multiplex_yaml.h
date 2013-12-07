@@ -7,7 +7,7 @@
 namespace YAML {
 template <> struct convert<MultiplexPtr> {
   static Node encode(const MultiplexPtr &rhs);
-  static bool decode(const Node &node, MultiplexPtr &c);
+  static bool decode(const Node &node, MultiplexPtr c);
 };
 }
 

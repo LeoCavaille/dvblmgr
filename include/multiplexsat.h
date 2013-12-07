@@ -12,9 +12,9 @@ public:
 
   bool isCompatible(const AdapterPtr &a) const;
 
-  friend YAML::Node YAML::convert<MultiplexSat>::encode(const MultiplexPtr &rhs);
-  friend bool YAML::convert<MultiplexSat>::decode(const YAML::Node &node,
-                                             MultiplexPtr &rhs);
+  friend YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs);
+  friend bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node,
+                                             MultiplexSatPtr rhs);
 
 private:
   // in Hz

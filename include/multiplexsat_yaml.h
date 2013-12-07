@@ -9,7 +9,7 @@ class MultiplexSat;
 namespace YAML {
 template <> struct convert<MultiplexSatPtr> {
   static Node encode(const MultiplexSatPtr &rhs);
-  static bool decode(const Node &node, MultiplexSatPtr &c);
+  static bool decode(const Node &node, MultiplexSatPtr c);
 };
 }
 
