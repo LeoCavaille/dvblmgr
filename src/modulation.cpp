@@ -23,8 +23,6 @@ Modulation::Enum Modulation::FromString(std::string mString) {
     return none;
   }
 
-  throw std::invalid_argument("Not a valid Modulation value: " + mString);
-  // Remove annoying -Wreturn-type warning
   return invalid;
 }
 
@@ -33,9 +31,8 @@ std::string Modulation::ToString(const Modulation::Enum &m) {
   case none: { return "NONE"; }
   case qpsk: { return "QPSK"; }
   case eightpsk: { return "8PSK"; }
-  case invalid: { return "INVALID"; }
   }
-  // Remove annoying -Wreturn-type warning
-  return "OOPS";
+
+  return "INVALID";
 }
 

@@ -24,9 +24,9 @@ bool Polarization::operator==(const PolarizationPtr &rhs) const
 Polarization::Enum Polarization::FromString(std::string pString) {
   transform(pString.begin(), pString.end(), pString.begin(), toupper);
 
-  if (pString == "13") {
+  if (pString == "VERTICAL") {
     return vertical;
-  } else if (pString == "18") {
+  } else if (pString == "HORIZONTAL") {
     return horizontal;
   } else if (pString == "NONE") {
     return none;
@@ -37,12 +37,11 @@ Polarization::Enum Polarization::FromString(std::string pString) {
 
 std::string Polarization::ToString(const Polarization::Enum &p) {
   switch (p) {
-  case vertical: { return "13"; }
-  case horizontal: { return "18"; }
+  case vertical: { return "VERTICAL"; }
+  case horizontal: { return "HORIZONTAL"; }
   case none: { return "NONE"; }
-  case invalid: { return "INVALID"; }
   }
-  // Remove annoying -Wreturn-type warning
-  return "OOPS";
+
+  return "INVALID";
 }
 
