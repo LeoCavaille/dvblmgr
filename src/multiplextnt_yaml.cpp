@@ -7,20 +7,10 @@ YAML::Node YAML::convert<MultiplexTnt>::encode(const MultiplexPtr &rhs) {
 }
 
 bool YAML::convert<MultiplexTnt>::decode(const YAML::Node &node, MultiplexPtr &rhs) {
-  MultiplexPtr m = std::make_shared<MultiplexTnt>();
-  YAML::convert<MultiplexPtr>::decode(node, m);
+  YAML::convert<MultiplexPtr>::decode(node, rhs);
 
-  // TODO
   // Then TNT specific parsing
-
-  // rhs->name_ = node["name"].as<std::string>();
-  // rhs->frequency_ = node["frequency"].as<unsigned int>();
-
-  // rhs->broadcastTypePtr_ = node["broadcastType"].as<BroadcastTypePtr>();
-
-  // for(unsigned i=0; i<node["channels"].size(); i++) {
-  //   rhs->channels_.push_back(node["channels"][i].as<ChannelPtr>());
-  // }
+  rhs->bandwidth_ = node["bandwidth"].as<unsigned int>();
 
   return true;
 }

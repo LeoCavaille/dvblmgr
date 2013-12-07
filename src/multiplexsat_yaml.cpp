@@ -1,5 +1,6 @@
 #include "multiplexsat.h"
 #include "multiplexsat_yaml.h"
+#include "polarization_yaml.h"
 
 YAML::Node YAML::convert<MultiplexSat>::encode(const MultiplexPtr &rhs) {
   Node node;
@@ -7,20 +8,13 @@ YAML::Node YAML::convert<MultiplexSat>::encode(const MultiplexPtr &rhs) {
 }
 
 bool YAML::convert<MultiplexSat>::decode(const YAML::Node &node, MultiplexPtr &rhs) {
-  MultiplexPtr m = std::make_shared<MultiplexSat>();
-  YAML::convert<MultiplexPtr>::decode(node, m);
+  YAML::convert<MultiplexPtr>::decode(node, rhs);
 
-  // TODO
   // Then SAT specific parsing
-
-  // rhs->name_ = node["name"].as<std::string>();
-  // rhs->frequency_ = node["frequency"].as<unsigned int>();
-
-  // rhs->broadcastTypePtr_ = node["broadcastType"].as<BroadcastTypePtr>();
-
-  // for(unsigned i=0; i<node["channels"].size(); i++) {
-  //   rhs->channels_.push_back(node["channels"][i].as<ChannelPtr>());
-  // }
+  rhs->symbolRate_ = node["symbolrate"].as<unsigned int>();
+  rhs->satellite_ = node["satellite"].as<std::string>();
+  rhs->polarizationPtr_ = node["polarization"].as<PolarizationPtr>();
+  rhs->modulationPtr_ = node["modulation"].as<ModulationPtr>();
 
   return true;
 }

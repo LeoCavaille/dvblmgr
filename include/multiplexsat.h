@@ -19,7 +19,7 @@ public:
 private:
   // in Hz
   unsigned int symbolRate_;
-  std::string sattelite_;
+  std::string satellite_;
 
   PolarizationPtr polarizationPtr_;
   ModulationPtr modulationPtr_;
