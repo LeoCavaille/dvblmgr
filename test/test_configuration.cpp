@@ -5,4 +5,5 @@
 TEST(ConfigurationTest, LoadGoodConfig) {
 	Configuration c("yaml/configuration/good.yaml");
 	c.load();
+	c.save();
 }

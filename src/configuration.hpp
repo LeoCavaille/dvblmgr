@@ -6,11 +6,13 @@
 
 #include <yaml-cpp/yaml.h>
 #include <string>
+#include <vector>
 
 class Configuration {
 public:
   Configuration(const std::string &filename);
   void load();
+  void save();
 
 private:
   void parse();

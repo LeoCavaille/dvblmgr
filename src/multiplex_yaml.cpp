@@ -2,7 +2,7 @@
 #include "multiplex.h"
 
 #include "antenna_yaml.h"
-#include "broadcasttype_yaml.h"
+#include "broadcasttype.h"
 #include "channel.h"
 
 
@@ -22,10 +22,13 @@ bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node, MultiplexPtr rh
   rhs->name_ = node["name"].as<std::string>();
   rhs->frequency_ = node["frequency"].as<unsigned int>();
 
-  rhs->broadcastTypePtr_ = node["broadcastType"].as<BroadcastTypePtr>();
+  rhs->broadcastTypePtr_ = std::make_shared<BroadcastType>();
+  YAML::convert<BroadcastTypePtr>::decode(node["broadcastType"], rhs->broadcastTypePtr_);
 
-  for(unsigned i=0; i<node["channels"].size(); i++) {
-    rhs->channels_.push_back(node["channels"][i].as<ChannelPtr>());
+  for(auto &n : node["channels"]) {
+    ChannelPtr p = std::make_shared<Channel>();
+    YAML::convert<ChannelPtr>::decode(n, p);
+    rhs->channels_.push_back(p);
   }
 
   return true;

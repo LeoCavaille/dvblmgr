@@ -1,9 +1,9 @@
 multiplexs:
   - name: r1
-  	type: tnt
-  	frequency: 586166000
-  	bandwidth: 8
-  	channels:
+    type: tnt
+    frequency: 586166000
+    bandwidth: 8
+    channels:
       - name: 02 - France 2
         sid: 257
         pids: [120, 130, 140]

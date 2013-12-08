@@ -5,15 +5,26 @@
 
 #include <iostream>
 
+#define DEFAULT_CONFIG "/etc/dvblmgr/dvblmgr.conf"
+
 Configuration::Configuration(const std::string& filename)
     : filename_(filename) {}
 
 void Configuration::load() {
 	if (filename_.empty()){
-
+	  filename_ = DEFAULT_CONFIG;
 	}
 	config_ = YAML::LoadFile(filename_);
 	parse();
+}
+
+void Configuration::save(){
+  config_.reset();
+
+  config_["multiplexs"] = multiplexs_;
+  YAML::Emitter out;
+  out << config_;
+  std::cout << out.c_str() << std::endl;
 }
 
 void Configuration::parse(){
@@ -22,8 +33,9 @@ void Configuration::parse(){
 }
 
 void Configuration::parseMultiplexs(){
-	if(! config_["multiplexs"]){
+	if(! config_["multiplexs"] || ! config_["multiplexs"].IsSequence()){
 		std::cerr << "WARNING: no multiplexs defined in the configuration" << std::endl;
+		return;
 	}
 	for(auto m : config_["multiplexs"])
 	{
@@ -46,7 +58,6 @@ void Configuration::parseMultiplexs(){
 			std::cerr << "ERROR: multiplex type MUST be tnt or sat" << std::endl;
 		}
 	}
-
 }
 
 void Configuration::parseServers(){
