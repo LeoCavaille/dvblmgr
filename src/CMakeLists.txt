@@ -24,6 +24,8 @@ SET(
 	multiplexsat_yaml.cpp
 	multiplextnt.cpp
 	multiplextnt_yaml.cpp
+        server.cpp
+        server_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})

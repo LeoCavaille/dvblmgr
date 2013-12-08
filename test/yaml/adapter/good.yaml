@@ -1,0 +1,4 @@
+id: 0
+frontend: 0
+antenna: astra19.2
+compats: [ DVB_S, DVB_S2 ]
