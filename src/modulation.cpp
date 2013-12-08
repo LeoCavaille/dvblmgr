@@ -13,6 +13,14 @@ Modulation::Modulation(const std::string &mString)
   typeString_ = ToString(type_);
 }
 
+bool Modulation::operator==(const Modulation::Enum &e) const {
+    return type_ == e;
+}
+
+bool Modulation::operator==(const ModulationPtr &mPtr) const {
+    return type_ == mPtr->type_;
+}
+
 Modulation::Enum Modulation::FromString(std::string mString) {
   transform(mString.begin(), mString.end(), mString.begin(), toupper);
   if (mString == "QPSK") {

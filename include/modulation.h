@@ -19,7 +19,8 @@ public:
   Modulation(Enum m);
   explicit Modulation(const std::string &m);
 
-  bool operator==(const std::string &ss) const;
+  bool operator==(const Enum &e) const;
+  bool operator==(const ModulationPtr &mPtr) const;
   static Enum FromString(std::string mString);
   static std::string ToString(const Enum &m);
 

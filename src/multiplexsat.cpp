@@ -1,4 +1,6 @@
 #include "multiplexsat.h"
+#include "polarization.h"
+#include "modulation.h"
 
 MultiplexSat::MultiplexSat() {};
 
@@ -26,9 +28,8 @@ bool MultiplexSat::operator==(const MultiplexSat &rhs) const {
       // *broadcastTypePtr_ == rhs.broadcastTypePtr_ &&
       symbolRate_ == rhs.symbolRate_ &&
       satellite_ == rhs.satellite_ &&
-      // *polarizationPtr_ == rhs.polarizationPtr_ &&
-      // *modulationPtr_ == rhs.modulationPtr_;
-      true;
+      *polarizationPtr_ == rhs.polarizationPtr_ &&
+      *modulationPtr_ == rhs.modulationPtr_;
 }
 
 bool MultiplexSat::operator!=(const MultiplexSat &rhs) const {
