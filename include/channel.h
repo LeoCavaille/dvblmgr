@@ -11,11 +11,12 @@ class Channel : public ConfObject {
 public:
   Channel();
   Channel(const std::string name, const unsigned int &sid,
-          const std::vector<unsigned int> &pids);
+          const std::vector<unsigned int> &pids, const bool &broadcast,
+          const unsigned int &priority);
 
   friend YAML::Node YAML::convert<ChannelPtr>::encode(const ChannelPtr &rhs);
   friend bool YAML::convert<ChannelPtr>::decode(const YAML::Node &node,
-                                             ChannelPtr &rhs);
+                                                ChannelPtr &rhs);
 
   bool operator==(const Channel &rhs) const;
   bool operator!=(const Channel &rhs) const;
