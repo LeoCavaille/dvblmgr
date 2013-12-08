@@ -2,7 +2,7 @@ name: sat-1
 type: sat
 broadcastType: DVB_S # Or DVB_S2
 frequency: 586166000 # In MHz
-symbolrate: 1337# In KHz
+symbolrate: 1337 # In KHz
 polarization: v # v or h
 modulation: qpsk # qpsk or psk8
 satellite: astra19.2

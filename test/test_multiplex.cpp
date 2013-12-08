@@ -11,8 +11,8 @@ TEST(MultiplexTest, YAMLGoodSATParsing) {
 
   ASSERT_EQ(type, "SAT");
 
-  // MultiplexSatPtr m = std::make_shared<MultiplexSat>();
-  // ASSERT_TRUE(YAML::convert<MultiplexSatPtr>::decode(doc, m));
+  MultiplexSatPtr m = std::make_shared<MultiplexSat>();
+  ASSERT_TRUE(YAML::convert<MultiplexSatPtr>::decode(doc, m));
 }
 
 TEST(MultiplexTest, YAMLGoodTNTParsing) {

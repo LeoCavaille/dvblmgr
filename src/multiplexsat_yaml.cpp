@@ -22,7 +22,7 @@ YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs) {
 bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node, MultiplexSatPtr rhs) {
 
   // Call decode within the base class, for type compability we need dynamic casting
-  YAML::convert<MultiplexPtr>::decode(node, std::dynamic_pointer_cast<Multiplex>(rhs));
+  YAML::convert<MultiplexPtr>::decode(node, rhs);
 
   // Then SAT specific parsing
   rhs->symbolRate_ = node["symbolrate"].as<unsigned int>();
