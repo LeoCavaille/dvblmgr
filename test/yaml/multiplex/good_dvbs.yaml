@@ -2,9 +2,9 @@ name: sat-1
 type: sat
 broadcastType: DVB_S # Or DVB_S2
 frequency: 586166000 # In MHz
-symbolrate: # In KHz
-polarization: # v or h
-modulation: # qpsk or psk8
+symbolrate: 1337 # In KHz
+polarization: v # v or h
+modulation: qpsk # qpsk or psk8
 satellite: astra19.2
 channels:
     - name: 02 - France 2

@@ -53,11 +53,7 @@ void Configuration::parseMultiplexs(){
 	}
 	for(auto m : config_["multiplexs"])
 	{
-		if(! m["type"]){
-			std::cerr << "ERROR: multiplex with no type" << std::endl;
-		}
-		std::string type = m["type"].as<std::string>();
-		std::transform(type.begin(), type.end(),type.begin(), ::toupper);
+        std::string type = Multiplex::getType(m);
 		if(type == "TNT"){
 			MultiplexTntPtr mPtr = std::make_shared<MultiplexTnt>();
 			YAML::convert<MultiplexTntPtr>::decode(m, mPtr);

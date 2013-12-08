@@ -21,13 +21,13 @@ public:
   friend bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node,
                                              MultiplexPtr rhs);
 
+  static std::string getType(const YAML::Node& node);
+
 private:
   std::string name_;
 
   unsigned int frequency_;
 
-  // DVB-S only
-  // AntennaPtr antennaPtr_;
   BroadcastTypePtr broadcastTypePtr_;
 
   std::vector<ChannelPtr> channels_;
