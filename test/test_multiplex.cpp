@@ -5,6 +5,7 @@
 #include "broadcasttype.h"
 #include "multiplexsat.h"
 #include "multiplextnt.h"
+#include "antenna.h"
 #include <fstream>
 
 #include "gtest/gtest.h"
@@ -23,7 +24,8 @@ TEST(MultiplexTest, YAMLGoodSATParsing) {
   MultiplexSat ms("sat-1", 586166000, std::make_shared<BroadcastType>(BroadcastType::dvbs),
             channels, 1337, "astra19.2",
             std::make_shared<Polarization>(Polarization::vertical),
-            std::make_shared<Modulation>(Modulation::qpsk));
+            std::make_shared<Modulation>(Modulation::qpsk),
+            std::make_shared<Antenna>("astra19.2"));
 
   ASSERT_EQ(*m, ms);
 }

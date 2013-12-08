@@ -5,6 +5,7 @@
 // by Ptr) inside MultiplexSat structure
 #include "modulation.h"
 #include "polarization.h"
+#include "antenna.h"
 
 // Include the definition of these YAML functions (however useless because already
 // included with multiplexsat.h)
@@ -20,6 +21,7 @@ YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs) {
   node["symbolRate"] = rhs->symbolRate_;
   node["polarization"] = YAML::convert<PolarizationPtr>::encode(rhs->polarizationPtr_);
   node["modulation"] = YAML::convert<ModulationPtr>::encode(rhs->modulationPtr_);
+  node["antenna"] = YAML::convert<AntennaPtr>::encode(rhs->antennaPtr_);
   return node;
 }
 
@@ -35,5 +37,7 @@ bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node, MultiplexSat
   YAML::convert<PolarizationPtr>::decode(node["polarization"], rhs->polarizationPtr_);
   rhs->modulationPtr_ = std::make_shared<Modulation>();
   YAML::convert<ModulationPtr>::decode(node["modulation"], rhs->modulationPtr_);
+  rhs->antennaPtr_ = std::make_shared<Antenna>();
+  YAML::convert<AntennaPtr>::decode(node["antenna"], rhs->antennaPtr_);
   return true;
 }

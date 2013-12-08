@@ -3,7 +3,7 @@ type: sat
 broadcastType: DVB-S # Or dvb-s2
 frequency: 586166000 # In MHz
 symbolrate: 1337 # In KHz
-satellite: astra19.2
+antenna: astra19.2
 polarization: v # v or h
 modulation: qpsk # qpsk or psk8
 channels:

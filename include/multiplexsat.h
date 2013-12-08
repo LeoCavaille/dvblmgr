@@ -4,6 +4,7 @@
 #include "multiplex.h"
 #include "polarization_ptr.h"
 #include "modulation_ptr.h"
+#include "antenna_ptr.h"
 #include "multiplexsat_yaml.h"
 
 
@@ -17,7 +18,8 @@ public:
       unsigned int symbolRate,
       std::string satellite,
       PolarizationPtr polarizationPtr,
-      ModulationPtr modulationPtr);
+      ModulationPtr modulationPtr,
+      AntennaPtr antennaPtr);
 
   bool isCompatible(const AdapterPtr &a) const;
 
@@ -34,6 +36,7 @@ private:
 
   PolarizationPtr polarizationPtr_;
   ModulationPtr modulationPtr_;
+  AntennaPtr antennaPtr_;
 };
 
 
