@@ -23,7 +23,7 @@ public:
 
   static std::string getType(const YAML::Node& node);
 
-private:
+protected:
   std::string name_;
 
   unsigned int frequency_;

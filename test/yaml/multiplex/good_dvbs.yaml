@@ -3,9 +3,9 @@ type: sat
 broadcastType: DVB_S # Or DVB_S2
 frequency: 586166000 # In MHz
 symbolrate: 1337 # In KHz
+satellite: astra19.2
 polarization: v # v or h
 modulation: qpsk # qpsk or psk8
-satellite: astra19.2
 channels:
     - name: 02 - France 2
       sid: 257

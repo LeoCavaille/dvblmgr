@@ -1,7 +1,12 @@
 #include "multiplex.h"
+#include "polarization.h"
+#include "modulation.h"
+#include "channel.h"
+#include "broadcasttype.h"
 #include "multiplexsat.h"
 #include "multiplextnt.h"
 #include <fstream>
+#include <iostream>
 
 #include "gtest/gtest.h"
 
@@ -13,6 +18,15 @@ TEST(MultiplexTest, YAMLGoodSATParsing) {
 
   MultiplexSatPtr m = std::make_shared<MultiplexSat>();
   ASSERT_TRUE(YAML::convert<MultiplexSatPtr>::decode(doc, m));
+
+  // We don't test if channels are correctly parsed here
+  std::vector<ChannelPtr> channels = {};
+  MultiplexSat ms("sat-1", 586166000, std::make_shared<BroadcastType>(BroadcastType::dvbs),
+            channels, 1337, "astra19.2",
+            std::make_shared<Polarization>(Polarization::vertical),
+            std::make_shared<Modulation>(Modulation::qpsk));
+
+  ASSERT_EQ(*m, ms);
 }
 
 TEST(MultiplexTest, YAMLGoodTNTParsing) {

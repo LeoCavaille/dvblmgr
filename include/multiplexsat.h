@@ -9,12 +9,24 @@
 
 class MultiplexSat : public Multiplex {
 public:
+  MultiplexSat();
+  MultiplexSat(std::string name,
+      unsigned int frequency,
+      BroadcastTypePtr broadcastTypePtr,
+      std::vector<ChannelPtr> channels,
+      unsigned int symbolRate,
+      std::string satellite,
+      PolarizationPtr polarizationPtr,
+      ModulationPtr modulationPtr);
+
   bool isCompatible(const AdapterPtr &a) const;
 
   friend YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs);
   friend bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node,
                                              MultiplexSatPtr rhs);
 
+  bool operator==(const MultiplexSat &rhs) const;
+  bool operator!=(const MultiplexSat &rhs) const;
 private:
   // in Hz
   unsigned int symbolRate_;
