@@ -15,7 +15,11 @@
 
 
 YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs) {
-  Node node;
+  Node node = YAML::convert<MultiplexPtr>::encode(rhs);
+  node["type"] = "SAT";
+  node["symbolRate"] = rhs->symbolRate_;
+  node["polarization"] = YAML::convert<PolarizationPtr>::encode(rhs->polarizationPtr_);
+  node["modulation"] = YAML::convert<ModulationPtr>::encode(rhs->modulationPtr_);
   return node;
 }
 

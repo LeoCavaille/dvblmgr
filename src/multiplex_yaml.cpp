@@ -11,6 +11,12 @@ YAML::Node YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs) {
   node["name"] = rhs->name_;
   node["frequency"] = rhs->frequency_;
 
+  node["broadcastType"] = YAML::convert<BroadcastTypePtr>::encode(rhs->broadcastTypePtr_);
+
+  for(auto &c : rhs->channels_) {
+     node["channel"].push_back(YAML::convert<ChannelPtr>::encode(c));
+   }
+
   return node;
 }
 

@@ -28,7 +28,7 @@ private:
 
   // Broadcast utils
   bool broadcast_;
-
+  unsigned int priority_;
 };
 
 #endif /* CHANNEL_H_ */

@@ -8,6 +8,8 @@ YAML::Node YAML::convert<ChannelPtr>::encode(const ChannelPtr &rhs) {
   for(auto& pid: rhs->pids_) {
     node["pids"].push_back(pid);
   }
+  node["broadcast"] = rhs->broadcast_;
+  node["priority"] = rhs->priority_;
 
   return node;
 }
@@ -19,5 +21,10 @@ bool YAML::convert<ChannelPtr>::decode(const YAML::Node &node, ChannelPtr &rhs) 
       ++it) {
     rhs->pids_.push_back(it->as<unsigned int>());
   }
+  if (node["broadcast"]){
+    rhs->broadcast_ = node["broadcast"].as<bool>();
+  }
+  rhs->priority_ = node["priority"].as<unsigned int>();
+
   return true;
 }

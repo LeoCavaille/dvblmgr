@@ -21,7 +21,21 @@ void Configuration::load() {
 void Configuration::save(){
   config_.reset();
 
-  config_["multiplexs"] = multiplexs_;
+  for(auto &m : multiplexs_){
+    MultiplexSatPtr psat = std::dynamic_pointer_cast<MultiplexSat>(m);
+    if(psat != nullptr){
+      config_["multiplexs"].push_back(YAML::convert<MultiplexSatPtr>::encode(psat));
+      continue;
+    }
+
+    MultiplexTntPtr ptnt = std::dynamic_pointer_cast<MultiplexTnt>(m);
+    if(ptnt != nullptr){
+      config_["multiplexs"].push_back(YAML::convert<MultiplexTntPtr>::encode(ptnt));
+      continue;
+    }
+
+  }
+
   YAML::Emitter out;
   out << config_;
   std::cout << out.c_str() << std::endl;

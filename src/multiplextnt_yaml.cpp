@@ -2,7 +2,9 @@
 #include "multiplextnt_yaml.h"
 
 YAML::Node YAML::convert<MultiplexTntPtr>::encode(const MultiplexTntPtr &rhs) {
-  Node node;
+  Node node = YAML::convert<MultiplexPtr>::encode(rhs);
+  node["type"] = "TNT";
+  node["bandwidth"] = rhs->bandwidth_;
   return node;
 }
 
