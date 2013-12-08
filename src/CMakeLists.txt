@@ -22,8 +22,8 @@ SET(
 	polarization_yaml.cpp
 	multiplexsat.cpp
 	multiplexsat_yaml.cpp
-	#multiplextnt.cpp
-	#multiplextnt_yaml.cpp
+	multiplextnt.cpp
+	multiplextnt_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})

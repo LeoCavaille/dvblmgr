@@ -3,6 +3,10 @@
 
 #include "gtest/gtest.h"
 
-TEST(MultiplexTest, YAMLGoodParsing) {
-  YAML::Node doc = YAML::LoadFile("yaml/multiplex/good.yaml");
+TEST(MultiplexTest, YAMLGoodSATParsing) {
+  YAML::Node doc = YAML::LoadFile("yaml/multiplex/good_dvbs.yaml");
+}
+
+TEST(MultiplexTest, YAMLGoodTNTParsing) {
+  YAML::Node doc = YAML::LoadFile("yaml/multiplex/good_dvbt.yaml");
 }

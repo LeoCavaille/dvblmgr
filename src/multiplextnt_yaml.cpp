@@ -6,7 +6,7 @@ YAML::Node YAML::convert<MultiplexTntPtr>::encode(const MultiplexTntPtr &rhs) {
   return node;
 }
 
-bool YAML::convert<MultiplexTntPtr>::decode(const YAML::Node &node, MultiplexTntPtr &rhs) {
+bool YAML::convert<MultiplexTntPtr>::decode(const YAML::Node &node, MultiplexTntPtr rhs) {
   YAML::convert<MultiplexPtr>::decode(node, rhs);
 
   // Then TNT specific parsing

@@ -17,6 +17,9 @@ private:
   void parseMultiplexs();
   void parseServers();
 
+  void check();
+  void checkChannelDupes();
+
   std::string filename_;
   YAML::Node config_;
 

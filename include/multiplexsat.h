@@ -9,7 +9,6 @@
 
 class MultiplexSat : public Multiplex {
 public:
-
   bool isCompatible(const AdapterPtr &a) const;
 
   friend YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs);
