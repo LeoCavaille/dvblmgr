@@ -28,6 +28,7 @@ file(
 )
 
 include_directories(${COMMON_INCLUDES})
+include_directories(src/)
 add_executable(runTests ${test_units} test/main.cpp)
 
 # Standard linking to gtest stuff.
