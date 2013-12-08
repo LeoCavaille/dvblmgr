@@ -16,7 +16,6 @@ public:
       BroadcastTypePtr broadcastTypePtr,
       std::vector<ChannelPtr> channels,
       unsigned int symbolRate,
-      std::string satellite,
       PolarizationPtr polarizationPtr,
       ModulationPtr modulationPtr,
       AntennaPtr antennaPtr);
@@ -32,7 +31,6 @@ public:
 private:
   // in Hz
   unsigned int symbolRate_;
-  std::string satellite_;
 
   PolarizationPtr polarizationPtr_;
   ModulationPtr modulationPtr_;

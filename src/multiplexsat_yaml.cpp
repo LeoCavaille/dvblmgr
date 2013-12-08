@@ -32,7 +32,6 @@ bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node, MultiplexSat
 
   // Then SAT specific parsing
   rhs->symbolRate_ = node["symbolrate"].as<unsigned int>();
-  rhs->satellite_ = node["satellite"].as<std::string>();
   rhs->polarizationPtr_ = std::make_shared<Polarization>();
   YAML::convert<PolarizationPtr>::decode(node["polarization"], rhs->polarizationPtr_);
   rhs->modulationPtr_ = std::make_shared<Modulation>();

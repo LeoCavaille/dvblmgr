@@ -22,7 +22,7 @@ TEST(MultiplexTest, YAMLGoodSATParsing) {
   // We don't test if channels are correctly parsed here
   std::vector<ChannelPtr> channels = {};
   MultiplexSat ms("sat-1", 586166000, std::make_shared<BroadcastType>(BroadcastType::dvbs),
-            channels, 1337, "astra19.2",
+            channels, 1337,
             std::make_shared<Polarization>(Polarization::vertical),
             std::make_shared<Modulation>(Modulation::qpsk),
             std::make_shared<Antenna>("astra19.2"));

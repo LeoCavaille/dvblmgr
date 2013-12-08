@@ -11,7 +11,6 @@ MultiplexSat::MultiplexSat(std::string name,
     BroadcastTypePtr broadcastTypePtr,
     std::vector<ChannelPtr> channels,
     unsigned int symbolRate,
-    std::string satellite,
     PolarizationPtr polarizationPtr,
     ModulationPtr modulationPtr,
     AntennaPtr antennaPtr) {
@@ -20,7 +19,6 @@ MultiplexSat::MultiplexSat(std::string name,
   broadcastTypePtr_ = broadcastTypePtr;
   channels_ = channels;
   symbolRate_ = symbolRate;
-  satellite_ = satellite;
   polarizationPtr_ = polarizationPtr;
   modulationPtr_ = modulationPtr;
   antennaPtr_ = antennaPtr;
@@ -31,7 +29,6 @@ bool MultiplexSat::operator==(const MultiplexSat &rhs) const {
       frequency_ == rhs.frequency_ &&
       *broadcastTypePtr_ == rhs.broadcastTypePtr_ &&
       symbolRate_ == rhs.symbolRate_ &&
-      satellite_ == rhs.satellite_ &&
       *polarizationPtr_ == rhs.polarizationPtr_ &&
       *modulationPtr_ == rhs.modulationPtr_ &&
       *antennaPtr_ == rhs.antennaPtr_;
