@@ -1,6 +1,6 @@
 name: sat-1
 type: sat
-broadcastType: DVB_S # Or DVB_S2
+broadcastType: DVB-S # Or dvb-s2
 frequency: 586166000 # In MHz
 symbolrate: 1337 # In KHz
 satellite: astra19.2

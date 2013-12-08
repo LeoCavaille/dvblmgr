@@ -1,6 +1,6 @@
 name: tnt-1
 type: tnt
-broadcastType: DVB_T
+broadcastType: dvb-t
 frequency: 586166000 # In Hz
 bandwidth: 8
 channels:

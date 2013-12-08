@@ -6,7 +6,6 @@
 #include "multiplexsat.h"
 #include "multiplextnt.h"
 #include <fstream>
-#include <iostream>
 
 #include "gtest/gtest.h"
 
@@ -37,4 +36,11 @@ TEST(MultiplexTest, YAMLGoodTNTParsing) {
 
   MultiplexTntPtr m = std::make_shared<MultiplexTnt>();
   ASSERT_TRUE(YAML::convert<MultiplexTntPtr>::decode(doc, m));
+
+  // We don't test if channels are correctly parsed here
+  std::vector<ChannelPtr> channels = {};
+  MultiplexTnt ms("tnt-1", 586166000, std::make_shared<BroadcastType>(BroadcastType::dvbt),
+            channels, 8);
+
+  ASSERT_EQ(*m, ms);
 }
