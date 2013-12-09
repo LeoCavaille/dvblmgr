@@ -46,3 +46,36 @@ TEST(MultiplexTest, YAMLGoodTNTParsing) {
 
   ASSERT_EQ(*m, ms);
 }
+
+TEST(MultiplexTest, YAMLGoodSATEncoding) {
+  std::vector<ChannelPtr> channels = {};
+  MultiplexSatPtr ms = std::make_shared<MultiplexSat>("SAT_15", 123214534,
+            std::make_shared<BroadcastType>(BroadcastType::dvbs),
+            channels, 12857453,
+            std::make_shared<Polarization>(Polarization::vertical),
+            std::make_shared<Modulation>(Modulation::qpsk),
+            std::make_shared<Antenna>("astra42.12"));
+
+  YAML::Node node;
+  node = ms;
+
+  MultiplexSatPtr m = std::make_shared<MultiplexSat>();
+  ASSERT_TRUE(YAML::convert<MultiplexSatPtr>::decode(node, m));
+
+  ASSERT_EQ(*m, *ms);
+}
+
+TEST(MultiplexTest, YAMLGoodTNTEncoding) {
+  std::vector<ChannelPtr> channels = {};
+  MultiplexTntPtr ms = std::make_shared<MultiplexTnt>("tnt-42", 189346,
+            std::make_shared<BroadcastType>(BroadcastType::dvbt),
+            channels, 12);
+
+  YAML::Node node;
+  node = ms;
+
+  MultiplexTntPtr m = std::make_shared<MultiplexTnt>();
+  ASSERT_TRUE(YAML::convert<MultiplexTntPtr>::decode(node, m));
+
+  ASSERT_EQ(*m, *ms);
+}
