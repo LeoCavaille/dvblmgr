@@ -1,7 +1,7 @@
 dvblmgr
 =======
 
-![Build status](http://gb2n.org:8080/buildStatus/icon?job=dvblmgr "Jenkins build status")
+![Build status](https://leo.cavaille.net/jenkins-dvblmgr.php "Jenkins build status")
 
 Manage your TV/Radio broadcast
 
@@ -39,7 +39,7 @@ cmake ..
 make -j8
 ```
 
-On *Mac OS* with homebrew you may have to use `-DYAMLCPP_STATIC_LIBRARY=1` in cmake because you doesn't have the dynamic library files for yaml-cpp.
+On *Mac OS* with homebrew you may have to use `-DYAMLCPP_STATIC_LIBRARY=1` in cmake because you don't have the dynamic library files for yaml-cpp.
 
 
 Testing
