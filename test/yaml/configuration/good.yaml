@@ -128,7 +128,7 @@ multiplexs:
         pids: []
         priority: 100
 
-servers:
+machines:
   - name: vls20
     adapters:
       - id: 0

@@ -1,9 +1,9 @@
-#include "server_yaml.h"
-#include "server.h"
+#include "machine_yaml.h"
+#include "machine.h"
 
 #include "adapter.h"
 
-YAML::Node YAML::convert<ServerPtr>::encode(const ServerPtr &rhs) {
+YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
   Node node;
   node["name"] = rhs->name_;
   for (auto& aPtr: rhs->adapters_){
@@ -13,7 +13,7 @@ YAML::Node YAML::convert<ServerPtr>::encode(const ServerPtr &rhs) {
   return node;
 }
 
-bool YAML::convert<ServerPtr>::decode(const YAML::Node &node, ServerPtr &rhs) {
+bool YAML::convert<MachinePtr>::decode(const YAML::Node &node, MachinePtr &rhs) {
   rhs->name_ = node["name"].as<std::string>();
   for(auto &adapterNode : node["adapters"]){
     AdapterPtr aPtr = std::make_shared<Adapter>();

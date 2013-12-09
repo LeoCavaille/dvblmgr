@@ -2,7 +2,7 @@
 #define CONFIGURATION_H_
 
 #include "multiplex_ptr.h"
-#include "server_ptr.h"
+#include "machine_ptr.h"
 
 #include <yaml-cpp/yaml.h>
 #include <string>
@@ -20,7 +20,7 @@ public:
 private:
   void parse();
   void parseMultiplexs();
-  void parseServers();
+  void parseMachines();
 
   void check();
   void checkChannelDupes();
@@ -29,7 +29,7 @@ private:
   YAML::Node config_;
 
   std::vector<MultiplexPtr> multiplexs_;
-  std::vector<ServerPtr> servers_;
+  std::vector<MachinePtr> machines_;
 
 
 };

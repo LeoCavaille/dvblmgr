@@ -15,6 +15,8 @@ SET(
 	configuration.cpp
 	confobject.cpp
 	ipsubnet.cpp
+	machine.cpp
+	machine_yaml.cpp
 	modulation.cpp
 	modulation_yaml.cpp
 	multiplex.cpp
@@ -25,8 +27,6 @@ SET(
 	multiplexsat_yaml.cpp
 	polarization.cpp
 	polarization_yaml.cpp
-	server.cpp
-    server_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})
