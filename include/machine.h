@@ -17,6 +17,8 @@ public:
 
   bool operator== (const Machine &rhs) const;
 
+  std::vector<AdapterPtr> getAdapters() { return adapters_; };
+
 private:
   std::string name_;
   std::vector<AdapterPtr> adapters_;

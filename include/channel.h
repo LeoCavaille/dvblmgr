@@ -21,6 +21,8 @@ public:
   bool operator==(const Channel &rhs) const;
   bool operator!=(const Channel &rhs) const;
 
+  unsigned int getPriority() { return priority_; };
+
 private:
   // Main characteristics
   std::string name_;

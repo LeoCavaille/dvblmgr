@@ -23,8 +23,14 @@ public:
 
   static std::string getType(const YAML::Node& node);
 
+  BroadcastTypePtr getBroadcastType() { return broadcastTypePtr_; };
+
+  unsigned int getPriority() { return priority_; }
+  void updatePriority();
+
 protected:
   std::string name_;
+  unsigned int priority_;
 
   unsigned int frequency_;
 

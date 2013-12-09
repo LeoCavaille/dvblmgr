@@ -8,6 +8,7 @@ SET(
 	adapter_yaml.cpp
 	antenna.cpp
 	antenna_yaml.cpp
+	broadcastlist.cpp
 	broadcasttype.cpp
 	broadcasttype_yaml.cpp
 	channel.cpp

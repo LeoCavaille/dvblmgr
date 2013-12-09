@@ -17,6 +17,7 @@ public:
           const std::vector<BroadcastTypePtr> &compats);
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
+  unsigned int compatibilityCount() const { return compats_.size(); };
 
   bool operator==(const Adapter &rhs) const;
 

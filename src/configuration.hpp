@@ -15,6 +15,9 @@ public:
   void load(const YAML::Node& configParsed);
   void save();
 
+  std::vector<MachinePtr> getMachines() const { return machines_; };
+  std::vector<MultiplexPtr> getMultiplexs() const { return multiplexs_; };
+
   bool operator==(const Configuration& rhs) const;
 
 private:

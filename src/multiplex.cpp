@@ -1,4 +1,5 @@
 #include "multiplex.h"
+#include "channel.h"
 
 std::string Multiplex::getType(const YAML::Node& node) {
     if(!node["type"]) {
@@ -14,4 +15,13 @@ std::string Multiplex::getType(const YAML::Node& node) {
     else{
         return "UNKNOWN";
     }
+}
+
+void Multiplex::updatePriority() {
+    unsigned int priority = 0;
+    for(auto const &c : channels_) {
+        priority += (*c).getPriority();
+    }
+
+    priority_ = priority;
 }
