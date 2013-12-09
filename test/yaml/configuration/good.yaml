@@ -127,3 +127,63 @@ multiplexs:
         sid: 1543
         pids: []
         priority: 100
+
+servers:
+  - name: vls20
+    adapters:
+      - id: 0
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 1
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s ]
+      - id: 2
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 3
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 4
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+  - name: vls21
+    adapters:
+      - id: 0
+        frontendId: 0
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 0
+        frontendId: 1
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 0
+        frontendId: 2
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 0
+        frontendId: 3
+        antenna: astra19.2
+        broadcastType: [ dvb-s, dvb-s2 ]
+      - id: 1
+        frontendId: 0
+        antenna: hotbird29
+        broadcastType: [ dvb-s]
+  - name: vls12
+    adapters:
+      - id: 0
+        frontendId: 0
+        antenna: rateau
+        broadcastType: [ dvb-t ]
+      - id: 1
+        frontendId: 0
+        antenna: rateau
+        broadcastType: [ dvb-t ]
+      - id: 2
+        frontendId: 0
+        antenna: rateau
+        broadcastType: [ dvb-t ]

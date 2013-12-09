@@ -2,6 +2,7 @@
 
 #include "multiplextnt.h"
 #include "multiplexsat.h"
+#include "server.h"
 
 #include <iostream>
 
@@ -21,7 +22,7 @@ void Configuration::load() {
 void Configuration::save(){
   config_.reset();
 
-  for(auto &m : multiplexs_){
+  for(auto const &m : multiplexs_){
     MultiplexSatPtr psat = std::dynamic_pointer_cast<MultiplexSat>(m);
     if(psat != nullptr){
       config_["multiplexs"].push_back(YAML::convert<MultiplexSatPtr>::encode(psat));
@@ -33,7 +34,10 @@ void Configuration::save(){
       config_["multiplexs"].push_back(YAML::convert<MultiplexTntPtr>::encode(ptnt));
       continue;
     }
+  }
 
+  for(auto const &s : servers_){
+	config_["servers"].push_back(YAML::convert<ServerPtr>::encode(s));
   }
 
   YAML::Emitter out;
@@ -51,7 +55,7 @@ void Configuration::parseMultiplexs(){
 		std::cerr << "WARNING: no multiplexs defined in the configuration" << std::endl;
 		return;
 	}
-	for(auto m : config_["multiplexs"])
+	for(auto const &m : config_["multiplexs"])
 	{
         std::string type = Multiplex::getType(m);
 		if(type == "TNT"){
@@ -71,7 +75,16 @@ void Configuration::parseMultiplexs(){
 }
 
 void Configuration::parseServers(){
-
+	if(! config_["servers"] || ! config_["servers"].IsSequence()){
+		std::cerr << "WARNING: no multiplexs defined in the configuration" << std::endl;
+		return;
+	}
+	for(auto const &s : config_["servers"])
+	{
+		ServerPtr sPtr = std::make_shared<Server>();
+		YAML::convert<ServerPtr>::decode(s, sPtr);
+		servers_.push_back(sPtr);
+	}
 }
 
 void Configuration::check(){
