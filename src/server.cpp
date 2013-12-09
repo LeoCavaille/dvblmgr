@@ -1,3 +1,5 @@
 #include "server.h"
 
-Server::Server() {}
+Server::Server() : connected_(false)
+{}
+

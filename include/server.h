@@ -15,6 +15,8 @@ public:
   friend bool YAML::convert<ServerPtr>::decode(const YAML::Node &node,
                                                ServerPtr &rhs);
 
+  bool operator== (const ServerPtr &rhs) const;
+
 private:
   std::string name_;
   std::vector<AdapterPtr> adapters_;

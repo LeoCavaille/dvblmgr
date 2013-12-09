@@ -20,6 +20,7 @@ public:
 
   bool operator==(const Channel &rhs) const;
   bool operator!=(const Channel &rhs) const;
+  bool operator==(const ChannelPtr &rhs) const;
 
 private:
   // Main characteristics

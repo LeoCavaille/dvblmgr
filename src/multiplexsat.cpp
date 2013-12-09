@@ -4,7 +4,7 @@
 #include "broadcasttype.h"
 #include "antenna.h"
 
-MultiplexSat::MultiplexSat() {};
+MultiplexSat::MultiplexSat() {}
 
 MultiplexSat::MultiplexSat(std::string name,
     unsigned int frequency,

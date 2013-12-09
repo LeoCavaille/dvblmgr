@@ -6,8 +6,6 @@
 
 #include <string>
 
-
-
 class BroadcastType : public ConfObject {
 public:
   enum Enum {
@@ -25,7 +23,7 @@ public:
   friend YAML::Node
       YAML::convert<BroadcastTypePtr>::encode(const BroadcastTypePtr &rhs);
   friend bool YAML::convert<BroadcastTypePtr>::decode(const YAML::Node &node,
-                                                   BroadcastTypePtr &rhs);
+                                                      BroadcastTypePtr &rhs);
 
   bool operator==(const std::string &ss) const;
   bool operator==(const Enum &rhs) const;

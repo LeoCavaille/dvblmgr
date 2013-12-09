@@ -8,18 +8,18 @@
 
 class Antenna : public ConfObject {
 public:
-  Antenna() {};
-  Antenna(const std::string &name) : name_(name) {};
+  Antenna();
+  Antenna(const std::string &name);
 
   friend YAML::Node YAML::convert<AntennaPtr>::encode(const AntennaPtr &rhs);
   friend bool YAML::convert<AntennaPtr>::decode(const YAML::Node &node,
-                                             AntennaPtr &rhs);
+                                                AntennaPtr &rhs);
 
   std::string getName() const { return name_; }
 
-  bool operator==(const Antenna &rhs) const { return name_ == rhs.name_; }
-  bool operator==(const AntennaPtr &rhs) const { return name_ == rhs->name_; }
-  bool operator!=(const Antenna &rhs) const { return !(*this == rhs); }
+  bool operator==(const Antenna &rhs) const;
+  bool operator==(const AntennaPtr &rhs) const;
+  bool operator!=(const Antenna &rhs) const;
 
 private:
   std::string name_;
