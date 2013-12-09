@@ -28,7 +28,7 @@ public:
 
   bool operator==(const std::string &ss) const;
   bool operator==(const Enum &rhs) const;
-  bool operator==(const PolarizationPtr &rhs) const;
+  bool operator==(const Polarization &rhs) const;
 
   static Enum FromString(std::string pString);
   static std::string ToString(const Enum &p);

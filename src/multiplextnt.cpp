@@ -18,7 +18,7 @@ MultiplexTnt::MultiplexTnt(std::string name,
 bool MultiplexTnt::operator==(const MultiplexTnt &rhs) const {
   return name_ == rhs.name_ &&
       frequency_ == rhs.frequency_ &&
-      *broadcastTypePtr_ == rhs.broadcastTypePtr_ &&
+      *broadcastTypePtr_ == *(rhs.broadcastTypePtr_) &&
       bandwidth_ == rhs.bandwidth_;
 }
 

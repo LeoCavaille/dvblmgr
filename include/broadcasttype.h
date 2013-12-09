@@ -27,7 +27,7 @@ public:
 
   bool operator==(const std::string &ss) const;
   bool operator==(const Enum &rhs) const;
-  bool operator==(const BroadcastTypePtr &rhs) const;
+  bool operator==(const BroadcastType &rhs) const;
 
   static Enum FromString(std::string mString);
   static std::string ToString(const Enum &m);

@@ -17,9 +17,9 @@ bool BroadcastType::operator==(const Enum &rhs) const
   return (type_ == rhs);
 }
 
-bool BroadcastType::operator==(const BroadcastTypePtr &rhs) const
+bool BroadcastType::operator==(const BroadcastType &rhs) const
 {
-  return (type_ == rhs->type_);
+  return (type_ == rhs.type_);
 }
 
 BroadcastType::Enum BroadcastType::FromString(std::string mString) {

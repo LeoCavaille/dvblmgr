@@ -16,9 +16,9 @@ bool Polarization::operator==(const Enum &rhs) const
   return (polarization_ == rhs);
 }
 
-bool Polarization::operator==(const PolarizationPtr &rhs) const
+bool Polarization::operator==(const Polarization &rhs) const
 {
-  return (polarization_ == rhs->polarization_);
+  return (polarization_ == rhs.polarization_);
 }
 
 Polarization::Enum Polarization::FromString(std::string pString) {

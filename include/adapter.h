@@ -17,7 +17,7 @@ public:
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
 
-  bool operator==(const AdapterPtr &rhs) const;
+  bool operator==(const Adapter &rhs) const;
 
   friend YAML::Node YAML::convert<AdapterPtr>::encode(const AdapterPtr &rhs);
   friend bool YAML::convert<AdapterPtr>::decode(const YAML::Node &node,

@@ -11,7 +11,7 @@ static bool compareVectors(std::vector<T> a, std::vector<T> b)
 template <class T>
 static bool comparePtr(const T &p, const T &q)
 {
-  return *p == q;
+  return *p == *q;
 }
 
 template <class T>

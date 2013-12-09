@@ -16,12 +16,12 @@ Adapter::Adapter(unsigned char id, unsigned char frontendId,
 bool Adapter::isCompatible(const BroadcastTypePtr &bt) const {
   auto it = std::find_if(
                 compats_.begin(), compats_.end(),
-                [&bt](const BroadcastTypePtr & p) { return *bt == p; });
+                [&bt](const BroadcastTypePtr & p) { return *bt == *p; });
   return (it != compats_.end());
 }
 
-bool Adapter::operator==(const AdapterPtr &rhs) const {
-  return id_ == rhs->id_ && frontendId_ == rhs->frontendId_ &&
-         *antennaPtr_ == rhs->antennaPtr_ &&
-         compareVectorsPtr(compats_, rhs->compats_);
+bool Adapter::operator==(const Adapter &rhs) const {
+  return id_ == rhs.id_ && frontendId_ == rhs.frontendId_ &&
+         *antennaPtr_ == *(rhs.antennaPtr_) &&
+         compareVectorsPtr(compats_, rhs.compats_);
 }

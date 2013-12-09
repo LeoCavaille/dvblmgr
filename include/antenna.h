@@ -18,7 +18,6 @@ public:
   std::string getName() const { return name_; }
 
   bool operator==(const Antenna &rhs) const;
-  bool operator==(const AntennaPtr &rhs) const;
   bool operator!=(const Antenna &rhs) const;
 
 private:

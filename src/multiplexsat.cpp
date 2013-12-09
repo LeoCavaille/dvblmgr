@@ -27,11 +27,11 @@ MultiplexSat::MultiplexSat(std::string name,
 bool MultiplexSat::operator==(const MultiplexSat &rhs) const {
   return name_ == rhs.name_ &&
       frequency_ == rhs.frequency_ &&
-      *broadcastTypePtr_ == rhs.broadcastTypePtr_ &&
+      *broadcastTypePtr_ == *(rhs.broadcastTypePtr_) &&
       symbolRate_ == rhs.symbolRate_ &&
-      *polarizationPtr_ == rhs.polarizationPtr_ &&
-      *modulationPtr_ == rhs.modulationPtr_ &&
-      *antennaPtr_ == rhs.antennaPtr_;
+      *polarizationPtr_ == *(rhs.polarizationPtr_) &&
+      *modulationPtr_ == *(rhs.modulationPtr_) &&
+      *antennaPtr_ == *(rhs.antennaPtr_);
 }
 
 bool MultiplexSat::operator!=(const MultiplexSat &rhs) const {
