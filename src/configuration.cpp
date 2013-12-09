@@ -127,7 +127,7 @@ void Configuration::parseMachines() {
     return;
   }
   for (auto const &m : config_["machines"]) {
-    MachinePtr mPtr = std::make_shared<Machine>(std::shared_ptr<Configuration>(this));
+    MachinePtr mPtr = std::make_shared<Machine>(std::shared_ptr<Configuration>(shared_from_this()));
     YAML::convert<MachinePtr>::decode(m, mPtr);
     machines_.push_back(mPtr);
   }

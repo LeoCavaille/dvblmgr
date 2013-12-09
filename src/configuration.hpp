@@ -12,7 +12,7 @@
 #include <mutex>
 #include <thread>
 
-class Configuration {
+class Configuration : public std::enable_shared_from_this<Configuration> {
 public:
   Configuration(const std::string &filename);
   void load();
