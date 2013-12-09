@@ -1,9 +1,25 @@
-#include "configuration.hpp"
-#include "configuration_ptr.h"
+#include "serverrunner.hpp"
 
-#include "configuration_exceptions.hpp"
+#include <thread>
+#include <csignal>
+
+ServerRunner * sr = nullptr;
+
+void signalHandler (int signum) {
+	if (signum == SIGINT) {
+		if (sr) {
+			sr->signalStop();
+		}
+		else {
+			exit(EXIT_SUCCESS);
+		}
+	}
+}
+
 
 int main(int argc, char *argv[]) {
+
+  signal(SIGINT, signalHandler);
 
   // FIXME : add long opts, for now we just say that the config file is argv[1]
   std::string confFile;
@@ -11,14 +27,15 @@ int main(int argc, char *argv[]) {
 	 confFile = std::string(argv[1]);
   }
 
-  // Load our configuration
-  ConfigurationPtr configPtr = std::make_shared<Configuration>(confFile);
-  try {
-	  configPtr->load();
-  } catch (ConfigurationFileUnreachable &e) {
-	  std::cerr << "ERROR: In configuration handling: " << e.what() << std::endl;
-	  exit(EXIT_FAILURE);
-  }
+  sr = new ServerRunner(confFile);
+  sr->start();
 
-  exit(EXIT_SUCCESS);
+  while(true) {
+	  if (sr->stopRequired()) {
+		  sr->stop();
+		  break;
+	  }
+	  std::this_thread::sleep_for(std::chrono::seconds(1));
+  }
+  return 0;
 }

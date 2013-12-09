@@ -1,0 +1,27 @@
+package commands;
+
+message AdapterStart {
+	required string multiplexName = 1;
+
+	required uint32 id = 2;
+	required uint32 frontendId = 3;
+
+	message Channel {
+		required string name = 1;
+		required uint32 sid = 2;
+		repeated uint32 pid = 3;
+		required string ip = 4;
+	}
+}
+
+message AdapterStop {
+	required string multiplexName = 1;
+
+	required uint32 id = 2;
+	required uint32 frontendId = 3;
+}
+
+message AdapterStatus {
+	required uint32 id = 1;
+	required uint32 frontendId = 2;
+}

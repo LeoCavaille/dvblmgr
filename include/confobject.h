@@ -9,7 +9,7 @@ protected:
 	ConfObject(const ConfigurationPtr& cPtr);
 	void persist();
 
-private:
+protected:
 	ConfigurationWeakPtr config_;
 };
 

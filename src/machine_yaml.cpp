@@ -16,7 +16,7 @@ YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
 bool YAML::convert<MachinePtr>::decode(const YAML::Node &node, MachinePtr &rhs) {
   rhs->name_ = node["name"].as<std::string>();
   for(auto &adapterNode : node["adapters"]){
-    AdapterPtr aPtr = std::make_shared<Adapter>();
+    AdapterPtr aPtr = std::make_shared<Adapter>(rhs->config_.lock(), rhs);
     YAML::convert<AdapterPtr>::decode(adapterNode, aPtr);
     rhs->adapters_.push_back(aPtr);
   }

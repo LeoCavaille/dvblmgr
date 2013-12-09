@@ -14,7 +14,7 @@
 #define DEFAULT_CONFIG "/etc/dvblmgr/dvblmgr.conf"
 
 Configuration::Configuration(const std::string &filename)
-    : filename_(filename) {}
+    : filename_(filename), hasChanged_(true) {}
 
 void Configuration::load() {
   if (filename_.empty()) {
@@ -85,6 +85,7 @@ void Configuration::save() {
   configFile.close();
 
   std::cerr << "INFO: Configuration saved" << std::endl;
+  hasChanged_ = true;
 }
 
 bool Configuration::operator==(const Configuration &rhs) const {
@@ -126,7 +127,7 @@ void Configuration::parseMachines() {
     return;
   }
   for (auto const &m : config_["machines"]) {
-    MachinePtr mPtr = std::make_shared<Machine>();
+    MachinePtr mPtr = std::make_shared<Machine>(std::shared_ptr<Configuration>(this));
     YAML::convert<MachinePtr>::decode(m, mPtr);
     machines_.push_back(mPtr);
   }
@@ -135,3 +136,10 @@ void Configuration::parseMachines() {
 void Configuration::check() { checkChannelDupes(); }
 
 void Configuration::checkChannelDupes() {}
+
+bool Configuration::hasChanged() {
+	mChange_.lock();
+	bool b = hasChanged_;
+	mChange_.unlock();
+	return b;
+}

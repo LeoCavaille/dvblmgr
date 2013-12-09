@@ -1,6 +1,7 @@
 #ifndef ADAPTER_H_
 #define ADAPTER_H_
 
+#include "machine_ptr.h"
 #include "antenna_ptr.h"
 #include "broadcasttype_ptr.h"
 #include "confobject.h"
@@ -11,13 +12,15 @@
 class Adapter : public ConfObject {
 public:
   Adapter();
-  Adapter(const ConfigurationPtr& cPtr);
+  Adapter(const ConfigurationPtr& cPtr, const MachinePtr &mPtr);
   Adapter(unsigned char id, unsigned char frontendId,
           const AntennaPtr &antennaPtr,
           const std::vector<BroadcastTypePtr> &compats);
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
   unsigned int compatibilityCount() const { return compats_.size(); };
+
+  MachinePtr getMachine() const;
 
   bool operator==(const Adapter &rhs) const;
 
@@ -30,6 +33,8 @@ private:
   unsigned char frontendId_;
   AntennaPtr antennaPtr_;
   std::vector<BroadcastTypePtr> compats_;
+
+  MachineWeakPtr machine_;
 };
 
 #endif /* ADAPTER_H_ */

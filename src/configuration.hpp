@@ -4,9 +4,13 @@
 #include "multiplex_ptr.h"
 #include "machine_ptr.h"
 
+#include "broadcastlistgenerator.hpp"
+
 #include <yaml-cpp/yaml.h>
 #include <string>
 #include <vector>
+#include <mutex>
+#include <thread>
 
 class Configuration {
 public:
@@ -19,6 +23,10 @@ public:
   std::vector<MultiplexPtr> getMultiplexs() const { return multiplexs_; };
 
   bool operator==(const Configuration& rhs) const;
+
+  bool hasChanged();
+
+  friend class BroadcastListGenerator;
 
 private:
   void parse();
@@ -34,6 +42,9 @@ private:
   std::vector<MultiplexPtr> multiplexs_;
   std::vector<MachinePtr> machines_;
 
+protected:
+  bool hasChanged_;
+  std::mutex mChange_;
 
 };
 
