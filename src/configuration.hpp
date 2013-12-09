@@ -12,7 +12,10 @@ class Configuration {
 public:
   Configuration(const std::string &filename);
   void load();
+  void load(const YAML::Node& configParsed);
   void save();
+
+  bool operator==(const Configuration& rhs) const;
 
 private:
   void parse();

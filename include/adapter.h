@@ -11,6 +11,7 @@
 class Adapter : public ConfObject {
 public:
   Adapter();
+  Adapter(const ConfigurationPtr& cPtr);
   Adapter(unsigned char id, unsigned char frontendId,
           const AntennaPtr &antennaPtr,
           const std::vector<BroadcastTypePtr> &compats);

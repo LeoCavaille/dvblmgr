@@ -13,19 +13,20 @@ SET(
 	channel.cpp
 	channel_yaml.cpp
 	configuration.cpp
+	confobject.cpp
 	ipsubnet.cpp
 	modulation.cpp
 	modulation_yaml.cpp
 	multiplex.cpp
 	multiplex_yaml.cpp
-	polarization.cpp
-	polarization_yaml.cpp
-	multiplexsat.cpp
-	multiplexsat_yaml.cpp
 	multiplextnt.cpp
 	multiplextnt_yaml.cpp
-        server.cpp
-        server_yaml.cpp
+	multiplexsat.cpp
+	multiplexsat_yaml.cpp
+	polarization.cpp
+	polarization_yaml.cpp
+	server.cpp
+    server_yaml.cpp
 )
 
 add_library(core OBJECT ${CORE_SOURCES})

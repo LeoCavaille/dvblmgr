@@ -7,6 +7,8 @@
 
 Adapter::Adapter() {}
 
+Adapter::Adapter(const ConfigurationPtr& cPtr) : ConfObject(cPtr) {}
+
 Adapter::Adapter(unsigned char id, unsigned char frontendId,
                  const AntennaPtr &antennaPtr,
                  const std::vector<BroadcastTypePtr> &compats)

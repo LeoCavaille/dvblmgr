@@ -4,10 +4,13 @@
 #include "configuration_ptr.h"
 
 class ConfObject {
-public:
+protected:
+	ConfObject();
+	ConfObject(const ConfigurationPtr& cPtr);
+	void persist();
 
 private:
-	ConfigurationWeakPtr _config;
+	ConfigurationWeakPtr config_;
 };
 
 #endif /* CONFOBJECT_H_ */

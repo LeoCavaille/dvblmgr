@@ -9,7 +9,7 @@ YAML::Node YAML::convert<AdapterPtr>::encode(const AdapterPtr &rhs) {
   Node node;
   node["id"] = rhs->id_;
   node["frontendId"] = rhs->frontendId_;
-  for (auto& btPtr: rhs->compats_)
+  for (auto const &btPtr: rhs->compats_)
   {
   	node["broadcastType"].push_back(YAML::convert<BroadcastTypePtr>::encode(btPtr));
   }
