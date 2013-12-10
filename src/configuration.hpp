@@ -29,6 +29,7 @@ public:
   friend class BroadcastListGenerator;
 
 private:
+  ConfigurationPtr getSelfPtr();
   void parse();
   void parseMultiplexs();
   void parseMachines();

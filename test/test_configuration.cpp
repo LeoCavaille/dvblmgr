@@ -13,17 +13,17 @@ private:
 };
 
 TEST(ConfigurationTest, LoadSaveGoodConfig) {
-  Configuration c("yaml/configuration/good.yaml");
-  c.load();
+  ConfigurationPtr cPtr = std::make_shared<Configuration>("yaml/configuration/good.yaml");
+  cPtr->load();
   std::stringstream yamlBuffer;
   {
     cout_redirect scopedRedirect(yamlBuffer.rdbuf());
-    c.save();
+    cPtr->save();
   }
 
   YAML::Node yamlReloaded = YAML::Load(yamlBuffer.str());
-  Configuration cReloaded("");
-  cReloaded.load(yamlReloaded);
+  ConfigurationPtr cReloadedPtr = std::make_shared<Configuration>("");
+  cReloadedPtr->load(yamlReloaded);
 
-  ASSERT_EQ(c, cReloaded);
+  ASSERT_EQ(*cPtr, *cReloadedPtr);
 }
