@@ -4,7 +4,8 @@
 enum class CommandType :
 	unsigned int {
 	ADAPTER_START,
-	ADAPTER_STOP
+	ADAPTER_STOP,
+	HEARTBEAT
 };
 
 

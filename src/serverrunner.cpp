@@ -5,6 +5,7 @@
 
 #include "configuration.hpp"
 #include "broadcastlistgenerator.hpp"
+#include "watchdog.hpp"
 
 
 ServerRunner::ServerRunner(const std::string& confFile) :
@@ -19,11 +20,13 @@ stopFlag_(false)
 	  exit(EXIT_FAILURE);
   }
   commandDispatcherPtr_ = std::make_shared<CommandDispatcher>();
+  watchdogPtr_ = std::make_shared<Watchdog>(configPtr_, commandDispatcherPtr_);
   broadcastListGeneratorPtr_ = std::make_shared<BroadcastListGenerator>(configPtr_);
 }
 
 void ServerRunner::start() {
 	startCommandDispatcher();
+	startWatchdog();
 	startBroadcastListGenerator();
 }
 
@@ -41,8 +44,9 @@ bool ServerRunner::stopRequired() {
 }
 
 void ServerRunner::stop() {
-	stopCommandDispatcher();
 	stopBroadcastListGenerator();
+	stopWatchdog();
+	stopCommandDispatcher();
 }
 
 void ServerRunner::startCommandDispatcher() {
@@ -59,4 +63,12 @@ void ServerRunner::startBroadcastListGenerator() {
 
 void ServerRunner::stopBroadcastListGenerator() {
 	broadcastListGeneratorPtr_->stop();
+}
+
+void ServerRunner::startWatchdog() {
+	watchdogPtr_->start();
+}
+
+void ServerRunner::stopWatchdog() {
+	watchdogPtr_->stop();
 }

@@ -4,6 +4,7 @@
 #include "configuration_ptr.h"
 #include "commanddispatcher_ptr.hpp"
 #include "broadcastlistgenerator_ptr.hpp"
+#include "watchdog_ptr.hpp"
 
 #include <mutex>
 #include <string>
@@ -22,11 +23,14 @@ private:
 	void stopCommandDispatcher();
 	void startBroadcastListGenerator();
 	void stopBroadcastListGenerator();
+	void startWatchdog();
+	void stopWatchdog();
 
 
 	ConfigurationPtr configPtr_;
 	CommandDispatcherPtr commandDispatcherPtr_;
 	BroadcastListGeneratorPtr broadcastListGeneratorPtr_;
+	WatchdogPtr watchdogPtr_;
 
 	std::mutex mutex_;
 	bool stopFlag_;

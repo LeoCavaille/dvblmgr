@@ -45,9 +45,11 @@ SET(
     DVBLMGR_SOURCES
     broadcastlistgenerator.cpp
     commands/adapterstart.cpp
+    commands/heartbeat.cpp
     command.cpp
     commanddispatcher.cpp
     serverrunner.cpp
+    watchdog.cpp
 )
 
 add_executable(dvblmgr dvblmgr.cpp ${DVBLMGR_SOURCES} ${PROTO_SRCS} ${PROTO_HDRS})
