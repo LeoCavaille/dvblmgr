@@ -1,4 +1,4 @@
-#include "polarization.h"
+#include "polarization.hpp"
 
 #include "gtest/gtest.h"
 

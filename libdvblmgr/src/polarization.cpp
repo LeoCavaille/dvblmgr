@@ -40,8 +40,7 @@ std::string Polarization::ToString(const Polarization::Enum &p) {
   case vertical: { return "V"; }
   case horizontal: { return "H"; }
   case none: { return "NONE"; }
+  default: { return "INVALID"; }
   }
-
-  return "INVALID";
 }
 

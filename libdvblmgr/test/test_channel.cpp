@@ -1,4 +1,4 @@
-#include "channel.h"
+#include "channel.hpp"
 
 #include "gtest/gtest.h"
 

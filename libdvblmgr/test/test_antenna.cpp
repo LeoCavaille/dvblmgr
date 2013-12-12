@@ -1,4 +1,4 @@
-#include "antenna.h"
+#include "antenna.hpp"
 #include "gtest/gtest.h"
 
 const Antenna a("astra19.2");
