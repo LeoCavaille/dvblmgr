@@ -1,9 +1,9 @@
 #ifndef BROADCASTLISTGENERATOR_H_
 #define BROADCASTLISTGENERATOR_H_
 
-#include "configuration_ptr.h"
-#include "adapter_ptr.h"
-#include "multiplex_ptr.h"
+#include "ptr/configuration.h"
+#include "ptr/adapter.h"
+#include "ptr/multiplex.h"
 #include <map>
 
 #include <mutex>

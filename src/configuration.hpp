@@ -1,8 +1,8 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
-#include "multiplex_ptr.h"
-#include "machine_ptr.h"
+#include "ptr/multiplex.h"
+#include "ptr/machine.h"
 
 #include "broadcastlistgenerator.hpp"
 
