@@ -1,12 +1,11 @@
 #ifndef BROADCASTTYPE_HPP_
 #define BROADCASTTYPE_HPP_
 
-#include "confobject.hpp"
 #include "yaml/broadcasttype.hpp"
 
 #include <string>
 
-class BroadcastType : public ConfObject {
+class BroadcastType {
 public:
   enum Enum {
     none,

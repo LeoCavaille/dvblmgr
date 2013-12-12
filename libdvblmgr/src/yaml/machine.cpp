@@ -1,7 +1,7 @@
-#include "yaml/machine.h"
-#include "machine.h"
+#include "yaml/machine.hpp"
+#include "machine.hpp"
 
-#include "adapter.h"
+#include "adapter.hpp"
 
 YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
   Node node;
@@ -16,7 +16,7 @@ YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
 bool YAML::convert<MachinePtr>::decode(const YAML::Node &node, MachinePtr &rhs) {
   rhs->name_ = node["name"].as<std::string>();
   for(auto &adapterNode : node["adapters"]){
-    AdapterPtr aPtr = std::make_shared<Adapter>(rhs->config_.lock(), rhs);
+    AdapterPtr aPtr = std::make_shared<Adapter>(rhs);
     YAML::convert<AdapterPtr>::decode(adapterNode, aPtr);
     rhs->adapters_.push_back(aPtr);
   }

@@ -7,13 +7,12 @@
 #include "ptr/channel.hpp"
 
 #include "yaml/multiplex.hpp"
-#include "confobject.hpp"
 
 #include <string>
 #include <vector>
 
 
-class Multiplex : public ConfObject {
+class Multiplex {
 public:
   virtual bool isCompatible(const AdapterPtr &a) const = 0;
 

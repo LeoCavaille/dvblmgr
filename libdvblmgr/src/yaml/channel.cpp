@@ -1,5 +1,5 @@
-#include "yaml/channel.h"
-#include "channel.h"
+#include "yaml/channel.hpp"
+#include "channel.hpp"
 
 YAML::Node YAML::convert<ChannelPtr>::encode(const ChannelPtr &rhs) {
   Node node;

@@ -1,5 +1,5 @@
-#include "yaml/antenna.h"
-#include "antenna.h"
+#include "yaml/antenna.hpp"
+#include "antenna.hpp"
 
 YAML::Node YAML::convert<AntennaPtr>::encode(const AntennaPtr &rhs) {
   Node node;

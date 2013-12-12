@@ -1,18 +1,18 @@
 
 // We need the MultiplexSat definition because we fill in the class members
-#include "multiplexsat.h"
+#include "multiplexsat.hpp"
 // We need also these definitions because we create objects (later referenced
 // by Ptr) inside MultiplexSat structure
-#include "modulation.h"
-#include "polarization.h"
-#include "antenna.h"
+#include "modulation.hpp"
+#include "polarization.hpp"
+#include "antenna.hpp"
 
 // Include the definition of these YAML functions (however useless because already
-// included with multiplexsat.h)
-#include "yaml/multiplexsat.h"
+// included with multiplexsat.hpp)
+#include "yaml/multiplexsat.hpp"
 // We need the parent class YAML convert functions as well to fill in the base class
 // member
-#include "yaml/multiplex.h"
+#include "yaml/multiplex.hpp"
 
 
 YAML::Node YAML::convert<MultiplexSatPtr>::encode(const MultiplexSatPtr &rhs) {

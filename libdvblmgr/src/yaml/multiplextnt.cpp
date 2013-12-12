@@ -1,5 +1,5 @@
-#include "multiplextnt.h"
-#include "yaml/multiplextnt.h"
+#include "multiplextnt.hpp"
+#include "yaml/multiplextnt.hpp"
 
 YAML::Node YAML::convert<MultiplexTntPtr>::encode(const MultiplexTntPtr &rhs) {
   Node node = YAML::convert<MultiplexPtr>::encode(rhs);

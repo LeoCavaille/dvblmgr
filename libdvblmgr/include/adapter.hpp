@@ -4,15 +4,15 @@
 #include "ptr/machine.hpp"
 #include "ptr/antenna.hpp"
 #include "ptr/broadcasttype.hpp"
-#include "confobject.hpp"
+
 #include "yaml/adapter.hpp"
 
 #include <vector>
 
-class Adapter : public ConfObject {
+class Adapter {
 public:
   Adapter();
-  Adapter(const ConfigurationPtr& cPtr, const MachinePtr &mPtr);
+  Adapter(const MachinePtr &mPtr);
   Adapter(unsigned char id, unsigned char frontendId,
           const AntennaPtr &antennaPtr,
           const std::vector<BroadcastTypePtr> &compats);

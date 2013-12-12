@@ -1,5 +1,5 @@
-#include "yaml/polarization.h"
-#include "polarization.h"
+#include "yaml/polarization.hpp"
+#include "polarization.hpp"
 
 YAML::Node YAML::convert<PolarizationPtr>::encode(const PolarizationPtr &rhs) {
   Node node;

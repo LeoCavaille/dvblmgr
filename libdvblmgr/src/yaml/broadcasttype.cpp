@@ -1,5 +1,5 @@
-#include "yaml/broadcasttype.h"
-#include "broadcasttype.h"
+#include "yaml/broadcasttype.hpp"
+#include "broadcasttype.hpp"
 
 YAML::Node YAML::convert<BroadcastTypePtr>::encode(const BroadcastTypePtr &rhs) {
   Node node;

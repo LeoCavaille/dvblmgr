@@ -1,14 +1,12 @@
 #ifndef POLARIZATION_HPP_
 #define POLARIZATION_HPP_
 
-#include "confobject.hpp"
 #include "yaml/polarization.hpp"
 
 #include <string>
 
 
-
-class Polarization : public ConfObject {
+class Polarization {
 public:
   enum Enum {
     none,

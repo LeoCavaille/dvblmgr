@@ -2,11 +2,10 @@
 #define MODULATION_HPP_
 
 #include "yaml/modulation.hpp"
-#include "confobject.hpp"
 
 #include <string>
 
-class Modulation : public ConfObject {
+class Modulation {
 public:
   enum Enum {
     none,

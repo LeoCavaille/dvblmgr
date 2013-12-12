@@ -1,12 +1,11 @@
 #ifndef ANTENNA_HPP_
 #define ANTENNA_HPP_
 
-#include "confobject.hpp"
 #include "yaml/antenna.hpp"
 
 #include <string>
 
-class Antenna : public ConfObject {
+class Antenna {
 public:
   Antenna();
   Antenna(const std::string &name);

@@ -2,12 +2,11 @@
 #define CHANNEL_HPP_
 
 #include "yaml/channel.hpp"
-#include "confobject.hpp"
 
 #include <vector>
 #include <string>
 
-class Channel : public ConfObject {
+class Channel {
 public:
   Channel();
   Channel(const std::string name, const unsigned int &sid,

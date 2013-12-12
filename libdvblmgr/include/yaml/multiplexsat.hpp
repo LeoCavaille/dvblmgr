@@ -1,7 +1,7 @@
 #ifndef YAML_MULTIPLEXSAT_HPP_
 #define YAML_MULTIPLEXSAT_HPP_
 
-#include "multiplexsat_ptr.hpp"
+#include "ptr/multiplexsat.hpp"
 #include <yaml-cpp/yaml.h>
 
 class MultiplexSat;

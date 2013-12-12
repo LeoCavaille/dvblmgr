@@ -1,5 +1,5 @@
-#include "yaml/modulation.h"
-#include "modulation.h"
+#include "yaml/modulation.hpp"
+#include "modulation.hpp"
 
 YAML::Node YAML::convert<ModulationPtr>::encode(const ModulationPtr &rhs) {
   Node node;

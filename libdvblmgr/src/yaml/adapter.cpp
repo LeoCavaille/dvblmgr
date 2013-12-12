@@ -1,8 +1,8 @@
-#include "yaml/adapter.h"
-#include "adapter.h"
+#include "yaml/adapter.hpp"
+#include "adapter.hpp"
 
-#include "broadcasttype.h"
-#include "antenna.h"
+#include "broadcasttype.hpp"
+#include "antenna.hpp"
 
 
 YAML::Node YAML::convert<AdapterPtr>::encode(const AdapterPtr &rhs) {

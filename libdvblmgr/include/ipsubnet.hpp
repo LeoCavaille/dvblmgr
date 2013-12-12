@@ -1,13 +1,11 @@
 #ifndef IPSUBNET_HPP_
 #define IPSUBNET_HPP_
 
-#include "confobject.hpp"
-
 #include <set>
 #include <string>
 #include <arpa/inet.h>
 
-class IPSubnet : public ConfObject {
+class IPSubnet {
 public:
   IPSubnet(const in_addr &baseIP, const int &netmask);
 

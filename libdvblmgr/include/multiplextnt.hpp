@@ -5,8 +5,6 @@
 
 #include "yaml/multiplextnt.hpp"
 
-class MultiplexTnt;
-
 class MultiplexTnt : public Multiplex {
 public:
   MultiplexTnt();

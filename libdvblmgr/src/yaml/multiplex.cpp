@@ -1,9 +1,9 @@
-#include "yaml/multiplex.h"
-#include "multiplex.h"
+#include "yaml/multiplex.hpp"
+#include "multiplex.hpp"
 
-#include "antenna_yaml.h"
-#include "broadcasttype.h"
-#include "channel.h"
+#include "yaml/antenna.hpp"
+#include "broadcasttype.hpp"
+#include "channel.hpp"
 
 
 YAML::Node YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs) {

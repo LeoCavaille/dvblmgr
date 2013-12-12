@@ -7,7 +7,7 @@
 
 Adapter::Adapter() {}
 
-Adapter::Adapter(const ConfigurationPtr& cPtr, const MachinePtr &mPtr) : ConfObject(cPtr), machine_(mPtr) {}
+Adapter::Adapter(const MachinePtr &mPtr) : machine_(mPtr) {}
 
 Adapter::Adapter(unsigned char id, unsigned char frontendId,
                  const AntennaPtr &antennaPtr,

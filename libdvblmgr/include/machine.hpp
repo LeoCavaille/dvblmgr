@@ -4,17 +4,13 @@
 #include "yaml/machine.hpp"
 #include "ptr/adapter.hpp"
 
-#include "confobject.hpp"
-
 #include <boost/uuid/uuid.hpp>
 #include <string>
 #include <vector>
 
-class Machine :
-	public ConfObject {
+class Machine {
 public:
   Machine();
-  Machine(const ConfigurationPtr& cPtr);
 
   friend YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs);
   friend bool YAML::convert<MachinePtr>::decode(const YAML::Node &node,

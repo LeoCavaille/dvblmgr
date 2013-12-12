@@ -40,6 +40,7 @@ make -j8
 ```
 
 On *Mac OS* with homebrew you may have to use `-DYAMLCPP_STATIC_LIBRARY=1` in cmake because you don't have the dynamic library files for yaml-cpp.
+By default Release mode is enables, to include debug symbols and extra warnings when you are developping you can switch to Debug mode in cmake with `-DCMAKE_BUILD_TYPE=Debug`
 
 
 Testing
