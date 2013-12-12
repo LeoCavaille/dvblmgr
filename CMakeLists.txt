@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 2.8)
 
+set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -pedantic -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
 project(dvblmgr-suite)
 
 # Build the public shared libdvblmgr
 add_subdirectory(libdvblmgr)
+
+# Build the server binary dvblmgr
+add_subdirectory(dvblmgr)
 
 # include(${CMAKE_CURRENT_SOURCE_DIR}/FindYamlCMakeLists.txt)
 # set(CMAKE_CXX_FLAGS "-g -Wall -Wextra -pedantic -std=c++11 -O0")

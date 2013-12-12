@@ -39,8 +39,7 @@ std::string Modulation::ToString(const Modulation::Enum &m) {
   case none: { return "NONE"; }
   case qpsk: { return "QPSK"; }
   case eightpsk: { return "8PSK"; }
+  default: { return "INVALID"; }
   }
-
-  return "INVALID";
 }
 

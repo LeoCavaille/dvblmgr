@@ -1,6 +1,6 @@
 project(libdvblmgr)
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -fPIC")
+set(CMAKE_CXX_FLAGS "-std=c++11 ")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -pedantic -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
@@ -9,7 +9,6 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 ###########
 # Find yaml-cpp library
 include( ${PROJECT_SOURCE_DIR}/FindYamlCMakeLists.txt )
-find_package( Threads )
 
 
 # The public .h files of libdvblmgr

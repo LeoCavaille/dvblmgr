@@ -1,7 +1,7 @@
 #ifndef SERVERRUNNER_HPP_
 #define SERVERRUNNER_HPP_
 
-#include "configuration_ptr.h"
+#include "ptr/configuration.hpp"
 #include "commanddispatcher_ptr.hpp"
 #include "broadcastlistgenerator_ptr.hpp"
 #include "watchdog_ptr.hpp"

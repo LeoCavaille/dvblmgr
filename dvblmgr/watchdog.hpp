@@ -1,7 +1,7 @@
 #ifndef WATCHDOG_H_
 #define WATCHDOG_H_
 
-#include "configuration_ptr.h"
+#include "ptr/configuration.hpp"
 #include "commanddispatcher_ptr.hpp"
 #include <map>
 

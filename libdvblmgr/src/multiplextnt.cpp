@@ -1,7 +1,7 @@
 #include "multiplextnt.hpp"
 #include "broadcasttype.hpp"
 
-MultiplexTnt::MultiplexTnt() {};
+MultiplexTnt::MultiplexTnt() {}
 
 MultiplexTnt::MultiplexTnt(std::string name,
     unsigned int frequency,

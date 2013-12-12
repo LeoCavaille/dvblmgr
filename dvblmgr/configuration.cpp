@@ -1,8 +1,8 @@
 #include "configuration.hpp"
 
-#include "multiplextnt.h"
-#include "multiplexsat.h"
-#include "machine.h"
+#include "multiplextnt.hpp"
+#include "multiplexsat.hpp"
+#include "machine.hpp"
 
 #include "configuration_exceptions.hpp"
 
@@ -127,7 +127,7 @@ void Configuration::parseMachines() {
     return;
   }
   for (auto const &m : config_["machines"]) {
-    MachinePtr mPtr = std::make_shared<Machine>(getSelfPtr());
+    MachinePtr mPtr = std::make_shared<Machine>();
     YAML::convert<MachinePtr>::decode(m, mPtr);
     machines_.push_back(mPtr);
   }

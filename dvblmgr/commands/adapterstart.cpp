@@ -1,6 +1,6 @@
 #include "adapterstart.hpp"
-#include "adapter.h"
-#include "machine.h"
+#include "adapter.hpp"
+#include "machine.hpp"
 
 AdapterStartCommand::AdapterStartCommand(const AdapterPtr &aPtr, const MultiplexPtr &mPtr) {
 	type_ = Type_;

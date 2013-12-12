@@ -1,7 +1,7 @@
 #ifndef HEARTBEAT_HPP_
 #define HEARTBEAT_HPP_
 
-#include "machine_ptr.h"
+#include "ptr/machine.hpp"
 
 #include "../command.hpp"
 

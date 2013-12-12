@@ -1,8 +1,8 @@
 #include "broadcastlistgenerator.hpp"
 #include "configuration.hpp"
-#include "multiplex.h"
-#include "machine.h"
-#include "adapter.h"
+#include "multiplex.hpp"
+#include "machine.hpp"
+#include "adapter.hpp"
 
 #include "commands/adapterstart.hpp"
 

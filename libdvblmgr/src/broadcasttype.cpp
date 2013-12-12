@@ -44,8 +44,7 @@ std::string BroadcastType::ToString(const BroadcastType::Enum &m) {
   case dvbs: { return "DVB-S"; }
   case dvbstwo: { return "DVB-S2"; }
   case dvbt: { return "DVB-T"; }
+  default: { return "INVALID"; }
   }
-
-  return "INVALID";
 }
 

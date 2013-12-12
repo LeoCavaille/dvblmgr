@@ -1,6 +1,6 @@
 #include "watchdog.hpp"
 #include "configuration.hpp"
-#include "machine.h"
+#include "machine.hpp"
 #include "commanddispatcher.hpp"
 #include "commands/heartbeat.hpp"
 

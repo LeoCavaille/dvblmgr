@@ -1,5 +1,5 @@
 #include "heartbeat.hpp"
-#include "machine.h"
+#include "machine.hpp"
 
 Heartbeat::Heartbeat(const MachinePtr &mPtr) {
 	type_ = Type_;

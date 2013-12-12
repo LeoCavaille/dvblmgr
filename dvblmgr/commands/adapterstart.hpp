@@ -1,8 +1,8 @@
 #ifndef ADAPTERSTART_HPP_
 #define ADAPTERSTART_HPP_
 
-#include "adapter_ptr.h"
-#include "multiplex_ptr.h"
+#include "ptr/adapter.hpp"
+#include "ptr/multiplex.hpp"
 
 #include "../command.hpp"
 
