@@ -10,7 +10,7 @@ project(dvblmgr-suite)
 # We use the googletest framework for our test test_units_library
 add_subdirectory(lib/gtest-1.7.0)
 enable_testing()
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ${YAMLCPP_INCLUDE_DIR})
 
 
 # Build the public shared libdvblmgr
