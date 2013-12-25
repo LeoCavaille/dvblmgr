@@ -4,13 +4,6 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra -pedantic -O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
-###########
-# Dependencies
-###########
-# Find yaml-cpp library
-include( ${PROJECT_SOURCE_DIR}/FindYamlCMakeLists.txt )
-
-
 # The public .h files of libdvblmgr
 include_directories(${COMMON_INCLUDES} ${PROJECT_SOURCE_DIR}/include)
 

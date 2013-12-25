@@ -6,6 +6,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 project(dvblmgr-suite)
 
+################
+# Dependencies #
+################
+
+# Find yaml-cpp library
+include( ${PROJECT_SOURCE_DIR}/FindYamlCMakeLists.txt )
+
 
 # We use the googletest framework for our test test_units_library
 add_subdirectory(lib/gtest-1.7.0)
