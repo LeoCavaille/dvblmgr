@@ -15,7 +15,30 @@ include( ${PROJECT_SOURCE_DIR}/FindYamlCMakeLists.txt )
 include_directories(${COMMON_INCLUDES} ${PROJECT_SOURCE_DIR}/include)
 
 # The .cpp implementation files
-file(GLOB_RECURSE LIB_SOURCES ${PROJECT_SOURCE_DIR}/src/ *.cpp)
+set (
+	LIB_SOURCES
+	src/adapter.cpp
+	src/antenna.cpp
+	src/broadcasttype.cpp
+	src/channel.cpp
+	src/ipsubnet.cpp
+	src/machine.cpp
+	src/modulation.cpp
+	src/multiplex.cpp
+	src/multiplexsat.cpp
+	src/multiplextnt.cpp
+	src/polarization.cpp
+	src/yaml/adapter.cpp
+	src/yaml/antenna.cpp
+	src/yaml/broadcasttype.cpp
+	src/yaml/channel.cpp
+	src/yaml/machine.cpp
+	src/yaml/modulation.cpp
+	src/yaml/multiplex.cpp
+	src/yaml/multiplexsat.cpp
+	src/yaml/multiplextnt.cpp
+	src/yaml/polarization.cpp
+)
 
 add_library(libdvblmgr_objects OBJECT ${LIB_SOURCES})
 add_library(dvblmgr_shared SHARED $<TARGET_OBJECTS:libdvblmgr_objects>)
@@ -33,15 +56,25 @@ set_target_properties(dvblmgr_static PROPERTIES OUTPUT_NAME dvblmgr)
 ##############
 
 # The .cpp test files
-file(GLOB test_units_library ${PROJECT_SOURCE_DIR}/test/ test_*.cpp)
+set(
+	TEST_UNITS_SOURCES
+	test/test_adapter.cpp
+	test/test_antenna.cpp
+	test/test_broadcasttype.cpp
+	test/test_channel.cpp
+	test/test_ipsubnet.cpp
+	test/test_machine.cpp
+	test/test_multiplex.cpp
+	test/test_polarization.cpp
+)
 
-add_executable(runTests ${test_units_library} test/main.cpp)
+add_executable(runTestsLibrary ${TEST_UNITS_SOURCES} test/main.cpp)
 # Standard linking to gtest stuff.
-target_link_libraries(runTests gtest gtest_main)
+target_link_libraries(runTestsLibrary gtest gtest_main)
 # Extra linking for the project.
-target_link_libraries(runTests libdvblmgr ${YAMLCPP_LIBRARY})
+target_link_libraries(runTestsLibrary dvblmgr_shared ${YAMLCPP_LIBRARY})
 # Create a symlink to the build directory
-ADD_CUSTOM_COMMAND( TARGET runTests
+ADD_CUSTOM_COMMAND( TARGET runTestsLibrary
 					POST_BUILD
                     COMMAND ln -s ${PROJECT_SOURCE_DIR}/../yaml ${CMAKE_BINARY_DIR}/yaml
                     COMMENT "Generating symbolic link in test folder for yaml fixtures")
