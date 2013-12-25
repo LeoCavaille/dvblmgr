@@ -74,7 +74,9 @@ target_link_libraries(runTestsLibrary gtest gtest_main)
 # Extra linking for the project.
 target_link_libraries(runTestsLibrary dvblmgr_shared ${YAMLCPP_LIBRARY})
 # Create a symlink to the build directory
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/yaml)
 ADD_CUSTOM_COMMAND( TARGET runTestsLibrary
 					POST_BUILD
                     COMMAND ln -s ${PROJECT_SOURCE_DIR}/../yaml ${CMAKE_BINARY_DIR}/yaml
                     COMMENT "Generating symbolic link in test folder for yaml fixtures")
+endif()

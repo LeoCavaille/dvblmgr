@@ -18,7 +18,9 @@ TEST(ConfigurationTest, LoadSaveGoodConfig) {
   std::stringstream yamlBuffer;
   {
     cout_redirect scopedRedirect(yamlBuffer.rdbuf());
-    cPtr->save();
+    // TODO: do not save here cause we will alter a file in the repo
+    // we should find a trick to copy the file and use this one
+    //cPtr->save();
   }
 
   YAML::Node yamlReloaded = YAML::Load(yamlBuffer.str());
