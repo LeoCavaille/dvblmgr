@@ -45,6 +45,7 @@ include_directories(${COMMON_INCLUDES} ${PROJECT_SOURCE_DIR}/src)
 set(
 	TEST_UNITS_SOURCES
 	test/test_configuration.cpp
+	test/test_broadcastlistgenerator.cpp
 )
 
 add_executable(runTestsDvblmgr ${TEST_UNITS_SOURCES} test/main.cpp $<TARGET_OBJECTS:dvblmgr_sources>)
