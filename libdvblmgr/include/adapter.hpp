@@ -4,6 +4,7 @@
 #include "ptr/machine.hpp"
 #include "ptr/antenna.hpp"
 #include "ptr/broadcasttype.hpp"
+#include "ptr/multiplex.hpp"
 
 #include "yaml/adapter.hpp"
 
@@ -18,6 +19,7 @@ public:
           const std::vector<BroadcastTypePtr> &compats);
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
+  bool isCompatible(const MultiplexPtr &m) const;
   unsigned int compatibilityCount() const { return compats_.size(); };
 
   MachinePtr getMachine() const;

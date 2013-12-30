@@ -1,5 +1,7 @@
 #include "adapter.hpp"
 #include "broadcasttype.hpp"
+#include "multiplex.hpp"
+#include "multiplexsat.hpp"
 #include "antenna.hpp"
 
 #include "vectorcompare.hpp"
@@ -20,6 +22,16 @@ bool Adapter::isCompatible(const BroadcastTypePtr &bt) const {
                 compats_.begin(), compats_.end(),
                 [&bt](const BroadcastTypePtr & p) { return *bt == *p; });
   return (it != compats_.end());
+}
+
+bool Adapter::isCompatible(const MultiplexPtr &m) const {
+  // If it is a SatMultiplex, we have to check the antenna
+  MultiplexSatPtr psat = std::dynamic_pointer_cast<MultiplexSat>(m);
+  if (psat != nullptr) {
+    return this->isCompatible(m->getBroadcastType()) && *(psat->getAntenna()) == *antennaPtr_;
+  }
+
+  return this->isCompatible(m->getBroadcastType());
 }
 
 bool Adapter::operator==(const Adapter &rhs) const {

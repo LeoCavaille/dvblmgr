@@ -73,7 +73,7 @@ Assignement BroadcastListGenerator::generateAssignement() {
   // Assign multiplexs
   for(auto const &m : multiplexs) {
     for (unsigned int i=0; i<availableAdapters.size(); ++i) {
-      if(availableAdapters[i]->isCompatible(m->getBroadcastType())) {
+      if(availableAdapters[i]->isCompatible(m)) {
         assignement.insert(std::make_pair(availableAdapters[i], m));
         availableAdapters.erase(availableAdapters.begin() + i);
         break;
