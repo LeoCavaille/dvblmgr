@@ -27,7 +27,10 @@ int main(int argc, char *argv[]) {
 	 confFile = std::string(argv[1]);
   }
 
-  sr = new ServerRunner(confFile);
+  boost::asio::io_service io_service;
+  tcp::endpoint endpoint(tcp::v4(), 4242);
+
+  sr = new ServerRunner(confFile, io_service, endpoint);
   sr->start();
 
   while(true) {

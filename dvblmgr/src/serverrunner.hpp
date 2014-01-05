@@ -9,6 +9,8 @@
 #include <mutex>
 #include <string>
 
+#include <boost/asio/io_service.hpp>
+
 class ServerRunner {
 public:
 	ServerRunner(const std::string& confFile);
@@ -34,6 +36,9 @@ private:
 
 	std::mutex mutex_;
 	bool stopFlag_;
+
+	boost::asio::io_service& b_ioService_;
+
 };
 
 
