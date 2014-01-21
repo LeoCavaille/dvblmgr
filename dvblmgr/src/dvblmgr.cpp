@@ -3,6 +3,8 @@
 #include <thread>
 #include <csignal>
 
+#include <boost/asio.hpp>
+
 ServerRunner * sr = nullptr;
 
 void signalHandler (int signum) {
@@ -27,10 +29,11 @@ int main(int argc, char *argv[]) {
 	 confFile = std::string(argv[1]);
   }
 
-  boost::asio::io_service io_service;
-  tcp::endpoint endpoint(tcp::v4(), 4242);
+  boost::asio::io_service ioService;
+  int port = 4242;
+  boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 
-  sr = new ServerRunner(confFile, io_service, endpoint);
+  sr = new ServerRunner(confFile, ioService, endpoint);
   sr->start();
 
   while(true) {

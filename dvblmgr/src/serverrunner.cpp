@@ -7,9 +7,13 @@
 #include "broadcastlistgenerator.hpp"
 #include "watchdog.hpp"
 
+#include "clientconnection.hpp"
 
-ServerRunner::ServerRunner(const std::string& confFile) :
-stopFlag_(false)
+#include <boost/bind.hpp>
+
+
+ServerRunner::ServerRunner(const std::string& confFile, boost::asio::io_service& ioService, const boost::asio::ip::tcp::endpoint& endpoint) :
+stopFlag_(false), b_ioService_(ioService), b_acceptor_(ioService, endpoint)
 {
   // Load our configuration
   configPtr_ = std::make_shared<Configuration>(confFile);
@@ -19,9 +23,29 @@ stopFlag_(false)
 	  std::cerr << "ERROR: In configuration handling: " << e.what() << std::endl;
 	  exit(EXIT_FAILURE);
   }
+
+  // Launch the asynchronous TCP server
+  b_tcpThread_ = std::thread(&ServerRunner::waitForConnection, this);
+
   commandDispatcherPtr_ = std::make_shared<CommandDispatcher>();
   watchdogPtr_ = std::make_shared<Watchdog>(configPtr_, commandDispatcherPtr_);
   broadcastListGeneratorPtr_ = std::make_shared<BroadcastListGenerator>(configPtr_);
+}
+
+void ServerRunner::waitForConnection() {
+	ClientConnectionPtr newConnectionPtr = std::make_shared<ClientConnection>(b_ioService_);
+	b_acceptor_.async_accept(newConnectionPtr->getSocket(), std::bind(&ServerRunner::handleAccept, this, std::placeholders::_1, newConnectionPtr));
+}
+
+void ServerRunner::handleAccept(const boost::system::error_code& error, ClientConnectionPtr newConnection) {
+	if(! error)
+	{
+		std::cout << "Connection acceptée de : " << newConnection->getSocket().remote_endpoint().address().to_string() << std::endl;
+	}
+	else
+	{
+		std::cerr << "handleAccept failed" << std::endl;
+	}
 }
 
 void ServerRunner::start() {

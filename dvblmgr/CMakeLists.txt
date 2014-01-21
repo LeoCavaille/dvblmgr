@@ -12,6 +12,7 @@ add_library(
 	dvblmgr_sources
 	OBJECT
 	src/broadcastlistgenerator.cpp
+	src/clientconnection.cpp
 	src/command.cpp
 	src/commanddispatcher.cpp
 	src/commands/adapterstart.cpp
@@ -22,11 +23,19 @@ add_library(
 )
 
 find_package(Threads)
+find_package(Boost 1.54.0 REQUIRED COMPONENTS system)
+
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    link_directories(${Boost_LIBRARY_DIRS})
+endif(Boost_FOUND)
 
 # dvblmgr.cpp file is apart because it has the main() function
 add_executable(dvblmgr_binary src/dvblmgr.cpp $<TARGET_OBJECTS:dvblmgr_sources>)
 set_target_properties(dvblmgr_binary PROPERTIES OUTPUT_NAME dvblmgr)
 
+# Link with boost
+target_link_libraries(dvblmgr_binary ${Boost_SYSTEM_LIBRARY})
 # Link with yaml-cpp
 target_link_libraries(dvblmgr_binary ${YAMLCPP_LIBRARY})
 # Link with -pthread
@@ -54,4 +63,4 @@ add_executable(runTestsDvblmgr ${TEST_UNITS_SOURCES} test/main.cpp $<TARGET_OBJE
 # Standard linking to gtest stuff.
 target_link_libraries(runTestsDvblmgr gtest gtest_main)
 # Extra linking for the project.
-target_link_libraries(runTestsDvblmgr dvblmgr_shared ${YAMLCPP_LIBRARY})
+target_link_libraries(runTestsDvblmgr dvblmgr_shared ${YAMLCPP_LIBRARY} ${Boost_SYSTEM_LIBRARY})
