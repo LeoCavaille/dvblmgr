@@ -33,6 +33,8 @@ target_link_libraries(dvblmgr_binary ${YAMLCPP_LIBRARY})
 target_link_libraries(dvblmgr_binary ${CMAKE_THREAD_LIBS_INIT})
 # Link with our shared libdvblmgr
 target_link_libraries(dvblmgr_binary dvblmgr_shared)
+# Link with protobuf messages
+target_link_libraries(dvblmgr_binary libdvblmgrprotobuf)
 
 
 ##############

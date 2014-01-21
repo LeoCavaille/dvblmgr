@@ -8,4 +8,7 @@ file(
     *.proto
 )
 
-PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${ProtoFiles})
+PROTOBUF_GENERATE_CPP(PROTOBUF_SRCS PROTOBUF_HDRS ${ProtoFiles})
+
+add_library(libdvblmgrprotobuf STATIC ${PROTOBUF_SRCS})
+target_link_libraries(libdvblmgrprotobuf ${PROTOBUF_LIBRARY})
