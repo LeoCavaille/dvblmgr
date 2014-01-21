@@ -16,7 +16,7 @@ class BroadcastListGenerator {
 public:
   BroadcastListGenerator() {};
   BroadcastListGenerator(ConfigurationPtr configurationPtr)
-    : configurationPtr_(configurationPtr), stopSignal_(false) {};
+    : configurationPtr_(configurationPtr), stopSignal_(false), offline_(false) {};
 
   Assignement generateAssignement();
   void updateAssignement(const Assignement& map); // Et un dispatcher
@@ -24,6 +24,7 @@ public:
   void start();
   void stop();
 
+  void setOffline(bool offline) { offline_ = offline; };
 
 private:
   void mainLoop();
@@ -31,6 +32,7 @@ private:
   Assignement assignement_;
   ConfigurationPtr configurationPtr_;
 
+  bool offline_;
   std::mutex mutex_;
   bool stopSignal_;
   std::thread generatorThread_;

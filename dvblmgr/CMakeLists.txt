@@ -33,6 +33,8 @@ target_link_libraries(dvblmgr_binary ${YAMLCPP_LIBRARY})
 target_link_libraries(dvblmgr_binary ${CMAKE_THREAD_LIBS_INIT})
 # Link with our shared libdvblmgr
 target_link_libraries(dvblmgr_binary dvblmgr_shared)
+# Link with protobuf messages
+target_link_libraries(dvblmgr_binary libdvblmgrprotobuf)
 
 
 ##############
@@ -45,6 +47,7 @@ include_directories(${COMMON_INCLUDES} ${PROJECT_SOURCE_DIR}/src)
 set(
 	TEST_UNITS_SOURCES
 	test/test_configuration.cpp
+	test/test_broadcastlistgenerator.cpp
 )
 
 add_executable(runTestsDvblmgr ${TEST_UNITS_SOURCES} test/main.cpp $<TARGET_OBJECTS:dvblmgr_sources>)

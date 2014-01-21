@@ -47,13 +47,14 @@ void BroadcastListGenerator::stop() {
 Assignement BroadcastListGenerator::generateAssignement() {
   std::vector<AdapterPtr> availableAdapters;
   std::vector<MultiplexPtr> multiplexs = configurationPtr_->getMultiplexs();
+  Assignement assignement;
 
 
   for(auto const &mPtr : configurationPtr_->getMachines()) {
-	if (! mPtr->connected())
-	  continue;
-    for(auto const &aPtr : mPtr->getAdapters()) {
-      availableAdapters.push_back(aPtr);
+	  if (offline_ || mPtr->connected()) {
+      for(auto const &aPtr : mPtr->getAdapters()) {
+        availableAdapters.push_back(aPtr);
+      }
     }
   }
 
@@ -71,14 +72,14 @@ Assignement BroadcastListGenerator::generateAssignement() {
 
   // Assign multiplexs
   for(auto const &m : multiplexs) {
-    unsigned int i = 0;
-    while(i<availableAdapters.size()) {
-      if(availableAdapters[i]->isCompatible(m->getBroadcastType())) {
-        // ADD IT
+    for (unsigned int i=0; i<availableAdapters.size(); ++i) {
+      if(availableAdapters[i]->isCompatible(m)) {
+        assignement.insert(std::make_pair(availableAdapters[i], m));
+        availableAdapters.erase(availableAdapters.begin() + i);
+        break;
       }
-      i++;
     }
   }
 
-  return Assignement();
+  return assignement;
 }

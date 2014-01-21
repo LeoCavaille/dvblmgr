@@ -26,6 +26,8 @@ public:
   friend bool YAML::convert<MultiplexSatPtr>::decode(const YAML::Node &node,
                                              MultiplexSatPtr rhs);
 
+  AntennaPtr getAntenna() { return antennaPtr_; };
+
   bool operator==(const MultiplexSat &rhs) const;
   bool operator!=(const MultiplexSat &rhs) const;
 private:
