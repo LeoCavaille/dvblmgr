@@ -23,7 +23,7 @@ add_library(
 )
 
 find_package(Threads)
-find_package(Boost 1.54.0 REQUIRED COMPONENTS system)
+find_package(Boost 1.49.0 REQUIRED COMPONENTS system)
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
