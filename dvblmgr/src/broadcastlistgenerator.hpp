@@ -9,22 +9,24 @@
 #include <mutex>
 #include <thread>
 
-
 typedef std::map<AdapterPtr, MultiplexPtr> Assignement;
 
 class BroadcastListGenerator {
 public:
   BroadcastListGenerator() {};
   BroadcastListGenerator(ConfigurationPtr configurationPtr)
-    : configurationPtr_(configurationPtr), offline_(false), stopSignal_(false) {};
+      : configurationPtr_(configurationPtr), offline_(false),
+        stopSignal_(false) {};
 
   Assignement generateAssignement();
-  void updateAssignement(const Assignement& map); // Et un dispatcher
+  void updateAssignement(const Assignement &map); // Et un dispatcher
 
   void start();
   void stop();
 
-  void setOffline(bool offline) { offline_ = offline; };
+  void setOffline(bool offline) {
+    offline_ = offline;
+  };
 
 private:
   void mainLoop();
@@ -37,6 +39,5 @@ private:
   bool stopSignal_;
   std::thread generatorThread_;
 };
-
 
 #endif /* BROADCASTLISTGENERATOR_H_ */

@@ -5,7 +5,7 @@
 TEST(BroadcastTypeTest, DVBSYamlParse) {
   YAML::Node doc = YAML::LoadFile("yaml/broadcasttype/dvbs.yaml");
   BroadcastTypePtr p = std::make_shared<BroadcastType>();
-  
+
   ASSERT_TRUE(YAML::convert<BroadcastTypePtr>::decode(doc["broadcastType"], p));
   ASSERT_EQ(*p, BroadcastType::dvbs);
 }
@@ -30,6 +30,7 @@ TEST(BroadcastTypeTest, InvalidYamlParse) {
   YAML::Node doc = YAML::LoadFile("yaml/broadcasttype/bad.yaml");
   BroadcastTypePtr p = std::make_shared<BroadcastType>();
 
-  ASSERT_FALSE(YAML::convert<BroadcastTypePtr>::decode(doc["broadcastType"], p));
+  ASSERT_FALSE(
+      YAML::convert<BroadcastTypePtr>::decode(doc["broadcastType"], p));
   ASSERT_EQ(*p, BroadcastType::invalid);
 }

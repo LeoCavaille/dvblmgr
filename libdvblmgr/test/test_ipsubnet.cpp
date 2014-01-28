@@ -75,9 +75,9 @@ TEST(IPSubnetTest, GetMultiple) {
   fromPool = sub.get();
   ASSERT_EQ(fromPool.s_addr, addr);
   fromPool = sub.get();
-  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr)+1));
+  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr) + 1));
   fromPool = sub.get();
-  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr)+2));
+  ASSERT_EQ(fromPool.s_addr, ntohl(htonl(addr) + 2));
 
   ASSERT_EQ(sub.getBusyCount(), 3);
 }
@@ -87,10 +87,9 @@ TEST(IPSubnetTest, GetUntilNoMore) {
   inet_pton(AF_INET, "239.255.42.0", &b);
   IPSubnet sub(b, 24);
 
-  for(int i = 0; i < 256; i++)
-  {
+  for (int i = 0; i < 256; i++) {
     sub.get();
-    ASSERT_EQ(sub.getBusyCount(), i+1);
+    ASSERT_EQ(sub.getBusyCount(), i + 1);
   }
   // FIXME when created a dedicated exception with ASSERT_THROW()
   ASSERT_ANY_THROW(sub.get());
@@ -133,6 +132,6 @@ TEST(IPSubnetTest, GetAndReleaseMultiple) {
   // 239.255.42.0 in little endian
   uint32_t addr = 0x002AFFEF;
 
-  ASSERT_EQ(e.s_addr, ntohl(htonl(addr)+2));
-  ASSERT_EQ(g.s_addr, ntohl(htonl(addr)+4));
+  ASSERT_EQ(e.s_addr, ntohl(htonl(addr) + 2));
+  ASSERT_EQ(g.s_addr, ntohl(htonl(addr) + 4));
 }

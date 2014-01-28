@@ -7,7 +7,7 @@ TEST(ChannelTest, YAMLGoodParsing) {
   ChannelPtr c = std::make_shared<Channel>();
   ASSERT_TRUE(YAML::convert<ChannelPtr>::decode(doc, c));
 
-  Channel d("France 2", 1234, {2342, 2343, 2344}, true, 100);
+  Channel d("France 2", 1234, { 2342, 2343, 2344 }, true, 100);
 
   ASSERT_EQ(*c, d);
 }
@@ -19,10 +19,9 @@ TEST(ChannelTest, YAMLBadParsing) {
 }
 
 TEST(ChannelTest, YAMLGoodEncoding) {
-  ChannelPtr d =
-      std::make_shared<Channel>("France 2", 1234, 
-                                std::vector<unsigned int> {2342, 2343, 2344},
-                                false, 42);
+  ChannelPtr d = std::make_shared<Channel>(
+      "France 2", 1234, std::vector<unsigned int>{ 2342, 2343, 2344 }, false,
+      42);
 
   YAML::Node doc;
   // Magic operator overloading!
@@ -33,4 +32,3 @@ TEST(ChannelTest, YAMLGoodEncoding) {
 
   ASSERT_EQ(*c, *d);
 }
-

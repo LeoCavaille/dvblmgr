@@ -8,16 +8,16 @@
 #include <mutex>
 #include <thread>
 
-
 class Watchdog {
 public:
   Watchdog() {};
-  Watchdog(const ConfigurationPtr &configurationPtr, const CommandDispatcherPtr &cdPtr)
-    : configurationPtr_(configurationPtr), cdPtr_(cdPtr), stopSignal_(false) {};
+  Watchdog(const ConfigurationPtr &configurationPtr,
+           const CommandDispatcherPtr &cdPtr)
+      : configurationPtr_(configurationPtr), cdPtr_(cdPtr),
+        stopSignal_(false) {};
 
   void start();
   void stop();
-
 
 private:
   void mainLoop();
@@ -29,6 +29,5 @@ private:
   bool stopSignal_;
   std::thread watchdogThread_;
 };
-
 
 #endif /* WATCHDOG_H_ */

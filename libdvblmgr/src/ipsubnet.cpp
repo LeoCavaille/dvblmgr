@@ -54,9 +54,7 @@ bool IPSubnet::contain(const std::string &address) const {
   return contain(a.s_addr);
 }
 
-int IPSubnet::getBusyCount() const {
-  return pool_.size();
-}
+int IPSubnet::getBusyCount() const { return pool_.size(); }
 
 std::string IPSubnet::string() const {
   std::ostringstream result;
@@ -76,21 +74,21 @@ u_int32_t IPSubnet::IPint32lshifted(const int &zeros) {
       result[2] = 0;
       if (zeros >= 24) {
         result[1] = 0;
-        result[0] = ((~(u_int8_t) 0) << (zeros - 24));
+        result[0] = ((~(u_int8_t)0) << (zeros - 24));
       } else {
-        result[1] = ((~(u_int8_t) 0) << (zeros - 16));
-        result[0] = (~(u_int8_t) 0);
+        result[1] = ((~(u_int8_t)0) << (zeros - 16));
+        result[0] = (~(u_int8_t)0);
       }
     } else {
-      result[2] = ((~(u_int8_t) 0) << (zeros - 8));
-      result[1] = (~(u_int8_t) 0);
-      result[0] = (~(u_int8_t) 0);
+      result[2] = ((~(u_int8_t)0) << (zeros - 8));
+      result[1] = (~(u_int8_t)0);
+      result[0] = (~(u_int8_t)0);
     }
   } else {
-    result[3] = ((~(u_int8_t) 0) << zeros);
-    result[2] = (~(u_int8_t) 0);
-    result[1] = (~(u_int8_t) 0);
-    result[0] = (~(u_int8_t) 0);
+    result[3] = ((~(u_int8_t)0) << zeros);
+    result[2] = (~(u_int8_t)0);
+    result[1] = (~(u_int8_t)0);
+    result[0] = (~(u_int8_t)0);
   }
 
   return (*((u_int32_t *)result));

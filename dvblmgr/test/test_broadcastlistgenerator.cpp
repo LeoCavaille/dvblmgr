@@ -5,7 +5,8 @@
 // #include <iostream>
 
 TEST(BroadcastlistGeneratorTest, GenerateAssignementConfig) {
-  ConfigurationPtr cPtr = std::make_shared<Configuration>("yaml/broadcastlistgenerator/good.yaml");
+  ConfigurationPtr cPtr =
+      std::make_shared<Configuration>("yaml/broadcastlistgenerator/good.yaml");
   cPtr->load();
 
   BroadcastListGenerator generator(cPtr);

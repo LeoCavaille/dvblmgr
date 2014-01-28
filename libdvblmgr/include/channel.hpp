@@ -20,7 +20,9 @@ public:
   bool operator==(const Channel &rhs) const;
   bool operator!=(const Channel &rhs) const;
 
-  unsigned int getPriority() { return priority_; };
+  unsigned int getPriority() {
+    return priority_;
+  };
 
 private:
   // Main characteristics

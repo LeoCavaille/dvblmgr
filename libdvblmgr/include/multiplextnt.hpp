@@ -8,17 +8,16 @@
 class MultiplexTnt : public Multiplex {
 public:
   MultiplexTnt();
-  MultiplexTnt(std::string name,
-    unsigned int frequency,
-    BroadcastTypePtr broadcastTypePtr,
-    std::vector<ChannelPtr> channels,
-    unsigned int bandwidth);
+  MultiplexTnt(std::string name, unsigned int frequency,
+               BroadcastTypePtr broadcastTypePtr,
+               std::vector<ChannelPtr> channels, unsigned int bandwidth);
 
   bool isCompatible(const AdapterPtr &a) const;
 
-  friend YAML::Node YAML::convert<MultiplexTntPtr>::encode(const MultiplexTntPtr &rhs);
+  friend YAML::Node
+  YAML::convert<MultiplexTntPtr>::encode(const MultiplexTntPtr &rhs);
   friend bool YAML::convert<MultiplexTntPtr>::decode(const YAML::Node &node,
-		  MultiplexTntPtr rhs);
+                                                     MultiplexTntPtr rhs);
 
   bool operator==(const MultiplexTnt &rhs) const;
   bool operator!=(const MultiplexTnt &rhs) const;

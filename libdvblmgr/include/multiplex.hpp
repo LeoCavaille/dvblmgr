@@ -11,18 +11,20 @@
 #include <string>
 #include <vector>
 
-
 class Multiplex {
 public:
   virtual bool isCompatible(const AdapterPtr &a) const = 0;
 
-  friend YAML::Node YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs);
+  friend YAML::Node
+  YAML::convert<MultiplexPtr>::encode(const MultiplexPtr &rhs);
   friend bool YAML::convert<MultiplexPtr>::decode(const YAML::Node &node,
-                                             MultiplexPtr rhs);
+                                                  MultiplexPtr rhs);
 
-  static std::string getType(const YAML::Node& node);
+  static std::string getType(const YAML::Node &node);
 
-  BroadcastTypePtr getBroadcastType() { return broadcastTypePtr_; };
+  BroadcastTypePtr getBroadcastType() {
+    return broadcastTypePtr_;
+  };
 
   unsigned int getPriority() { return priority_; }
   void updatePriority();

@@ -11,13 +11,11 @@ Polarization::Polarization(const std::string &pString) {
   pString_ = ToString(polarization_);
 }
 
-bool Polarization::operator==(const Enum &rhs) const
-{
+bool Polarization::operator==(const Enum &rhs) const {
   return (polarization_ == rhs);
 }
 
-bool Polarization::operator==(const Polarization &rhs) const
-{
+bool Polarization::operator==(const Polarization &rhs) const {
   return (polarization_ == rhs.polarization_);
 }
 
@@ -43,4 +41,3 @@ std::string Polarization::ToString(const Polarization::Enum &p) {
   default: { return "INVALID"; }
   }
 }
-

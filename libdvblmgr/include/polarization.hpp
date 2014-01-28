@@ -5,7 +5,6 @@
 
 #include <string>
 
-
 class Polarization {
 public:
   enum Enum {
@@ -20,9 +19,9 @@ public:
   explicit Polarization(const std::string &p);
 
   friend YAML::Node
-      YAML::convert<PolarizationPtr>::encode(const PolarizationPtr &rhs);
+  YAML::convert<PolarizationPtr>::encode(const PolarizationPtr &rhs);
   friend bool YAML::convert<PolarizationPtr>::decode(const YAML::Node &node,
-                                                   PolarizationPtr &rhs);
+                                                     PolarizationPtr &rhs);
 
   bool operator==(const std::string &ss) const;
   bool operator==(const Enum &rhs) const;

@@ -18,9 +18,9 @@ Adapter::Adapter(unsigned char id, unsigned char frontendId,
       compats_(compats) {}
 
 bool Adapter::isCompatible(const BroadcastTypePtr &bt) const {
-  auto it = std::find_if(
-                compats_.begin(), compats_.end(),
-                [&bt](const BroadcastTypePtr & p) { return *bt == *p; });
+  auto it =
+      std::find_if(compats_.begin(), compats_.end(),
+                   [&bt](const BroadcastTypePtr &p) { return *bt == *p; });
   return (it != compats_.end());
 }
 
@@ -28,7 +28,8 @@ bool Adapter::isCompatible(const MultiplexPtr &m) const {
   // If it is a SatMultiplex, we have to check the antenna
   MultiplexSatPtr psat = std::dynamic_pointer_cast<MultiplexSat>(m);
   if (psat != nullptr) {
-    return this->isCompatible(m->getBroadcastType()) && *(psat->getAntenna()) == *antennaPtr_;
+    return this->isCompatible(m->getBroadcastType()) &&
+           *(psat->getAntenna()) == *antennaPtr_;
   }
 
   return this->isCompatible(m->getBroadcastType());
@@ -40,6 +41,4 @@ bool Adapter::operator==(const Adapter &rhs) const {
          compareVectorsPtr(compats_, rhs.compats_);
 }
 
-MachinePtr Adapter::getMachine() const {
-	return machine_.lock();
-}
+MachinePtr Adapter::getMachine() const { return machine_.lock(); }

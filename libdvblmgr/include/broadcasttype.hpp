@@ -20,7 +20,7 @@ public:
   explicit BroadcastType(const std::string &m);
 
   friend YAML::Node
-      YAML::convert<BroadcastTypePtr>::encode(const BroadcastTypePtr &rhs);
+  YAML::convert<BroadcastTypePtr>::encode(const BroadcastTypePtr &rhs);
   friend bool YAML::convert<BroadcastTypePtr>::decode(const YAML::Node &node,
                                                       BroadcastTypePtr &rhs);
 

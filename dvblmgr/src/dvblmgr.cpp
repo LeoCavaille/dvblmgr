@@ -5,19 +5,17 @@
 
 #include <boost/asio.hpp>
 
-ServerRunner * sr = nullptr;
+ServerRunner *sr = nullptr;
 
-void signalHandler (int signum) {
-	if (signum == SIGINT) {
-		if (sr) {
-			sr->signalStop();
-		}
-		else {
-			exit(EXIT_SUCCESS);
-		}
-	}
+void signalHandler(int signum) {
+  if (signum == SIGINT) {
+    if (sr) {
+      sr->signalStop();
+    } else {
+      exit(EXIT_SUCCESS);
+    }
+  }
 }
-
 
 int main(int argc, char *argv[]) {
 
@@ -25,8 +23,8 @@ int main(int argc, char *argv[]) {
 
   // FIXME : add long opts, for now we just say that the config file is argv[1]
   std::string confFile;
-  if(argc > 1) {
-	 confFile = std::string(argv[1]);
+  if (argc > 1) {
+    confFile = std::string(argv[1]);
   }
 
   boost::asio::io_service ioService;
@@ -37,12 +35,12 @@ int main(int argc, char *argv[]) {
   sr = new ServerRunner(confFile, ioService, endpoint);
   sr->start();
 
-  while(true) {
-	  if (sr->stopRequired()) {
-		  sr->stop();
-		  break;
-	  }
-	  std::this_thread::sleep_for(std::chrono::seconds(1));
+  while (true) {
+    if (sr->stopRequired()) {
+      sr->stop();
+      break;
+    }
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   }
   return 0;
 }

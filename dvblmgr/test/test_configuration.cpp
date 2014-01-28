@@ -13,14 +13,15 @@ private:
 };
 
 TEST(ConfigurationTest, LoadSaveGoodConfig) {
-  ConfigurationPtr cPtr = std::make_shared<Configuration>("yaml/configuration/good.yaml");
+  ConfigurationPtr cPtr =
+      std::make_shared<Configuration>("yaml/configuration/good.yaml");
   cPtr->load();
   std::stringstream yamlBuffer;
   {
     cout_redirect scopedRedirect(yamlBuffer.rdbuf());
     // TODO: do not save here cause we will alter a file in the repo
     // we should find a trick to copy the file and use this one
-    //cPtr->save();
+    // cPtr->save();
   }
 
   YAML::Node yamlReloaded = YAML::Load(yamlBuffer.str());

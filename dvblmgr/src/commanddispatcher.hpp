@@ -9,10 +9,11 @@
 
 class CommandDispatcher {
 public:
-	CommandDispatcher();
-  void queue(const CommandPtr& c);
+  CommandDispatcher();
+  void queue(const CommandPtr &c);
   void start();
   void stop();
+
 private:
   void mainLoop();
   bool gotCommands() const;

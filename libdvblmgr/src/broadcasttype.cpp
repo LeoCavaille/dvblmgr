@@ -7,18 +7,13 @@ BroadcastType::BroadcastType() : type_(none), typeString_("NONE") {}
 BroadcastType::BroadcastType(Enum m) : type_(m), typeString_(ToString(m)) {}
 
 BroadcastType::BroadcastType(const std::string &mString)
-    : type_(FromString(mString))
-{
+    : type_(FromString(mString)) {
   typeString_ = ToString(type_);
 }
 
-bool BroadcastType::operator==(const Enum &rhs) const
-{
-  return (type_ == rhs);
-}
+bool BroadcastType::operator==(const Enum &rhs) const { return (type_ == rhs); }
 
-bool BroadcastType::operator==(const BroadcastType &rhs) const
-{
+bool BroadcastType::operator==(const BroadcastType &rhs) const {
   return (type_ == rhs.type_);
 }
 
@@ -47,4 +42,3 @@ std::string BroadcastType::ToString(const BroadcastType::Enum &m) {
   default: { return "INVALID"; }
   }
 }
-

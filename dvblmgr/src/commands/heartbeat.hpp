@@ -5,7 +5,6 @@
 
 #include "../command.hpp"
 
-
 class Heartbeat : public Command {
 public:
   Heartbeat(const MachinePtr &mPtr);

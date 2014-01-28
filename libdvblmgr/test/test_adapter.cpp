@@ -8,7 +8,7 @@ BroadcastTypePtr bt1 = std::make_shared<BroadcastType>("DVB-S");
 BroadcastTypePtr bt2 = std::make_shared<BroadcastType>("DVB-S2");
 BroadcastTypePtr bt3 = std::make_shared<BroadcastType>("DVB-T");
 
-std::vector<BroadcastTypePtr> btc { bt1, bt2 };
+std::vector<BroadcastTypePtr> btc{ bt1, bt2 };
 
 const Adapter adap(0, 2, ant, btc);
 

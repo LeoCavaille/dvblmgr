@@ -16,13 +16,17 @@ class Configuration : public std::enable_shared_from_this<Configuration> {
 public:
   Configuration(const std::string &filename);
   void load();
-  void load(const YAML::Node& configParsed);
+  void load(const YAML::Node &configParsed);
   void save();
 
-  std::vector<MachinePtr> getMachines() const { return machines_; };
-  std::vector<MultiplexPtr> getMultiplexs() const { return multiplexs_; };
+  std::vector<MachinePtr> getMachines() const {
+    return machines_;
+  };
+  std::vector<MultiplexPtr> getMultiplexs() const {
+    return multiplexs_;
+  };
 
-  bool operator==(const Configuration& rhs) const;
+  bool operator==(const Configuration &rhs) const;
 
   bool hasChanged();
 
@@ -46,7 +50,6 @@ private:
 protected:
   bool hasChanged_;
   std::mutex mChange_;
-
 };
 
 #endif /* CONFIGURATION_H_ */

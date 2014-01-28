@@ -8,17 +8,16 @@ Modulation::Modulation() : type_(none), typeString_("none") {}
 Modulation::Modulation(Enum m) : type_(m), typeString_(ToString(m)) {}
 
 Modulation::Modulation(const std::string &mString)
-    : type_(FromString(mString))
-{
+    : type_(FromString(mString)) {
   typeString_ = ToString(type_);
 }
 
 bool Modulation::operator==(const Modulation::Enum &e) const {
-    return type_ == e;
+  return type_ == e;
 }
 
 bool Modulation::operator==(const Modulation &mPtr) const {
-    return type_ == mPtr.type_;
+  return type_ == mPtr.type_;
 }
 
 Modulation::Enum Modulation::FromString(std::string mString) {
@@ -42,4 +41,3 @@ std::string Modulation::ToString(const Modulation::Enum &m) {
   default: { return "INVALID"; }
   }
 }
-

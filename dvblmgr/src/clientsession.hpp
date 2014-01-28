@@ -3,16 +3,15 @@
 
 #include <boost/asio.hpp>
 
-class ClientSession
-{
+class ClientSession {
 public:
-	ClientSession(boost::asio::io_service& ioService);
+  ClientSession(boost::asio::io_service &ioService);
 
-	boost::asio::ip::tcp::socket& getSocket();
-	void start();
+  boost::asio::ip::tcp::socket &getSocket();
+  void start();
 
 private:
-	boost::asio::ip::tcp::socket b_socket_;
+  boost::asio::ip::tcp::socket b_socket_;
 };
 
 #endif /* CLIENTSESSION_HPP_ */

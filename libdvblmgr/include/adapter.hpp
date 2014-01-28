@@ -20,7 +20,9 @@ public:
 
   bool isCompatible(const BroadcastTypePtr &bt) const;
   bool isCompatible(const MultiplexPtr &m) const;
-  unsigned int compatibilityCount() const { return compats_.size(); };
+  unsigned int compatibilityCount() const {
+    return compats_.size();
+  };
 
   MachinePtr getMachine() const;
 

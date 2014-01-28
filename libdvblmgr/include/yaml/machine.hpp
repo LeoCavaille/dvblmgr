@@ -4,7 +4,6 @@
 #include "ptr/machine.hpp"
 #include <yaml-cpp/yaml.h>
 
-
 class Machine;
 
 namespace YAML {

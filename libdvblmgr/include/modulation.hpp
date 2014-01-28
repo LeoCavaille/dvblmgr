@@ -23,9 +23,10 @@ public:
   static Enum FromString(std::string mString);
   static std::string ToString(const Enum &m);
 
-  friend YAML::Node YAML::convert<ModulationPtr>::encode(const ModulationPtr &rhs);
+  friend YAML::Node
+  YAML::convert<ModulationPtr>::encode(const ModulationPtr &rhs);
   friend bool YAML::convert<ModulationPtr>::decode(const YAML::Node &node,
-                                             ModulationPtr &rhs);
+                                                   ModulationPtr &rhs);
 
 private:
   Enum type_;
