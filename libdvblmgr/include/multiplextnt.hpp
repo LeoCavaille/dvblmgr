@@ -1,8 +1,13 @@
 #ifndef MULTIPLEXTNT_HPP_
 #define MULTIPLEXTNT_HPP_
 
+#include <string>
+#include <vector>
+#include "ptr/adapter.hpp"
+#include "ptr/broadcasttype.hpp"
+#include "ptr/channel.hpp"
+#include "ptr/multiplex.hpp"
 #include "multiplex.hpp"
-
 #include "yaml/multiplextnt.hpp"
 
 class MultiplexTnt : public Multiplex {

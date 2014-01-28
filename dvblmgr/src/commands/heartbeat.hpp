@@ -2,8 +2,8 @@
 #define HEARTBEAT_HPP_
 
 #include "ptr/machine.hpp"
-
 #include "../command.hpp"
+#include "commandtype.h"
 
 class Heartbeat : public Command {
 public:

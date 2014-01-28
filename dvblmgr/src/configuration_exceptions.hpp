@@ -1,6 +1,8 @@
 #ifndef CONFIGURATION_EXCEPTIONS_HPP_
 #define CONFIGURATION_EXCEPTIONS_HPP_
 
+#include <string>
+
 class ConfigurationException {};
 
 class ConfigurationFileUnreachable {

@@ -4,8 +4,6 @@
 #include "ptr/multiplextnt.hpp"
 #include <yaml-cpp/yaml.h>
 
-class MultiplexTnt;
-
 namespace YAML {
 template <> struct convert<MultiplexTntPtr> {
   static Node encode(const MultiplexTntPtr &rhs);

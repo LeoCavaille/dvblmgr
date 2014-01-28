@@ -1,11 +1,18 @@
 #ifndef MULTIPLEXSAT_HPP_
 #define MULTIPLEXSAT_HPP_
 
-#include "multiplex.hpp"
-#include "ptr/polarization.hpp"
-#include "ptr/modulation.hpp"
-#include "ptr/antenna.hpp"
-#include "yaml/multiplexsat.hpp"
+#include <string>                       // for string
+#include <vector>                       // for vector
+#include "multiplex.hpp"                // for Multiplex
+#include "ptr/adapter.hpp"              // for AdapterPtr
+#include "ptr/antenna.hpp"              // for AntennaPtr
+#include "ptr/broadcasttype.hpp"        // for BroadcastTypePtr
+#include "ptr/channel.hpp"              // for ChannelPtr
+#include "ptr/modulation.hpp"           // for ModulationPtr
+#include "ptr/multiplexsat.hpp"         // for MultiplexSatPtr
+#include "ptr/polarization.hpp"         // for PolarizationPtr
+#include "yaml/multiplexsat.hpp"        // for convert
+
 
 class MultiplexSat : public Multiplex {
 public:

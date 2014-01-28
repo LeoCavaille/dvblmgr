@@ -3,7 +3,6 @@
 
 #include "ptr/configuration.hpp"
 #include "commanddispatcher_ptr.hpp"
-#include <map>
 
 #include <mutex>
 #include <thread>

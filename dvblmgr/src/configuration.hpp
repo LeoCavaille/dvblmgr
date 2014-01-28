@@ -3,14 +3,13 @@
 
 #include "ptr/multiplex.hpp"
 #include "ptr/machine.hpp"
-
-#include "broadcastlistgenerator.hpp"
+#include "ptr/configuration.hpp"
 
 #include <yaml-cpp/yaml.h>
 #include <string>
 #include <vector>
 #include <mutex>
-#include <thread>
+#include <memory>
 
 class Configuration : public std::enable_shared_from_this<Configuration> {
 public:

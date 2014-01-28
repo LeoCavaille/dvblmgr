@@ -4,8 +4,6 @@
 #include "ptr/machine.hpp"
 #include <yaml-cpp/yaml.h>
 
-class Machine;
-
 namespace YAML {
 template <> struct convert<MachinePtr> {
   static Node encode(const MachinePtr &rhs);

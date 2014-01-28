@@ -5,7 +5,7 @@
 #include "ptr/adapter.hpp"
 #include "ptr/multiplex.hpp"
 #include <map>
-
+#include <memory>
 #include <mutex>
 #include <thread>
 

@@ -1,6 +1,7 @@
 #ifndef ADAPTER_HPP_
 #define ADAPTER_HPP_
 
+#include "ptr/adapter.hpp"
 #include "ptr/machine.hpp"
 #include "ptr/antenna.hpp"
 #include "ptr/broadcasttype.hpp"

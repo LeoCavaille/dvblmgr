@@ -3,7 +3,7 @@
 
 #include "ptr/adapter.hpp"
 #include "ptr/multiplex.hpp"
-
+#include "commandtype.h"
 #include "../command.hpp"
 
 class AdapterStartCommand : public Command {
