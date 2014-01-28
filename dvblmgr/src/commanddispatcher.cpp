@@ -19,12 +19,16 @@ void CommandDispatcher::mainLoop() {
 	while(true) {
 		mutex_.lock();
 		if(stopSignal_) {
+#ifdef DEBUG
 			std::cerr << "INFO: CommandDispatcher required to stop, stopping !" << std::endl;
+#endif
 			mutex_.unlock();
 			return;
 		}
 		mutex_.unlock();
+#ifdef DEBUG
 		std::cerr << "INFO: CommandDispatcher mainLoop reporting" << std::endl;
+#endif
 		while(gotCommands()) {
 			launchCommands();
 		}
@@ -34,7 +38,9 @@ void CommandDispatcher::mainLoop() {
 }
 
 void CommandDispatcher::start() {
+#ifdef DEBUG
 	std::cerr << "INFO: CommandDispatcher starting" << std::endl;
+#endif
 	dispatcherThread_ = std::thread(&CommandDispatcher::mainLoop, this);
 }
 

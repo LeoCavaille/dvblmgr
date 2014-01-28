@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
   }
 
   boost::asio::io_service ioService;
+  boost::asio::io_service::work work(ioService);
   int port = 4242;
   boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 

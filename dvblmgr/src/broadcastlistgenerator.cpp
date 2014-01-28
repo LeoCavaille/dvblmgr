@@ -11,14 +11,20 @@ void BroadcastListGenerator::mainLoop() {
 	while(true) {
 		mutex_.lock();
 		if(stopSignal_) {
+#ifdef DEBUG
 			std::cerr << "INFO: BroadcastListGenerator required to stop, stopping !" << std::endl;
+#endif
 			mutex_.unlock();
 			return;
 		}
 		mutex_.unlock();
+#ifdef DEBUG
 		std::cerr << "INFO: BroadcastListGenerator mainLoop reporting" << std::endl;
+#endif
 		if (configurationPtr_->hasChanged()) {
+#ifdef DEBUG
 			std::cerr << "INFO: BroadcastListGenerator is generating a new list, WAIT FOR IT" << std::endl;
+#endif
 			configurationPtr_->mChange_.lock();
 
 			Assignement a = generateAssignement();
@@ -33,7 +39,9 @@ void BroadcastListGenerator::mainLoop() {
 }
 
 void BroadcastListGenerator::start() {
+#ifdef DEBUG
 	std::cerr << "INFO: BroadcastListGenerator starting" << std::endl;
+#endif
 	generatorThread_ = std::thread(&BroadcastListGenerator::mainLoop, this);
 }
 

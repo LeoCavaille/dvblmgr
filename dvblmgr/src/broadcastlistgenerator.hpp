@@ -16,7 +16,7 @@ class BroadcastListGenerator {
 public:
   BroadcastListGenerator() {};
   BroadcastListGenerator(ConfigurationPtr configurationPtr)
-    : configurationPtr_(configurationPtr), stopSignal_(false), offline_(false) {};
+    : configurationPtr_(configurationPtr), offline_(false), stopSignal_(false) {};
 
   Assignement generateAssignement();
   void updateAssignement(const Assignement& map); // Et un dispatcher

@@ -12,7 +12,7 @@ add_library(
 	dvblmgr_sources
 	OBJECT
 	src/broadcastlistgenerator.cpp
-	src/clientconnection.cpp
+	src/clientsession.cpp
 	src/command.cpp
 	src/commanddispatcher.cpp
 	src/commands/adapterstart.cpp

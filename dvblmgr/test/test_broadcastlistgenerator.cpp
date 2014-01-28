@@ -11,5 +11,5 @@ TEST(BroadcastlistGeneratorTest, GenerateAssignementConfig) {
   BroadcastListGenerator generator(cPtr);
   generator.setOffline(true);
   Assignement assignement = generator.generateAssignement();
-  ASSERT_EQ(assignement.size(), 5);
+  ASSERT_TRUE(assignement.size() == 5);
 }

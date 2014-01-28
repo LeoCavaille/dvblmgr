@@ -11,7 +11,7 @@
 #include <time.h>
 #include <sys/stat.h>
 
-#define DEFAULT_CONFIG "/tmp/build/dvblmgr.conf"
+#define DEFAULT_CONFIG "/etc/dvblmgr/dvblmgr.conf"
 
 Configuration::Configuration(const std::string &filename)
     : filename_(filename), hasChanged_(true) {}

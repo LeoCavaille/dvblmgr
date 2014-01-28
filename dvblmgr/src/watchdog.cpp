@@ -10,12 +10,16 @@ void Watchdog::mainLoop() {
 	while(true) {
 		mStop_.lock();
 		if(stopSignal_) {
+#ifdef DEBUG
 			std::cerr << "INFO: Watchdog required to stop, stopping !" << std::endl;
+#endif
 			mStop_.unlock();
 			return;
 		}
 		mStop_.unlock();
+#ifdef DEBUG
 		std::cerr << "INFO: Watchdog mainLoop reporting" << std::endl;
+#endif
 
     // Request the status of all connected machines
     for (auto const & m : configurationPtr_->getMachines()) {
@@ -30,7 +34,9 @@ void Watchdog::mainLoop() {
 }
 
 void Watchdog::start() {
+#ifdef DEBUG
 	std::cerr << "INFO: Watchdog starting" << std::endl;
+#endif
 	watchdogThread_ = std::thread(&Watchdog::mainLoop, this);
 }
 

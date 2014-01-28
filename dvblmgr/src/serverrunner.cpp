@@ -7,13 +7,13 @@
 #include "broadcastlistgenerator.hpp"
 #include "watchdog.hpp"
 
-#include "clientconnection.hpp"
+#include "clientsession.hpp"
 
 #include <boost/bind.hpp>
 
 
 ServerRunner::ServerRunner(const std::string& confFile, boost::asio::io_service& ioService, const boost::asio::ip::tcp::endpoint& endpoint) :
-stopFlag_(false), b_ioService_(ioService), b_acceptor_(ioService, endpoint)
+stopFlag_(false), b_acceptor_(ioService, endpoint)
 {
   // Load our configuration
   configPtr_ = std::make_shared<Configuration>(confFile);
@@ -25,26 +25,33 @@ stopFlag_(false), b_ioService_(ioService), b_acceptor_(ioService, endpoint)
   }
 
   // Launch the asynchronous TCP server
-  b_tcpThread_ = std::thread(&ServerRunner::waitForConnection, this);
+  waitForConnection();
+
+  using ioServiceRunType = std::size_t (boost::asio::io_service::*)(void);
+  ioServiceRunType runFunc = &boost::asio::io_service::run;
+  b_tcpThread_ = std::thread(runFunc, std::ref(b_acceptor_.get_io_service()));
 
   commandDispatcherPtr_ = std::make_shared<CommandDispatcher>();
   watchdogPtr_ = std::make_shared<Watchdog>(configPtr_, commandDispatcherPtr_);
   broadcastListGeneratorPtr_ = std::make_shared<BroadcastListGenerator>(configPtr_);
+
 }
 
 void ServerRunner::waitForConnection() {
-	ClientConnectionPtr newConnectionPtr = std::make_shared<ClientConnection>(b_ioService_);
-	b_acceptor_.async_accept(newConnectionPtr->getSocket(), std::bind(&ServerRunner::handleAccept, this, std::placeholders::_1, newConnectionPtr));
+	ClientSessionPtr newSession = std::make_shared<ClientSession>(b_acceptor_.get_io_service());
+	b_acceptor_.async_accept(newSession->getSocket(), std::bind(&ServerRunner::handleAccept, this, std::placeholders::_1, newSession));
 }
 
-void ServerRunner::handleAccept(const boost::system::error_code& error, ClientConnectionPtr newConnection) {
+void ServerRunner::handleAccept(const boost::system::error_code& error, ClientSessionPtr newSession) {
 	if(! error)
 	{
-		std::cout << "Connection acceptée de : " << newConnection->getSocket().remote_endpoint().address().to_string() << std::endl;
+		std::cout << "Connection acceptée de : " << newSession->getSocket().remote_endpoint().address().to_string() << std::endl;
+		newSession->start();
+		waitForConnection();
 	}
 	else
 	{
-		std::cerr << "handleAccept failed" << std::endl;
+		std::cout << "handleAccept failed" << std::endl;
 	}
 }
 

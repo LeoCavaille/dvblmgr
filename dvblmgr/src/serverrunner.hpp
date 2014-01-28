@@ -5,7 +5,7 @@
 #include "commanddispatcher_ptr.hpp"
 #include "broadcastlistgenerator_ptr.hpp"
 #include "watchdog_ptr.hpp"
-#include "clientconnection_ptr.hpp"
+#include "clientsession_ptr.hpp"
 
 #include <mutex>
 #include <thread>
@@ -24,7 +24,7 @@ public:
 
 private:
 	void waitForConnection();
-	void handleAccept(const boost::system::error_code& error, ClientConnectionPtr newConnenction);
+	void handleAccept(const boost::system::error_code& error, ClientSessionPtr newConnenction);
 	void startCommandDispatcher();
 	void stopCommandDispatcher();
 	void startBroadcastListGenerator();
@@ -42,7 +42,6 @@ private:
 	bool stopFlag_;
 
 	std::thread b_tcpThread_;
-	boost::asio::io_service& b_ioService_;
 	boost::asio::ip::tcp::acceptor b_acceptor_;
 
 };
