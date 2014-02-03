@@ -125,6 +125,7 @@ multiplexs:
 
 machines:
   - name: vls20
+    ip: 138.195.131.20
     adapters:
       - id: 0
         frontendId: 0
@@ -135,6 +136,7 @@ machines:
         antenna: astra19.2
         broadcastType: [ dvb-s ]
   - name: vls21
+    ip: 138.195.131.21
     adapters:
       - id: 0
         frontendId: 0
@@ -153,6 +155,7 @@ machines:
         antenna: rateau
         broadcastType: [ dvb-t ]
   - name: vls12
+    ip: 138.195.131.12
     adapters:
       - id: 0
         frontendId: 0
