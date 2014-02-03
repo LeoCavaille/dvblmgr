@@ -6,6 +6,7 @@
 YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
   Node node;
   node["name"] = rhs->name_;
+  node["ip"] = rhs->ip_;
   for (auto& aPtr: rhs->adapters_){
     node["adapters"].push_back(YAML::convert<AdapterPtr>::encode(aPtr));
   }
@@ -15,6 +16,7 @@ YAML::Node YAML::convert<MachinePtr>::encode(const MachinePtr &rhs) {
 
 bool YAML::convert<MachinePtr>::decode(const YAML::Node &node, MachinePtr &rhs) {
   rhs->name_ = node["name"].as<std::string>();
+  rhs->ip_ = node["ip"].as<std::string>();
   for(auto &adapterNode : node["adapters"]){
     AdapterPtr aPtr = std::make_shared<Adapter>(rhs);
     YAML::convert<AdapterPtr>::decode(adapterNode, aPtr);
