@@ -36,4 +36,4 @@ private:
   boost::uuids::uuid ID_;
 };
 
-#endif /* MACHINE_HPP_ *
+#endif /* MACHINE_HPP_ */
