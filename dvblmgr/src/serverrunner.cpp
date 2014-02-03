@@ -40,7 +40,7 @@ ServerRunner::ServerRunner(const std::string &confFile,
 
 void ServerRunner::waitForConnection() {
   ClientSessionPtr newSession =
-      std::make_shared<ClientSession>(b_acceptor_.get_io_service());
+      std::make_shared<ClientSession>(b_acceptor_.get_io_service(), configPtr_);
   b_acceptor_.async_accept(newSession->getSocket(),
                            std::bind(&ServerRunner::handleAccept, this,
                                      std::placeholders::_1, newSession));
@@ -49,9 +49,6 @@ void ServerRunner::waitForConnection() {
 void ServerRunner::handleAccept(const boost::system::error_code &error,
                                 ClientSessionPtr newSession) {
   if (!error) {
-    std::cout << "Connection acceptée de : "
-              << newSession->getSocket().remote_endpoint().address().to_string()
-              << std::endl;
     newSession->start();
     waitForConnection();
   } else {

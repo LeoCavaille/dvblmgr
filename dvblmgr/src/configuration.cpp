@@ -92,6 +92,20 @@ void Configuration::save() {
   hasChanged_ = true;
 }
 
+void Configuration::machineSetConnectedFlag(const boost::asio::ip::address &ip,
+                                            const bool &status) {
+  std::string ipConnected(ip.to_string());
+  for (auto &m : machines_) {
+    if (m->getIP() == ipConnected) {
+      assert(m->isConnected() == !status);
+      m->setConnected(status);
+      return;
+    }
+  }
+  // If we reached this line, the machine was not found in machines_
+  throw ConfigurationMachineUnauthorized(ip.to_string());
+}
+
 bool Configuration::operator==(const Configuration &rhs) const {
   // TODO
   return true;

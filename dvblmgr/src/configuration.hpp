@@ -5,6 +5,7 @@
 #include "ptr/machine.hpp"
 #include "ptr/configuration.hpp"
 
+#include <boost/asio/ip/address.hpp>
 #include <yaml-cpp/yaml.h>
 #include <string>
 #include <vector>
@@ -18,6 +19,9 @@ public:
   void load(const YAML::Node &configParsed);
   void save();
 
+  void machineSetConnectedFlag(const boost::asio::ip::address &ip,
+                               const bool &status);
+
   std::vector<MachinePtr> getMachines() const {
     return machines_;
   };
@@ -29,6 +33,7 @@ public:
 
   bool hasChanged();
 
+  // TODO : be more restrictive
   friend class BroadcastListGenerator;
 
 private:

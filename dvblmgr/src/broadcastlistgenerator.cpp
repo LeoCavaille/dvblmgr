@@ -57,7 +57,7 @@ Assignement BroadcastListGenerator::generateAssignement() {
   Assignement assignement;
 
   for (auto const &mPtr : configurationPtr_->getMachines()) {
-    if (offline_ || mPtr->connected()) {
+    if (offline_ || mPtr->isConnected()) {
       for (auto const &aPtr : mPtr->getAdapters()) {
         availableAdapters.push_back(aPtr);
       }

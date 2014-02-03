@@ -19,4 +19,18 @@ private:
   std::string filename_;
 };
 
+class ConfigurationMachineUnauthorized {
+public:
+  ConfigurationMachineUnauthorized(const std::string &ip) : ip_(ip) {}
+  const char *what() const {
+    std::string msg("Connection refused for an unknown IP : ");
+    msg.append(ip_);
+    msg.append(". Check your configuration.");
+    return msg.c_str();
+  }
+
+private:
+  std::string ip_;
+};
+
 #endif /* CONFIGURATION_EXCEPTIONS_HPP_ */

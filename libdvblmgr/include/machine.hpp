@@ -17,20 +17,23 @@ public:
                                                 MachinePtr &rhs);
 
   std::string getID() const;
+  std::string getIP() const { return ip_; }
 
   bool operator==(const Machine &rhs) const;
 
   const std::vector<AdapterPtr> &getAdapters() const {
     return adapters_;
   };
-  bool connected() const { return connected_; }
+  bool isConnected() const { return connected_; }
+  void setConnected(const bool &b) { connected_ = b; }
 
 private:
   std::string name_;
+  std::string ip_;
   std::vector<AdapterPtr> adapters_;
 
   bool connected_;
   boost::uuids::uuid ID_;
 };
 
-#endif /* MACHINE_HPP_ */
+#endif /* MACHINE_HPP_ *

@@ -23,7 +23,7 @@ void Watchdog::mainLoop() {
 
     // Request the status of all connected machines
     for (auto const &m : configurationPtr_->getMachines()) {
-      if (!m->connected())
+      if (!m->isConnected())
         continue;
       std::shared_ptr<Heartbeat> cPtr = std::make_shared<Heartbeat>(m);
       cdPtr_->queue(std::dynamic_pointer_cast<Command>(cPtr));
