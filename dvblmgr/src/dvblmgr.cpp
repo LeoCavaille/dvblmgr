@@ -10,6 +10,7 @@ ServerRunner *sr = nullptr;
 void signalHandler(int signum) {
   if (signum == SIGINT) {
     if (sr) {
+      std::cout << "OK, you'd like to stop now, wait for it." << std::endl;
       sr->signalStop();
     } else {
       exit(EXIT_SUCCESS);
@@ -42,5 +43,6 @@ int main(int argc, char *argv[]) {
     }
     std::this_thread::sleep_for(std::chrono::seconds(1));
   }
+  std::cout << "KTHX BYE !" << std::endl;
   return 0;
 }
