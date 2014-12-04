@@ -2,60 +2,29 @@
 
 #include "command.hpp"
 
-#include <chrono>
-#include <iostream>
+CommandDispatcher::CommandDispatcher(ConfigurationPtr cPtr): configPtr_(cPtr){
+	for (auto &m : cPtr->getMachines()) {
+		commands_[m] = std::deque<CommandPtr>();
+	}
+}
 
-CommandDispatcher::CommandDispatcher() : stopSignal_(false) {}
+void reloadMachines() {
+	for (auto &m : cPtr->getMachines()) {
 
-void CommandDispatcher::queue(const CommandPtr &cPtr) {
+		commands_[m] = std::deque<CommandPtr>();
+	}
+}
+
+void CommandDispatcher::queue(const MachinePtr &mPtr, const CommandPtr &cPtr) {
   mutex_.lock();
-  commands_.push_back(cPtr);
+  commands_[mPtr].push_back(cPtr);
   mutex_.unlock();
 }
 
-void CommandDispatcher::mainLoop() {
-  while (true) {
-    mutex_.lock();
-    if (stopSignal_) {
-#ifdef DEBUG
-      std::cerr << "INFO: CommandDispatcher required to stop, stopping !"
-                << std::endl;
-#endif
-      mutex_.unlock();
-      return;
-    }
-    mutex_.unlock();
-#ifdef DEBUG
-    std::cerr << "INFO: CommandDispatcher mainLoop reporting" << std::endl;
-#endif
-    while (gotCommands()) {
-      launchCommands();
-    }
+bool CommandDispatcher::gotCommands(const MachinePtr &mPtr) const { return commands_[mPtr].size() != 0; }
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-  }
-}
-
-void CommandDispatcher::start() {
-#ifdef DEBUG
-  std::cerr << "INFO: CommandDispatcher starting" << std::endl;
-#endif
-  dispatcherThread_ = std::thread(&CommandDispatcher::mainLoop, this);
-}
-
-void CommandDispatcher::stop() {
+void CommandDispatcher::popCommand(const MachinePtr &mPtr) {
   mutex_.lock();
-  stopSignal_ = true;
-  mutex_.unlock();
-  dispatcherThread_.join();
-}
-
-bool CommandDispatcher::gotCommands() const { return commands_.size() != 0; }
-
-void CommandDispatcher::launchCommands() {
-  mutex_.lock();
-  CommandPtr cPtr = commands_.front();
-  cPtr->execute();
-  commands_.pop_front();
+  commands_[mPtr].pop_front();
   mutex_.unlock();
 }

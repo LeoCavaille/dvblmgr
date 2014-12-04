@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
     confFile = std::string(argv[1]);
   }
 
+  // TODO : the io_service should be wrapped safely e.g. in the ServerRunner
   boost::asio::io_service ioService;
   boost::asio::io_service::work work(ioService);
   int port = 4242;
